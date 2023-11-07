@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/06 13:25:45 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/07 10:17:39 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,17 @@ YELLOW = \033[0;33m
 NC = \033[0m # No color (reiniciar)
 
 #Comandos
-AR			=	ar rcs
 DEL			=	rm -f
 CC			=	gcc
 CCFLAGS		=	-Wall -Wextra -Werror
-MLX			=	-Lmlx -lmlx -framework OpenGL -framework AppKit
+MLX			=	-framework OpenGL -framework AppKit
 
 #Nombre ejecutable
-NAME		=	so_long.a
+NAME		=	so_long
+NAME_EXE	=	so_long.exe
 
 #Ficheros
-SRC_FILES	=	so_long
+SRC_FILES	=	color hooks image so_long window
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
@@ -44,7 +44,7 @@ all:	$(NAME)
 $(NAME):$(OBJ) 
 		@$(MAKE) -C ./minilibx
 		@echo "$(GREEN)MINILIBX HAS BEEN COMPILED$(NC)"
-		@$(CC) $(CCFLAGS) $(OBJ) -I  mlx/libmlx.a $(MLX) -o $(NAME)
+		@$(CC) $(CFLAGS) $(OBJ) -I $(INC) minilibx/libmlx.a $(MLX) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
 # Compilar objetos individualmente
@@ -76,6 +76,10 @@ clean:
 fclean: clean fclean_mlx
 	@$(RM) $(NAME)
 	@echo "$(RED)EXECUTABLE CLEANED!$(NC)"
-	
+
+#Compilador
+exe:
+	@echo "$(GREEN)RUNNING....$(NC)"
+	@./$(NAME)
 
 re: fclean all
