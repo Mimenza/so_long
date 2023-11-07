@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 09:59:07 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/07 10:42:18 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:22:47 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,19 @@ int	ft_input(int key, void *param)
 	mlx_clear_window(program->mlx, program->window.reference);
 
 	// move in a direction based on the key
-	if (key == 124)
+	if (key == KEY_RIGHT)
 		program->sprite_position.x += program->sprite.size.x;
-	else if (key == 123)
+	else if (key == KEY_LEFT)
 		program->sprite_position.x -= program->sprite.size.x;
-	else if (key == 125)
+	else if (key == KEY_DOWN)
 		program->sprite_position.y += program->sprite.size.y;
-	else if (key == 126)
+	else if (key == KEY_UP)
 		program->sprite_position.y -= program->sprite.size.y;
-	// change color based on keys R, G and B.
-	else if (key == 15)
-		turn_img_to_color(&program->sprite, new_color(255,0,0,0));
-	else if (key == 5)
-		turn_img_to_color(&program->sprite, new_color(0,255,0,0));
-	else if (key == 11)
-		turn_img_to_color(&program->sprite, new_color(0,0,255,0));
+	else if (key == KEY_ESC)
+	{
+		mlx_destroy_window(program->mlx,program->window.reference);
+		ft_close();
+	}
 
 	// mlx function that puts and image into a window at a given position
 	// (the position 0,0 is the upper-left corner)

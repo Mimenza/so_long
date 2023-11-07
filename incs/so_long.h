@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/07 10:46:09 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:23:42 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,28 @@
 // MACROS
 
 # ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 4
+#  define ANIMATION_FRAMES 10
 # endif
 
+// Key Codes for MacOS
+# define KEY_ESC	53
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define KEY_UP		126
+# define KEY_DOWN	125
+# define KEY_LEFT	123
+# define KEY_RIGHT	124
+
+// MacOS Events
+# define ON_KEYDOWN		2
+# define ON_KEYUP 		3
+# define ON_MOUSEDOWN	4
+# define ON_MOUSEUP		5
+# define ON_MOUSEMOVE	6
+# define ON_EXPOSE		12
+# define ON_DESTROY		17
 // ----------------------------------
 // STRUCTS
 
@@ -76,6 +95,7 @@ t_color		new_color(int r, int g, int b, int a);
 void		turn_img_to_color(t_image *image, t_color color);
 
 int			ft_input(int key, void *program);
-int			ft_update (void *param);
+int			ft_update(void *param);
+int			ft_close();
 #endif
 

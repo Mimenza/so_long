@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/07 10:30:20 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:13:58 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main()
 	// ----------
 
 	// Create a new image/sprite (image.c)
-	program.sprite = ft_new_sprite(program.mlx, "block.xpm");
+	program.sprite = ft_new_sprite(program.mlx, "./textures/block.xpm");
 	program.sprite_position.x = 0;
 	program.sprite_position.y = 0;
 	// mlx function that draws an image into a window at the given position
