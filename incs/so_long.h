@@ -6,16 +6,19 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/07 11:23:42 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:43:00 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-# define	SO_LONG_H
+# define SO_LONG_H
 
 # include <stdlib.h>
 # include <stdio.h>
-# include "../minilibx/mlx.h"
+# include "../libs/minilibx/mlx.h"
+# include "../libs/ft_printf/ft_printf.h"
+# include "../libs/gnl/get_next_line.h"
+# include "../libs/Libft/libft.h"
 
 // ----------------------------------
 // MACROS
@@ -44,58 +47,55 @@
 # define ON_EXPOSE		12
 # define ON_DESTROY		17
 // ----------------------------------
-// STRUCTS
-
-/* vector with an x and y */
-typedef struct	s_vector
+typedef struct s_size
 {
-	int	x;
-	int	y;
-}				t_vector;
+	int		w;
+	int		h;
+}			t_size;
 
-/* A pointer to the window and its size */
-typedef struct	s_window {
-	void		*reference;
-	t_vector	size;
-}				t_window;
+// store all information about the window
+typedef struct s_window
+{
+	void	*mlx;
+	void	*win;
+	t_size	*size;
+}			t_window;
 
-/* The 4 values that define a color */
-typedef struct s_color {
-	int	r;
-	int g;
-	int b;
-	int a;
-}	t_color;
+// store all information about the map
+typedef struct s_map
+{
+	char	**grid;
+	t_size	*size;
+	int		n_coll;
+}			t_map;
 
-/* all info needed for an image */
-typedef struct	s_image {
-	void		*reference;
-	t_vector	size;
-	char		*pixels;
-	int			bits_per_pixel;
-	int			line_size;
-	int			endian;
-}				t_image;
+//store all the information about the exit
+typedef struct s_exit
+{
+	int		x_pos;
+	int		y_pos;
+}				t_exit;
 
-typedef struct	s_program {
-	void		*mlx;
-	t_window	window;
-	t_image		sprite;
-	t_vector	sprite_position;
-}				t_program;
+//store all the information about the player
+typedef struct s_player
+{
+	int		x_pos;
+	int		y_pos;
+	int		framerate;
+}				t_player;
 
-
-// ---------------------------------
-// FUNCTIONS
-
-t_window	ft_new_window(void *mlx, int widht, int height, char *name);
-t_image		ft_new_sprite(void *mlx, char *path);
-
-t_color		new_color(int r, int g, int b, int a);
-void		turn_img_to_color(t_image *image, t_color color);
-
-int			ft_input(int key, void *program);
-int			ft_update(void *param);
-int			ft_close();
+// store all information about the game
+typedef struct s_game
+{
+	t_window	*window;
+	t_map		*map;
+	t_player	player;
+	int			steps;
+	int			coll;
+	t_exit		exit;
+}			t_game;
 #endif
 
+int		ft_check_ext(char *str, char *ext);
+char	**ft_create_grid(char * strmap);
+t_game	ft_create_game(char *strmap, t_game *game);

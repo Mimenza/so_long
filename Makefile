@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/07 10:17:39 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/08 12:45:26 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,23 @@ CCFLAGS		=	-Wall -Wextra -Werror
 MLX			=	-framework OpenGL -framework AppKit
 
 #Nombre ejecutable
-NAME		=	so_long
+NAME		=	so_longer
 NAME_EXE	=	so_long.exe
 
 #Ficheros
-SRC_FILES	=	color hooks image so_long window
+SRC_FILES	=	init so_long utils map1 game
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+MINILIBX	=	libs/minilibx
+GNL			=	libs/gnl
+LIBFT		=	libs/Libft
+PRINTF		=	libs/ft_printf
+
+#Librerias
+LIBS		=	$(MINILIBX)/libmlx.a $(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a $(MLX)
+
+# Header Files (dedicated and from libraries):
+HEADERS		=	$(MINILIBX)/mlx.h $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
 
 #Directorios
 SRC_DIR = srcs/
@@ -41,31 +51,63 @@ INC = incs
 all:	$(NAME)
 
 #Compilar
-$(NAME):$(OBJ) 
-		@$(MAKE) -C ./minilibx
-		@echo "$(GREEN)MINILIBX HAS BEEN COMPILED$(NC)"
-		@$(CC) $(CFLAGS) $(OBJ) -I $(INC) minilibx/libmlx.a $(MLX) -o $(NAME)
+$(NAME): libft minilibx gnl printf $(OBJ)
+		@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
-# Compilar objetos individualmente
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@echo "Compiling: $<"
-	@$(CC) $(CFLAGS) -Imlx -I $(INC) -c $< -o $@
-
-# Crear directorio temporal para los obj
-$(OBJF):
+# Compilar objetos individualmente y crear carpeta objs
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
-	
+	@echo "$(YELLOW)Compiling: $<$(NC)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
+#@$(CC) $(CFLAGS) -Imlx -I $(INC) -c $< -o $@
+	@echo "$(YELLOW)Compiled!$(NC)"
+
+
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.
 # $< : The name of the first prerequisite.
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -c -o $@ $<
+#compilar librerias individuales
+libft:
+	@echo "$(YELLOW)COMPILING LIBFT...$(NC)"
+	@$(MAKE) -C ./$(LIBFT)
+	@echo "$(GREEN)LIBFT HAS BEEN COMPILED$(NC)"
+
+minilibx:
+	@echo "$(YELLOW)COMPILING MINILIBX...$(NC)"
+	@$(MAKE) -C ./$(MINILIBX)
+	@echo "$(GREEN)MINILIBX HAS BEEN COMPILED$(NC)"
+
+gnl:
+	@echo "$(YELLOW)COMPILING GNL...$(NC)"
+	@$(MAKE) -C ./$(GNL)
+	@echo "$(GREEN)GNL HAS BEEN COMPILED$(NC)"
+
+printf:
+	@echo "$(YELLOW)COMPILING FT_PRINTF...$(NC)"
+	@$(MAKE) -C ./$(PRINTF)
+	@echo "$(GREEN)FT_PRINTF HAS BEEN COMPILED$(NC)"
 
 # Eliminar tmp mlx
 fclean_mlx:
-	@make clean -C ./minilibx
+	@make clean -C ./$(MINILIBX)
 	@echo "$(RED)MINILIBX FULL CLEANED!$(NC)"
+
+# Eliminar tmp ft_printf
+fclean_printf:
+	@make clean -C ./$(PRINTF)
+	@echo "$(RED)PRINTF FULL CLEANED!$(NC)"
+
+# Eliminar tmp gnl
+fclean_gnl:
+	@make clean -C ./$(GNL)
+	@echo "$(RED)GNL FULL CLEANED!$(NC)"
+
+# Eliminar tmp libft
+fclean_libft:
+	@make clean -C ./$(LIBFT)
+	@echo "$(RED)LIBFT FULL CLEANED!$(NC)"
+
 
 # Eliminar temporales
 clean:
@@ -73,7 +115,7 @@ clean:
 	@echo "$(RED)OBJS AND DIRECTORY CLEANED!$(NC)"
 
 # Eliminar temporales y ejecutable
-fclean: clean fclean_mlx
+fclean: clean fclean_mlx fclean_gnl fclean_libft fclean_printf
 	@$(RM) $(NAME)
 	@echo "$(RED)EXECUTABLE CLEANED!$(NC)"
 
