@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 14:55:24 by emimenza          #+#    #+#             */
-/*   Updated: 2023/10/23 08:12:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:51:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_len(char *s)
 	return (i);
 }
 
-void	ft_to_base(unsigned int num, char *base, int *length)
+void	ft_to_base(int num, char *base, int *length)
 {
-	size_t	len;
+	int	len;
 
 	if (num < 0)
 	{

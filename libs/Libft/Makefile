@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/12 10:09:33 by emimenza          #+#    #+#              #
-#    Updated: 2023/10/06 08:48:58 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/09 16:56:51 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,6 @@ SRC			=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 
 OBJ			=	$(SRC:.c=.o)
 
-SRC_BONUS	=	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
-				ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
-
-OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 all:	$(NAME)
 
 $(NAME):$(OBJ)
@@ -39,13 +35,9 @@ $(NAME):$(OBJ)
 	$(CC) $(CCFLAGS) -c -o $@ $<
 	
 clean:
-	$(DEL) $(OBJ) $(OBJ_BONUS)
+	$(DEL) $(OBJ)
 	
 fclean: clean
 	$(DEL) $(NAME)
-re:	fclean all
-
-bonus: $(OBJ) $(OBJ_BONUS)
-	$(LIB) $(NAME) $(OBJ_BONUS) $(OBJ)
 	
-clean_bonus: fclean bonus
+re:	fclean all

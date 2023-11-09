@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/09 15:39:22 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/09 17:00:26 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,11 @@ GNL			=	libs/gnl
 LIBFT		=	libs/Libft
 PRINTF		=	libs/ft_printf
 
-#Librerias
-LIBS		=	$(MINILIBX)/libmlx.a $(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a $(MLX)
+#Librerias$(MINILIBX)/libmlx.a $(MLX)
+LIBS		=	$(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a 
 
-# Header Files (dedicated and from libraries):
-HEADERS		=	$(MINILIBX)/mlx.h $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
+# Header Files (dedicated and from libraries):$(MINILIBX)/mlx.h
+HEADERS		=	 $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
 
 #Directorios
 SRC_DIR = srcs/
@@ -50,8 +50,8 @@ INC = incs
 # REGLAS #
 all:	$(NAME)
 
-#Compilar
-$(NAME): libft minilibx gnl printf $(OBJ)
+#Compilar minilibx
+$(NAME): gnl printf libft $(OBJ)
 		@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
@@ -90,22 +90,22 @@ printf:
 
 # Eliminar tmp mlx
 fclean_mlx:
-	@make clean -C ./$(MINILIBX)
+	@make fclean -C ./$(MINILIBX)
 	@echo "$(RED)MINILIBX FULL CLEANED!$(NC)"
 
 # Eliminar tmp ft_printf
 fclean_printf:
-	@make clean -C ./$(PRINTF)
+	@make fclean -C ./$(PRINTF)
 	@echo "$(RED)PRINTF FULL CLEANED!$(NC)"
 
 # Eliminar tmp gnl
 fclean_gnl:
-	@make clean -C ./$(GNL)
+	@make fclean -C ./$(GNL)
 	@echo "$(RED)GNL FULL CLEANED!$(NC)"
 
 # Eliminar tmp libft
 fclean_libft:
-	@make clean -C ./$(LIBFT)
+	@make fclean -C ./$(LIBFT)
 	@echo "$(RED)LIBFT FULL CLEANED!$(NC)"
 
 
@@ -114,8 +114,8 @@ clean:
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(RED)OBJS AND DIRECTORY CLEANED!$(NC)"
 
-# Eliminar temporales y ejecutable
-fclean: clean fclean_mlx fclean_gnl fclean_libft fclean_printf
+# Eliminar temporales y ejecutable fclean_mlx
+fclean: clean  fclean_gnl fclean_libft fclean_printf
 	@$(RM) $(NAME)
 	@echo "$(RED)EXECUTABLE CLEANED!$(NC)"
 

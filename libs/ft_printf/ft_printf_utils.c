@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 09:04:25 by emimenza          #+#    #+#             */
-/*   Updated: 2023/10/17 15:48:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:45:57 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_printu(unsigned int nb, int *len)
 		ft_printnbr(nb / 10, len);
 		ft_printnbr(nb % 10, len);
 	}
-	else if (nb >= 0)
+	else
 		ft_printchar(nb + 48, len);
 }
 
