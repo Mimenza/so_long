@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 09:21:51 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/08 11:34:21 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:55:42 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,12 @@ char	*get_next_line(int fd)
 // 	char	*tmp;
 
 // 	tmp = "a";
-// 	fd =  open("file1.txt", O_RDONLY);
+// 	fd =  open("hola.txt", O_RDONLY);
 // 	while(tmp)
 // 	{
 // 		tmp = get_next_line(fd);
-// 		printf("%s", tmp);
+// 		if (tmp != NULL)
+// 			printf("%s", tmp);
 // 		free(tmp);
 // 	}
 // 	close(fd);

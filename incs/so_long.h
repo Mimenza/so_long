@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/08 12:43:00 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:43:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,14 @@ typedef struct s_game
 	int			coll;
 	t_exit		exit;
 }			t_game;
-#endif
 
 int		ft_check_ext(char *str, char *ext);
 char	**ft_create_grid(char * strmap);
 t_game	ft_create_game(char *strmap, t_game *game);
+t_map	*ft_create_map(char *strmap);
+t_size	*ft_map_size(char **grid);
+int		ft_map_coll(char **grid);
+int		ft_check_item(char c, int *player, int *exit, int *coll, int mode);
+int 	ft_map_wall(char **grid, int w, int h);
+int		ft_strcustom(char *str, char c);
+#endif
