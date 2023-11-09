@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 18:03:52 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:55:08 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,59 @@ int ft_map_wall(char **grid, int w, int h)
 	}
 	
 	return (1);
+}
+
+t_player	ft_locate_player(t_map *map)
+{
+	t_player	player;
+	char		**grid;
+	int			x;
+	int			y;
+
+	grid = map->grid;
+	y = 0;
+	while (grid[y])
+	{
+		x = 0;
+		while (grid[y][x])
+		{
+			if (grid[y][x] == 'P')
+			{
+				player.x_pos = x;
+				player.y_pos = y;
+				player.framerate = 5;
+				return (player);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (player);
+}
+
+t_exit	ft_locate_exit(t_map *map)
+{
+	t_exit	exit;
+	char	**grid;
+	int		x;
+	int		y;
+
+	grid = map->grid;
+	y = 0;
+	while (grid[y])
+	{
+		x = 0;
+		while (grid[y][x])
+		{
+			if (grid[y][x] == 'E')
+			{
+				exit.x_pos = x;
+				exit.y_pos = y;
+				return (exit);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (exit);
 }

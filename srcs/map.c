@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 18:28:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:55:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_map	*ft_create_map(char *strmap)
 	map->grid = grid;
 	map->size = size;
 	map->n_coll = n_coll;
-	
-	ft_printf("MAP OBJ HAS BEEN CREATED!\n");
+
 	return (map);
 }
+
