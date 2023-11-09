@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 18:00:21 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:59:12 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char *ft_read_file(char *strmap)
 	if (fdmap == -1)
 	{
 		// Manejar el error de apertura de archivo con perror.
-		ft_printf("ERROR READING THE FILE");
+		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
 		return (NULL);
 	}
 	t_line = "";
@@ -38,6 +38,8 @@ char *ft_read_file(char *strmap)
 		}
 	}
 	close(fdmap);
+	if (t_line == NULL)
+		return (NULL);
 	return (t_line);
 }
 
@@ -49,13 +51,13 @@ char **ft_create_grid(char *strmap)
 	file_content = ft_read_file(strmap);
 	if (file_content == NULL)
 	{
-		ft_printf("ERROR\n");
+		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR\n");
 		return (NULL);
 	}
 	grid = ft_split(file_content, '\n');
 	if (grid == NULL)
 	{
-		ft_printf("ERROR CREATING THE GRID\n");
+		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR CREATING THE GRID\n");
 		return (NULL);
 	}
 	return (grid);
@@ -79,7 +81,7 @@ t_size	*ft_map_size(char **grid)
 			t_x = x;
 		if (t_x != 0 && t_x != x) 
 				{
-					ft_printf("WRONG MAP SIZE!\n");
+					ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
 					return(NULL);
 				}
 		y++;
@@ -124,6 +126,11 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 {
 	if (mode == 0)
 	{
+		// if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48)
+		// {
+		// 	ft_printf("\033[1;31m [KO] \033[0m\n--> FOUND A NON VALID CHAR\n");
+		// }	
+		
 		if (c == 'P')
 			*player += 1;
 		else if (c == 'E')
@@ -134,15 +141,13 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 	if (mode == 1)
 	{
 		if (*player != 1)
-			ft_printf("THERE MUST BE ONLY 1 PLAYER\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 PLAYER\n");
 		if (*exit != 1)
-			ft_printf("THERE MUST BE ONLY 1 EXIT\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
-			ft_printf("THERE MUST BE AT LEAST 1 COLLECTABLE\n");	
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLLECTABLE\n");	
 		if ((*player == 1) || (*exit == 1) || (*coll >= 1))
-		{
 			return (1);
-		}	
 	}
 	return (0);
 }

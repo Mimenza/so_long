@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 11:49:50 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:26:37 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ int main(int argc, char **argv)
 	t_game		game;
 	char 		**grid;
 
+	ft_printf("CHECKING FILE NAME....");
 	if (argc == 2 && ft_check_ext(*(argv + 1), ".ber"))
 	{
-		ft_printf("FILE NAME CORRECT\n\n");
+		ft_printf("\033[0;32m [OK] \033[0m \n\n");
 
 		//create game
 		ft_create_game(*(argv + 1), &game);
 		ft_printmap(game);
 	}
 	else
-		ft_printf("WRONG FILE NAME\n");
+		ft_printf("\033[1;31m [KO] \033[0m \n-->WRONG FILE NAME  \n");
 }
