@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 14:49:31 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:00:21 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ t_size	*ft_map_size(char **grid)
 	size = (t_size *)malloc(sizeof(t_size));
 	if (!size)
 		return (NULL);
-	size->h = x;
-	size->w = y;
+	size->h = y;
+	size->w = x;
 	return(size);
 }
 
@@ -109,28 +109,29 @@ int	ft_map_coll(char **grid)
 		x = 0;
 		while (grid[y][x])
 		{
-			ft_check_item(grid[y][x], &player, &exit, &coll, 1);
+			ft_check_item(grid[y][x], &player, &exit, &coll, 0);
 			x++;
 		}
 		y++;
-	}
-	if (ft_check_item(grid[y][x], &player, &exit, &coll, 2) == 0)
+	}	
+	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
 		return (0);
+	
 	return (coll);
 }
 
 int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 {
-	if (mode == 1)
+	if (mode == 0)
 	{
 		if (c == 'P')
-			player++;
+			*player += 1;
 		else if (c == 'E')
-			exit++;
+			*exit += 1;
 		else if (c == 'C')
-			coll++;
+			*coll += 1;
 	}
-	else
+	if (mode == 1)
 	{
 		if (*player != 1)
 			ft_printf("THERE MUST BE ONLY 1 PLAYER\n");
@@ -138,12 +139,10 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 			ft_printf("THERE MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
 			ft_printf("THERE MUST BE AT LEAST 1 COLLECTABLE\n");	
-		ft_printf("P: %i, E: %i, C: %i\n", *player, *exit, *coll);
 		if ((*player == 1) || (*exit == 1) || (*coll >= 1))
 		{
-			ft_printf("THE MAP IS CORRECT!\n");
 			return (1);
-		}
+		}	
 	}
 	return (0);
 }
