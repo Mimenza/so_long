@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 19:42:42 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:12:36 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,8 @@ int 	ft_map_wall(char **grid, int w, int h);
 int		ft_strcustom(char *str, char c);
 t_player	ft_locate_player(t_map *map);
 t_exit	ft_locate_exit(t_map *map);
+
+//map3.c
+int		ft_reachable(char **grid);
 
 #endif

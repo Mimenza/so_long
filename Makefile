@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/09 17:00:26 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/09 20:10:27 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME		=	so_longer
 NAME_EXE	=	so_long.exe
 
 #Ficheros
-SRC_FILES	=	init so_long utils map1 game map map2
+SRC_FILES	=	game map map1 map2 map3 so_long
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 MINILIBX	=	libs/minilibx

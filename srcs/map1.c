@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 18:59:12 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:05:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char *ft_read_file(char *strmap)
 	fdmap = open(ft_strjoin("./maps/", strmap), O_RDONLY);
 	if (fdmap == -1)
 	{
-		// Manejar el error de apertura de archivo con perror.
 		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
 		return (NULL);
 	}

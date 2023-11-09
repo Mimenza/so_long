@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 19:55:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/09 20:43:53 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ t_map	*ft_create_map(char *strmap)
 		return(NULL);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	
+	//check if all the coins and exit are reachable || null if not
+	ft_printf("CHECKING IF THE MAP IS DO-ABLE...");
+	ft_reachable(grid);
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
+
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);
