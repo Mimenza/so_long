@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:47:37 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 09:53:11 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:16:06 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,18 @@ int		ft_check_items_reach(char **grid, char **og_grid)
 		y++;
 	}
 	return (1);
+}
+
+void ft_print_grid(char **grid)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	ft_printf("\n");
+	while (grid[y])
+	{
+		ft_printf("%s\n", grid[y]);
+		y++;
+	}
 }

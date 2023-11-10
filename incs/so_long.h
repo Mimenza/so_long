@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 09:48:21 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:37:40 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,12 @@ t_exit	ft_locate_exit(t_map *map);
 int		ft_reachable(char **grid, t_size *size);
 
 //map4.c
-int		ft_check_items_reach(char **grid, char **og_grid);
+int		ft_check_items_reach(char **grid, char **p_grid);
+void	ft_print_grid(char **grid);
 
 //utils.c
 char	**ft_create_doubleptr(t_size size);
-void	ft_copy_doubleptr(char **grid, char **og_grid, t_size size);
-void	ft_print_grid(char **grid);
+void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
+
 
 #endif

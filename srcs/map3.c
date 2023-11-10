@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 10:00:32 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:25:26 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int ft_check_above(int x, int y, char **grid)
 
 int ft_check_below(int x, int y, char **grid)
 {
+
 	if (grid[y][x + 1] && ((grid[y][x + 1] == '0') || (grid[y][x + 1] == 'C') || (grid[y][x + 1] == 'E')))
 	{
 		grid[y][x + 1]= 'P';
@@ -61,7 +62,9 @@ int ft_expandable(char **grid, t_player *player)
 	int		b;
 	int		r;
 	int		l;
+
 	y = 0;
+
 	while (grid[y])
 	{
 		x = 0;
@@ -70,11 +73,13 @@ int ft_expandable(char **grid, t_player *player)
 			if (grid[y][x] == 'P')
 			{
 				//WE HAVE FOUND A PLAYER
-
 				a = ft_check_above(x, y, grid);
 				b = ft_check_below(x, y, grid);
 				r = ft_check_right(x, y, grid);
 				l = ft_check_left(x, y, grid);
+
+				// ft_printf("%i %i %i %i\n", a, b, r, l);
+				// ft_print_grid(grid);
 
 				if ( a == 1 || b == 1|| r == 1|| l == 1)
 					return (1);
@@ -83,7 +88,6 @@ int ft_expandable(char **grid, t_player *player)
 		}
 		y++;
 	}
-
 	return (0);
 }
 
@@ -93,14 +97,14 @@ int ft_reachable(char ** grid, t_size *size)
 	int			y;
 	t_player	player;
 	int			expandable;
-	char		**og_grid;
+	char		**p_grid;
 
 	expandable = 1;
-	og_grid = ft_create_doubleptr(*size);
-	ft_copy_doubleptr(grid, og_grid, *size);
+	p_grid = ft_create_doubleptr(*size);
+	ft_copy_doubleptr(grid, p_grid, *size);
 	while (expandable == 1)
-		expandable = ft_expandable(grid, &player);
-	if (1 == ft_check_items_reach(grid, og_grid))
+		expandable = ft_expandable(p_grid, &player);
+	if (1 == ft_check_items_reach(p_grid, grid))
 		return (1);
 	ft_printf("\033[1;31m [KO] \033[0m\n--> THE MAP IS NOT SOLVEABLE\n");
 	return (0);
