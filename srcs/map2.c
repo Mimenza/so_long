@@ -6,12 +6,12 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/09 19:55:08 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/10 08:49:34 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
-
+//Checks if the str has smth apart from c 
 int	ft_strcustom(char *str, char c)
 {
 	int	i;
@@ -26,6 +26,7 @@ int	ft_strcustom(char *str, char c)
 	return (1);
 }
 
+//Check if the map is within walls
 int ft_map_wall(char **grid, int w, int h)
 {
 	int i;
@@ -55,6 +56,7 @@ int ft_map_wall(char **grid, int w, int h)
 	return (1);
 }
 
+//Locate a player on the map
 t_player	ft_locate_player(t_map *map)
 {
 	t_player	player;
@@ -83,6 +85,7 @@ t_player	ft_locate_player(t_map *map)
 	return (player);
 }
 
+//Locate a exit on the map
 t_exit	ft_locate_exit(t_map *map)
 {
 	t_exit	exit;
