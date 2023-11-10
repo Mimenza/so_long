@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 09:01:46 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:40:25 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ t_size	*ft_map_size(char **grid)
 
 	y = 0;
 	t_x = 0 ;
+	size = (t_size *)malloc(sizeof(t_size));
+	if (!size)
+		return (NULL);
 	while (grid[y])
 	{
 		x = 0;
@@ -81,16 +84,15 @@ t_size	*ft_map_size(char **grid)
 			x++;
 		if(t_x == 0)
 			t_x = x;
-		if (t_x != 0 && t_x != x) 
-				{
-					ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
-					return(NULL);
-				}
+		if (t_x != 0 && t_x != x)
+			{
+				ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
+				size->h = 0;
+				size->w = 0;
+				return(size);
+			}
 		y++;
 	}
-	size = (t_size *)malloc(sizeof(t_size));
-	if (!size)
-		return (NULL);
 	size->h = y;
 	size->w = x;
 	return(size);
