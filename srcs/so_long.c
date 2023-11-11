@@ -6,13 +6,12 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/11 19:49:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:37:47 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-//returns 0 if the file extension is not valid
 int	ft_check_ext(char *str, char *ext)
 {
 	int	size_s;
@@ -37,7 +36,7 @@ int main(int argc, char **argv)
 	t_game		game;
 	char 		**grid;
 
-	system("clear");
+	//system("clear");
 	imprimirPatron();
 	ft_printf("CHECKING FILE NAME....");
 	if (argc == 2 && ft_check_ext(*(argv + 1), ".ber"))

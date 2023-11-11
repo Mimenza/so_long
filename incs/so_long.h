@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/11 19:01:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/12 00:45:00 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/gnl/get_next_line.h"
 # include "../libs/Libft/libft.h"
-
 // ----------------------------------
 // MACROS
 
@@ -130,6 +129,7 @@ void 	imprimirPatron();
 
 //window.c
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
+int ft_close ();
 
 //hooks.c
 int	ft_input(int key, void *param);

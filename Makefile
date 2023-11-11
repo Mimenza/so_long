@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/11 19:49:18 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/12 00:27:54 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ NC = \033[0m # No color (reiniciar)
 DEL			=	rm -f
 CC			=	gcc
 CCFLAGS		=	-Wall -Wextra -Werror
-# MLX			=	-framework OpenGL -framework AppKit
-MLX			=	-lXext -lX11
+# MLX		=	-framework OpenGL -framework AppKit
+MLX			=	-lXext -lX11 -lm -lbsd
 
 #Nombre ejecutable
 NAME		=	so_longer
@@ -39,8 +39,8 @@ PRINTF		=	libs/ft_printf
 #Librerias
 LIBS		=	$(MINILIBX)/libmlx.a $(MLX) $(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a 
 
-# Header Files (dedicated and from libraries):$(MINILIBX)/mlx.h
-HEADERS		=	 $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
+# Header Files (dedicated and from libraries):
+HEADERS		=	 $(MINILIBX)/mlx.h $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
 
 #Directorios
 SRC_DIR = srcs/
@@ -49,10 +49,10 @@ OBJF = objs
 INC = incs
 
 # REGLAS #
-all:	$(NAME)
+all:	minilibx gnl printf libft $(NAME)
 
 #Compilar 
-$(NAME): minilibx gnl printf libft $(OBJ)
+$(NAME):$(OBJ)
 		@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
@@ -61,7 +61,6 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling: $<$(NC)"
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
-#@$(CC) $(CFLAGS) -Imlx -I $(INC) -c $< -o $@
 	@echo "$(YELLOW)Compiled!$(NC)"
 
 
