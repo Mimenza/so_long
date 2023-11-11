@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 13:27:43 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/11 19:01:35 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_player
 // store all information about the game
 typedef struct s_game
 {
-	t_window	*window;
+	t_window	window;
 	t_map		*map;
 	t_player	player;
 	int			steps;
@@ -128,4 +128,10 @@ char	**ft_create_doubleptr(t_size size);
 void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
 void 	imprimirPatron();
 
+//window.c
+t_window	ft_new_window(void *mlx, int widht, int height, char *name);
+
+//hooks.c
+int	ft_input(int key, void *param);
+int	ft_update (void *param);
 #endif

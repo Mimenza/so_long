@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/10 09:47:46 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/11 19:49:18 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,23 +20,24 @@ NC = \033[0m # No color (reiniciar)
 DEL			=	rm -f
 CC			=	gcc
 CCFLAGS		=	-Wall -Wextra -Werror
-MLX			=	-framework OpenGL -framework AppKit
+# MLX			=	-framework OpenGL -framework AppKit
+MLX			=	-lXext -lX11
 
 #Nombre ejecutable
 NAME		=	so_longer
 NAME_EXE	=	so_long.exe
 
 #Ficheros
-SRC_FILES	=	game map map1 map2 map3 map4 so_long utils
+SRC_FILES	=	game map map1 map2 map3 map4 so_long utils window hooks
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-MINILIBX	=	libs/minilibx
+MINILIBX	=	libs/minilibx-linux
 GNL			=	libs/gnl
 LIBFT		=	libs/Libft
 PRINTF		=	libs/ft_printf
 
-#Librerias$(MINILIBX)/libmlx.a $(MLX)
-LIBS		=	$(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a 
+#Librerias
+LIBS		=	$(MINILIBX)/libmlx.a $(MLX) $(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a 
 
 # Header Files (dedicated and from libraries):$(MINILIBX)/mlx.h
 HEADERS		=	 $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
@@ -50,8 +51,8 @@ INC = incs
 # REGLAS #
 all:	$(NAME)
 
-#Compilar minilibx
-$(NAME): gnl printf libft $(OBJ)
+#Compilar 
+$(NAME): minilibx gnl printf libft $(OBJ)
 		@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
