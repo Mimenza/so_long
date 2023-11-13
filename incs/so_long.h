@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 11:01:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:35:23 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 // ----------------------------------
 // MACROS
 
-# ifndef ANIMATION_FRAMES
-#  define ANIMATION_FRAMES 10
-# endif
+
+// Pixel size of each .xpm file (48 x 48)
+# define PX	48
 
 // Key Codes for MacOS
 # define KEY_ESC	53
@@ -45,6 +45,28 @@
 # define ON_MOUSEMOVE	6
 # define ON_EXPOSE		12
 # define ON_DESTROY		17
+
+// Assets location
+# define ANIMATION_FRAMES 10
+# define IMG_COUNT	18
+# define FLOOR		"./textures/floor/grass.xpm"
+# define WALL		"./textures/wall/wall.xpm"
+# define COLL		"./textures/collectable/coin_3.xpm"
+# define PLAYER_U	"./textures/player/player_up.xpm"
+# define PLAYER_D	"./textures/player/player_down.xpm"
+# define PLAYER_L	"./textures/player/player_left.xpm"
+# define PLAYER_R	"./textures/player/player_right.xpm"
+# define EXIT_C		"./textures/exit/exit_c.xpm"
+# define EXIT_O		"./textures/exit/exit_o.xpm"
+# define COLL_A_1	"./textures/collectable/coin_1.xpm"
+# define COLL_A_2	"./textures/collectable/coin_2.xpm"
+# define COLL_A_3	"./textures/collectable/coin_3.xpm"
+# define COLL_A_4	"./textures/collectable/coin_4.xpm"
+# define COLL_A_5	"./textures/collectable/coin_5.xpm"
+# define COLL_A_6	"./textures/collectable/coin_6.xpm"
+# define COLL_A_7	"./textures/collectable/coin_7.xpm"
+# define COLL_A_8	"./textures/collectable/coin_8.xpm"
+# define ENEMY		"./textures/enemy/enemy.xpm"
 // ----------------------------------
 typedef struct s_size
 {
@@ -92,6 +114,7 @@ typedef struct s_game
 	int			steps;
 	int			coll;
 	t_exit		exit;
+	void		*img[IMG_COUNT];
 }			t_game;
 
 //utils.c
@@ -102,7 +125,7 @@ t_game	ft_create_game(char *strmap, t_game *game);
 
 //map.c
 t_map	ft_create_map(char *strmap);
-void	ft_start_program(t_game game);
+void	ft_start_game(t_game game);
 
 //map1.c
 char	**ft_create_grid(char * strmap);
@@ -136,4 +159,7 @@ int ft_close ();
 //hooks.c
 int	ft_input(int key, void *param);
 int	ft_update (void *param);
+
+//print_map.c
+void	ft_print_map(t_game *game);
 #endif
