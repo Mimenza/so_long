@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 16:11:28 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:33:04 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_move_player(t_game *game, int x, int y)
 		{
 			//RECOGEMOS LA MONEDA
 			game->coll += 1;
+			ft_printf("\033[0;32m MONEDA RECOGIDA! %i/%i \033[0m\n", game->coll, game->map.n_coll);
 		}
 
 		if (game->map.grid[y][x] == 'E')
@@ -27,7 +28,7 @@ int	ft_move_player(t_game *game, int x, int y)
 			//SALIMOS
 			if (game->coll == game->map.n_coll)
 			{
-				ft_printf("JUEGO COMPLETADO!!");
+				ft_printf("\033[0;32m JUEGO COMPLETADO!! \033[0m\n");
 				ft_close();
 			}
 		}
