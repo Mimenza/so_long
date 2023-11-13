@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 12:35:23 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:21:23 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 # define COLL_A_8	"./textures/collectable/coin_8.xpm"
 # define ENEMY		"./textures/enemy/enemy.xpm"
 // ----------------------------------
+
 typedef struct s_size
 {
 	int		w;
@@ -80,6 +81,7 @@ typedef struct s_window
 	void	*mlx;
 	void	*win;
 	t_size	*size;
+	void	*img[IMG_COUNT];
 }			t_window;
 
 // store all information about the map
@@ -114,7 +116,6 @@ typedef struct s_game
 	int			steps;
 	int			coll;
 	t_exit		exit;
-	void		*img[IMG_COUNT];
 }			t_game;
 
 //utils.c

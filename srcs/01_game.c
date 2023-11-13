@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 12:55:58 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:21:47 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	ft_load(t_game *game, char *path, int i)
 {
-	int		w;
+	int		pxx;
 	int		h;
+	int		w;
 
+	pxx = PX;
 	ft_printf("path %s\n", path);
-	game->img[i] = mlx_xpm_file_to_image(game->window.mlx, path, &w, &h);
-
-	if (game->img[i] == NULL)
+	game->window.img[i] = mlx_xpm_file_to_image(game->window.mlx, path, &w, &h);
+	if (game->window.img[i] == NULL)
 	{
 		printf("ERROR\n");
 		return ;
 	}
+	ft_printf("IMG LOADED\n");
 }
 
 void	ft_load_imgs(t_game *game)
@@ -77,7 +79,7 @@ void ft_start_game(t_game game)
 	ft_load_imgs(&game);
 
 	// Print the map
-	//ft_print_map(&game);
+	ft_print_map(&game);
 	
 	// hook the input() (hooks.c) function to the the key pressed event
 	mlx_key_hook(game.window.win, *ft_input, &game);
