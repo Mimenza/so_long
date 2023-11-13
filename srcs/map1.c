@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 13:40:25 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 10:39:28 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char *ft_read_file(char *strmap)
 	char	*t_line;
 	char	*line;
 
-	fdmap = open(ft_strjoin("./maps/", strmap), O_RDONLY);
+	path = ft_strjoin("./maps/", strmap);
+	fdmap = open(path, O_RDONLY);
+	free(path);
 	if (fdmap == -1)
 	{
 		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
@@ -39,7 +41,10 @@ char *ft_read_file(char *strmap)
 	}
 	close(fdmap);
 	if (t_line == NULL)
+	{
+		free(t_line);
 		return (NULL);
+	}
 	return (t_line);
 }
 
@@ -56,6 +61,7 @@ char **ft_create_grid(char *strmap)
 		return (NULL);
 	}
 	grid = ft_split(file_content, '\n');
+	free(file_content);
 	if (grid == NULL)
 	{
 		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR CREATING THE GRID\n");
@@ -87,8 +93,7 @@ t_size	*ft_map_size(char **grid)
 		if (t_x != 0 && t_x != x)
 			{
 				ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
-				size->h = 0;
-				size->w = 0;
+				free(size);
 				return(size);
 			}
 		y++;

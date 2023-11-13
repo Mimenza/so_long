@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/10 08:49:34 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 08:40:15 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int ft_map_wall(char **grid, int w, int h)
 }
 
 //Locate a player on the map
-t_player	ft_locate_player(t_map *map)
+t_player	ft_locate_player(t_map map)
 {
 	t_player	player;
 	char		**grid;
 	int			x;
 	int			y;
 
-	grid = map->grid;
+	grid = map.grid;
 	y = 0;
 	while (grid[y])
 	{
@@ -86,14 +86,14 @@ t_player	ft_locate_player(t_map *map)
 }
 
 //Locate a exit on the map
-t_exit	ft_locate_exit(t_map *map)
+t_exit	ft_locate_exit(t_map map)
 {
 	t_exit	exit;
 	char	**grid;
 	int		x;
 	int		y;
 
-	grid = map->grid;
+	grid = map.grid;
 	y = 0;
 	while (grid[y])
 	{

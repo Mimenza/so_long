@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/12 00:45:00 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:01:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_player
 typedef struct s_game
 {
 	t_window	window;
-	t_map		*map;
+	t_map		map;
 	t_player	player;
 	int			steps;
 	int			coll;
@@ -101,7 +101,8 @@ int		ft_check_ext(char *str, char *ext);
 t_game	ft_create_game(char *strmap, t_game *game);
 
 //map.c
-t_map	*ft_create_map(char *strmap);
+t_map	ft_create_map(char *strmap);
+void	ft_start_program(t_game game);
 
 //map1.c
 char	**ft_create_grid(char * strmap);
@@ -112,8 +113,8 @@ int		ft_check_item(char c, int *player, int *exit, int *coll, int mode);
 //map2.c
 int 	ft_map_wall(char **grid, int w, int h);
 int		ft_strcustom(char *str, char c);
-t_player	ft_locate_player(t_map *map);
-t_exit	ft_locate_exit(t_map *map);
+t_player	ft_locate_player(t_map map);
+t_exit		ft_locate_exit(t_map map);
 
 //map3.c
 int		ft_reachable(char **grid, t_size *size);
@@ -125,7 +126,8 @@ void	ft_print_grid(char **grid);
 //utils.c
 char	**ft_create_doubleptr(t_size size);
 void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
-void 	imprimirPatron();
+void	ft_free_doubleptr(char **grid);
+void	imprimirPatron();
 
 //window.c
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);

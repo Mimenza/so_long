@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/12 00:44:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:01:27 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 // and a void pointer in case you need to recibe someting 
 int	ft_input(int key, void *param)
 {
-	t_game *game = (t_game *)param;
+	t_game *game;
 
-	// mlx function that clears the window
+	game = (t_game *)param;
+
+	// // mlx function that clears the window
 	mlx_clear_window(game->window.mlx, game->window.win);
 
 	if (key == KEY_ESC)
@@ -28,6 +30,7 @@ int	ft_input(int key, void *param)
 		ft_close();
 	}
 
+	ft_printf("KEY %i\n", key);
 	return (0);
 }
 
