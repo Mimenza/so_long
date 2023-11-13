@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 14:21:47 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:53:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ void	ft_load(t_game *game, char *path, int i)
 	int		w;
 
 	pxx = PX;
-	ft_printf("path %s\n", path);
 	game->window.img[i] = mlx_xpm_file_to_image(game->window.mlx, path, &w, &h);
 	if (game->window.img[i] == NULL)
 	{
 		printf("ERROR\n");
 		return ;
 	}
-	ft_printf("IMG LOADED\n");
 }
 
 void	ft_load_imgs(t_game *game)
@@ -72,7 +70,7 @@ void ft_start_game(t_game game)
 	
 	game.window.mlx = mlx;
 	// Open a window (window.c whitin this project)
-	t_window win = ft_new_window(game.window.mlx, 1920, 1080, "JUEGAZO");
+	t_window win = ft_new_window(game.window.mlx, game.map.size->w * 48, game.map.size->h * 48, "SO_LONG");
 	game.window = win;
 	
 	// Load the texture imgs

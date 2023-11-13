@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map3.c                                             :+:      :+:    :+:   */
+/*   02_map3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 10:15:52 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:11:09 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,12 @@ int ft_reachable(char ** grid, t_size *size)
 	char		**p_grid;
 
 	expandable = 1;
-	p_grid = ft_create_doubleptr(*size);
+	p_grid = ft_create_doubleptr(*size);	
 	ft_copy_doubleptr(grid, p_grid, *size);
+	
 	while (expandable == 1)
 		expandable = ft_expandable(p_grid, &player);
+		
 	if (1 == ft_check_items_reach(p_grid, grid))
 	{
 		ft_free_doubleptr(p_grid);

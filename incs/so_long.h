@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 14:21:23 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:37:22 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,4 +163,7 @@ int	ft_update (void *param);
 
 //print_map.c
 void	ft_print_map(t_game *game);
+
+//move.c
+int	ft_move_player(t_game *game, int x, int y);
 #endif
