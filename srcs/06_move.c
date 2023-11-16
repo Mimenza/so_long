@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 16:33:04 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:53:40 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_move_player(t_game *game, int x, int y)
 {
+	//X e Y a la posicion de la matriz que nos queremos mover
+
 	if (game->map.grid[y][x] && game->map.grid[y][x] != '1')
 	{
 		if (game->map.grid[y][x] == 'C')
@@ -32,7 +34,7 @@ int	ft_move_player(t_game *game, int x, int y)
 				ft_close();
 			}
 		}
-		
+
 		//TE PUEDES MOVER
 		mlx_clear_window(game->window.mlx, game->window.win);
 		
@@ -40,8 +42,11 @@ int	ft_move_player(t_game *game, int x, int y)
 		game->map.grid[y][x] = 'P';
 		
 		//LIMPIAMOS LA POSICION ANTIGUA
-		game->map.grid[game->player.y_pos][game->player.x_pos] = '0';
-		
+		if ((game->coll != game->map.n_coll) && (game->exit.x_pos == game->player.x_pos) && (game->exit.y_pos ==  game->player.y_pos))
+			game->map.grid[game->player.y_pos][game->player.x_pos] = 'E';
+		else
+			game->map.grid[game->player.y_pos][game->player.x_pos] = '0';
+
 		//ACTUALIZAMOS LA POSICION DEL PERSONAJE
 		game->player.y_pos = y;
 		game->player.x_pos = x;
