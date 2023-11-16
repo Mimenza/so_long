@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:24:03 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:47:55 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Read the file and return the line with all the content
-char *ft_read_file(char *strmap)
+char	*ft_read_file(char *strmap)
 {
 	char	*path;
 	int		fdmap;
@@ -24,9 +24,7 @@ char *ft_read_file(char *strmap)
 	fdmap = open(path, O_RDONLY);
 	free(path);
 	if (fdmap == -1)
-	{
 		return (NULL);
-	}
 	t_line = "";
 	line = "";
 	while (line)
@@ -48,14 +46,14 @@ char *ft_read_file(char *strmap)
 }
 
 //Create the map grid 
-int ft_create_grid(char *strmap, char ***grid)
+int	ft_create_grid(char *strmap, char ***grid)
 {
 	char	*file_content;
 
 	file_content = ft_read_file(strmap);
 	if (file_content == NULL)
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE (NOT FOUND OR DOES NOT EXIST)\n");
+		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
 		return (0);
 	}
 	*grid = ft_split(file_content, '\n');
@@ -82,19 +80,19 @@ int	ft_map_size(char **grid, t_size **size)
 		x = 0;
 		while (grid[y][x])
 			x++;
-		if(t_x == 0)
+		if (t_x == 0)
 			t_x = x;
 		if (t_x != 0 && t_x != x)
-			{
-				ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
-				return(0);
-			}
+		{
+			ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
+			return (0);
+		}
 		y++;
 	}
 	(*size) = (t_size *)malloc(sizeof(t_size));
 	(*size)->w = x;
 	(*size)->h = y;
-	return(1);
+	return (1);
 }
 
 //Check the map collectables and player/exit
@@ -108,7 +106,7 @@ int	ft_map_coll(char **grid)
 
 	y = 0;
 	player = 0;
-	exit  = 0;
+	exit = 0;
 	coll = 0;
 	while (grid[y])
 	{
@@ -120,10 +118,9 @@ int	ft_map_coll(char **grid)
 			x++;
 		}
 		y++;
-	}	
+	}
 	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
 		return (0);
-	
 	return (coll);
 }
 
@@ -135,9 +132,8 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 		if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48)
 		{
 			ft_printf("\033[1;31m [KO] \033[0m\n--> FOUND A NON VALID CHAR\n");
-			return(0);
+			return (0);
 		}
-		
 		if (c == 'P')
 			*player += 1;
 		else if (c == 'E')
@@ -153,7 +149,7 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 		if (*exit != 1)
 			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLLECTABLE\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLL\n");
 		if ((*player == 1) && (*exit == 1) && (*coll >= 1))
 			return (1);
 	}

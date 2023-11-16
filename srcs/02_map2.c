@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map2.c                                             :+:      :+:    :+:   */
+/*   02_map2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 11:18:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:49:35 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strcustom(char *str, char c)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		if (str[i] != c)
 			return (0);
@@ -27,14 +27,13 @@ int	ft_strcustom(char *str, char c)
 }
 
 //Check if the map is within walls
-int ft_map_wall(char **grid, int w, int h)
+int	ft_map_wall(char **grid, int w, int h)
 {
-	int i;
+	int	i;
 	int	ok;
 
 	ok = 0;
 	i = 0;
-
 	while (grid[i])
 	{
 		if (i == 0 || i == (h - 1))
@@ -45,14 +44,12 @@ int ft_map_wall(char **grid, int w, int h)
 				ok = 0;
 		}
 		i++;
-		if(ok == 0)
+		if (ok == 0)
 		{
 			ft_printf("MAP MUST BE WITHIN WALL \n");
 			return (0);
 		}
-		
 	}
-	
 	return (1);
 }
 

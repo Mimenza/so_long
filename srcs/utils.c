@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 09:12:01 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:00:02 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_free_doubleptr(char **grid)
 
 	i = 0;
 	while (grid[i])
-		{
-			free(grid[i]);
-			i++;
-		}
+	{
+		free(grid[i]);
+		i++;
+	}
 	free(grid);
 }
 
@@ -31,19 +31,17 @@ char	**ft_create_doubleptr(t_size size)
 	int		i;
 
 	i = 0;
-	
-	// Crear una nueva matriz para la copia
-	ptr = (char **)malloc((size.h + 1) * sizeof(char*));
+	ptr = (char **)malloc((size.h + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (ptr);
 	while (i < (size.h))
 	{
-		ptr[i] = (char*)malloc((size.w + 1) * sizeof(char));
+		ptr[i] = (char *)malloc((size.w + 1) * sizeof(char));
 		if (ptr[i] == NULL)
-			{
-				ft_free_doubleptr(ptr);
-				return (ptr);
-			}
+		{
+			ft_free_doubleptr(ptr);
+			return (ptr);
+		}
 		i++;
 	}
 	return (ptr);
@@ -60,7 +58,8 @@ void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size)
 		i++;
 	}
 }
-void imprimirPatron()
+
+void imprimir_patron(void)
 {
 	ft_printf("\n");
 	ft_printf("  ██████  ▒█████   ██▓     ▒█████   ███▄    █   ▄████ \n");

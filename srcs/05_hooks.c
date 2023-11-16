@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 15:56:50 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:56:38 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@
 // and a void pointer in case you need to recibe someting 
 int	ft_input(int key, void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)param;
-
-	// // mlx function that clears the window
 	mlx_clear_window(game->window.mlx, game->window.win);
-	
 	if (key == KEY_ESC)
 	{
-		mlx_destroy_window(game->window.mlx,game->window.win);
+		mlx_destroy_window(game->window.mlx, game->window.win);
 		ft_close();
 	}
 	else if (key == KEY_D || key == KEY_RIGHT)
@@ -37,15 +34,11 @@ int	ft_input(int key, void *param)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos - 1);
 	else if (key == KEY_S || key == KEY_DOWN)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos + 1);
-		//mlx_put_image_to_window(game->window.mlx, game->window.win, game->window.img[3], game->player.x_pos * PX, game->player.y_pos * PX);
-	
 	ft_print_map(game);
-		
-	//ft_printf("KEY %i\n", key);
 	return (0);
 }
 
-int	ft_update (void *param)
+int	ft_update(void *param)
 {
 	return (0);
 }

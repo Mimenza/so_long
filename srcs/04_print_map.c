@@ -6,18 +6,17 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 14:27:18 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:55:15 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-void ft_print_map(t_game *game)
+void	ft_print_map(t_game *game)
 {
 	int		x;
 	int		y;
-	char 	**grid;
-
+	char	**grid;
 
 	grid = game->map.grid;
 	y = 0;

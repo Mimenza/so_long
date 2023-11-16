@@ -6,13 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:14:40 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:52:46 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int ft_check_above(int x, int y, char **grid)
+int	ft_check_above(int x, int y, char **grid)
 {
 	if (grid[y][x - 1] && ((grid[y][x - 1] == '0') || (grid[y][x - 1] == 'C') || (grid[y][x - 1] == 'E')))
 	{
@@ -22,28 +22,27 @@ int ft_check_above(int x, int y, char **grid)
 	return (0);
 }
 
-int ft_check_below(int x, int y, char **grid)
+int	ft_check_below(int x, int y, char **grid)
 {
-
 	if (grid[y][x + 1] && ((grid[y][x + 1] == '0') || (grid[y][x + 1] == 'C') || (grid[y][x + 1] == 'E')))
 	{
-		grid[y][x + 1]= 'P';
+		grid[y][x + 1] = 'P';
 		return (1);
 	}
 	return (0);
 }
 
-int ft_check_right(int x, int y, char **grid)
+int	ft_check_right(int x, int y, char **grid)
 {
 	if (grid[y + 1][x] && ((grid[y + 1][x] == '0') || (grid[y + 1][x] == 'C') || (grid[y + 1][x] == 'E')))
 	{
-		grid[y + 1][x]= 'P';
+		grid[y + 1][x] = 'P';
 		return (1);
 	}
 	return (0);
-	}
+}
 
-int ft_check_left(int x, int y, char **grid)
+int	ft_check_left(int x, int y, char **grid)
 {
 	if (grid[y - 1][x] && ((grid[y - 1][x] == '0') || (grid[y - 1][x] == 'C') || (grid[y - 1][x] == 'E')))
 	{
@@ -54,7 +53,7 @@ int ft_check_left(int x, int y, char **grid)
 }
 
 //looks for a player with an new moveable area
-int ft_expandable(char **grid, t_player *player)
+int	ft_expandable(char **grid, t_player *player)
 {
 	int		x;
 	int		y;
@@ -71,12 +70,11 @@ int ft_expandable(char **grid, t_player *player)
 		{
 			if (grid[y][x] == 'P')
 			{
-				//WE HAVE FOUND A PLAYER
 				a = ft_check_above(x, y, grid);
 				b = ft_check_below(x, y, grid);
 				r = ft_check_right(x, y, grid);
 				l = ft_check_left(x, y, grid);
-				if ( a == 1 || b == 1|| r == 1|| l == 1)
+				if (a == 1 || b == 1 || r == 1 || l == 1)
 					return (1);
 			}
 			x++;
@@ -86,7 +84,7 @@ int ft_expandable(char **grid, t_player *player)
 	return (0);
 }
 
-int ft_reachable(char ** grid, t_size *size)
+int	ft_reachable(char **grid, t_size *size)
 {
 	t_player	player;
 	int			expandable;
@@ -95,7 +93,6 @@ int ft_reachable(char ** grid, t_size *size)
 	expandable = 1;
 	p_grid = ft_create_doubleptr(*size);
 	ft_copy_doubleptr(grid, p_grid, *size);
-
 	while (expandable == 1)
 		expandable = ft_expandable(p_grid, &player);
 	if (1 == ft_check_items_reach(p_grid, grid))

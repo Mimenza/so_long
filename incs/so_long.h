@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:17:56 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:00:11 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	ft_print_grid(char **grid);
 char	**ft_create_doubleptr(t_size size);
 void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
 void	ft_free_doubleptr(char **grid);
-void	imprimirPatron();
+void	imprimir_patron();
 
 //window.c
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
