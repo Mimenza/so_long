@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 13:53:40 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:45:12 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	ft_move_player(t_game *game, int x, int y)
 				ft_printf("\033[0;32m JUEGO COMPLETADO!! \033[0m\n");
 				ft_close();
 			}
+			else 
+				ft_printf("\033[0;32m PRIMERO TIENES QUE RECOGER TODAS LAS MONEDAS!! \033[0m\n");
 		}
 
 		//TE PUEDES MOVER
@@ -43,7 +45,10 @@ int	ft_move_player(t_game *game, int x, int y)
 		
 		//LIMPIAMOS LA POSICION ANTIGUA
 		if ((game->coll != game->map.n_coll) && (game->exit.x_pos == game->player.x_pos) && (game->exit.y_pos ==  game->player.y_pos))
+		{
+			//HEMOS PASADO POR LA META PERO NO TENEMOS LAS MONEDAS
 			game->map.grid[game->player.y_pos][game->player.x_pos] = 'E';
+		}
 		else
 			game->map.grid[game->player.y_pos][game->player.x_pos] = '0';
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   02_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 10:20:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:22:33 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,27 @@ t_map	ft_create_map(char *strmap)
 	char	**grid;
 	int		n_coll;
 
+	map.created = 0;
 	//read the file and create a double pointer with the map data
 	ft_printf("CREATING THE GRID....");
-	grid = ft_create_grid(strmap);
-	if (grid == NULL)
+	if (ft_create_grid(strmap, &grid) == 0)
 		return (map);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	
 	//check the map size and stored || null if the map is not rectangular
 	ft_printf("CHECKING THE MAP SIZE...");
-	size = ft_map_size(grid);
-	if(!size)
+	if (ft_map_size(grid, &size) == 0)
 		return (map);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	
 	//save the map collectables number || null if the map has no collectables or more than either 1 player or exit
 	ft_printf("CHECKING THE MAP COLLECTABLES...");
 	n_coll = ft_map_coll(grid);
-	if(n_coll == 0)
+	if (n_coll == 0)
 		return (map);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	
-	//check if the map is surrounded by walls (1) || null if not 
+	//check if the map is surrounded by walls (1) || null if not
 	ft_printf("CHECKING THE MAP LIMMITS....");
 	if(!ft_map_wall(grid, size->w, size->h))
 		return (map);
@@ -58,6 +57,7 @@ t_map	ft_create_map(char *strmap)
 	map.grid = grid;
 	map.size = size;
 	map.n_coll = n_coll;
+	map.created = 1;
 	
 	return (map);
 }

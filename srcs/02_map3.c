@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 15:11:09 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:14:40 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int ft_expandable(char **grid, t_player *player)
 	int		l;
 
 	y = 0;
-
 	while (grid[y])
 	{
 		x = 0;
@@ -77,7 +76,6 @@ int ft_expandable(char **grid, t_player *player)
 				b = ft_check_below(x, y, grid);
 				r = ft_check_right(x, y, grid);
 				l = ft_check_left(x, y, grid);
-
 				if ( a == 1 || b == 1|| r == 1|| l == 1)
 					return (1);
 			}
@@ -90,19 +88,16 @@ int ft_expandable(char **grid, t_player *player)
 
 int ft_reachable(char ** grid, t_size *size)
 {
-	int			x;
-	int			y;
 	t_player	player;
 	int			expandable;
 	char		**p_grid;
 
 	expandable = 1;
-	p_grid = ft_create_doubleptr(*size);	
+	p_grid = ft_create_doubleptr(*size);
 	ft_copy_doubleptr(grid, p_grid, *size);
-	
+
 	while (expandable == 1)
 		expandable = ft_expandable(p_grid, &player);
-		
 	if (1 == ft_check_items_reach(p_grid, grid))
 	{
 		ft_free_doubleptr(p_grid);

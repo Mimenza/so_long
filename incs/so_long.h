@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 13:37:59 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:17:56 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct s_map
 	char	**grid;
 	t_size	*size;
 	int		n_coll;
+	int		created;
 }			t_map;
 
 //store all the information about the exit
@@ -116,6 +117,7 @@ typedef struct s_game
 	int			steps;
 	int			coll;
 	t_exit		exit;
+	int		created;
 }			t_game;
 
 //utils.c
@@ -129,8 +131,8 @@ t_map	ft_create_map(char *strmap);
 void	ft_start_game(t_game game);
 
 //map1.c
-char	**ft_create_grid(char * strmap);
-t_size	*ft_map_size(char **grid);
+int		ft_create_grid(char * strmap, char ***grid);
+int		ft_map_size(char **grid, t_size **size);
 int		ft_map_coll(char **grid);
 int		ft_check_item(char c, int *player, int *exit, int *coll, int mode);
 

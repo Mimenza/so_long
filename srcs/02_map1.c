@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map1.c                                             :+:      :+:    :+:   */
+/*   02_map1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/13 10:39:28 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:24:03 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char *ft_read_file(char *strmap)
 	free(path);
 	if (fdmap == -1)
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
 		return (NULL);
 	}
 	t_line = "";
@@ -49,40 +48,35 @@ char *ft_read_file(char *strmap)
 }
 
 //Create the map grid 
-char **ft_create_grid(char *strmap)
+int ft_create_grid(char *strmap, char ***grid)
 {
 	char	*file_content;
-	char	**grid;
 
 	file_content = ft_read_file(strmap);
 	if (file_content == NULL)
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR\n");
-		return (NULL);
+		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE (NOT FOUND OR DOES NOT EXIST)\n");
+		return (0);
 	}
-	grid = ft_split(file_content, '\n');
+	*grid = ft_split(file_content, '\n');
 	free(file_content);
-	if (grid == NULL)
+	if (*grid == NULL)
 	{
 		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR CREATING THE GRID\n");
-		return (NULL);
+		return (0);
 	}
-	return (grid);
+	return (1);
 }
 
 //Checks the map size and stores the info
-t_size	*ft_map_size(char **grid)
+int	ft_map_size(char **grid, t_size **size)
 {
 	int		x;
 	int		y;
 	int		t_x;
-	t_size	*size;
 
 	y = 0;
 	t_x = 0 ;
-	size = (t_size *)malloc(sizeof(t_size));
-	if (!size)
-		return (NULL);
 	while (grid[y])
 	{
 		x = 0;
@@ -93,14 +87,14 @@ t_size	*ft_map_size(char **grid)
 		if (t_x != 0 && t_x != x)
 			{
 				ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
-				free(size);
-				return(size);
+				return(0);
 			}
 		y++;
 	}
-	size->h = y;
-	size->w = x;
-	return(size);
+	(*size) = (t_size *)malloc(sizeof(t_size));
+	(*size)->w = x;
+	(*size)->h = y;
+	return(1);
 }
 
 //Check the map collectables and player/exit
@@ -159,8 +153,8 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 		if (*exit != 1)
 			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLLECTABLE\n");	
-		if ((*player == 1) || (*exit == 1) || (*coll >= 1))
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLLECTABLE\n");
+		if ((*player == 1) && (*exit == 1) && (*coll >= 1))
 			return (1);
 	}
 	return (0);
