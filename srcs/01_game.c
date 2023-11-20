@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 11:02:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:16:33 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,14 @@ void	ft_load_imgs(t_game *game)
 	ft_strlcpy(files[16], COLL_A_8, 39);
 	ft_strlcpy(files[17], ENEMY, 39);
 	i = -1;
-
 	while (++i < IMG_COUNT)
 		ft_load(game, files[i], i);
 }
 
-void ft_start_game(t_game game)
+void	ft_start_game(t_game game)
 {
-	void	*mlx;
-	t_window win;
+	void		*mlx;
+	t_window	win;
 
 	mlx = mlx_init();
 	if (!mlx)
@@ -65,12 +64,13 @@ void ft_start_game(t_game game)
 		ft_printf("Error: mlx_init() failed\n");
 		exit(EXIT_FAILURE);
 	}
-	win = ft_new_window(mlx, game.map.size->w * PX, game.map.size->h * PX, "SO_LONG");
+	win = ft_new_window(mlx, game.map.size->w * PX, \
+	game.map.size->h * PX, "SO_LONG");
 	game.window = win;
 	ft_load_imgs(&game);
 	ft_print_map(&game);
 	mlx_key_hook(game.window.win, *ft_input, &game);
-	//mlx_loop_hook(game.window.mlx, *ft_update, &game);
+	mlx_loop_hook(game.window.mlx, *ft_update, &game);
 	mlx_loop(mlx);
 }
 

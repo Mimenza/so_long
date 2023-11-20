@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:11:04 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:43:38 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	*ft_read_file(char *strmap)
 	if (fdmap == -1)
 		return (NULL);
 	t_line = "";
-	line = "";
-	while (line)
+	while (line && fdmap)
 	{
 		line = get_next_line(fdmap);
 		if (line != NULL)
@@ -111,7 +110,6 @@ int	ft_map_coll(char **grid)
 	player = 0;
 	exit = 0;
 	coll = 0;
-	ft_printf("CHECKING THE MAP COLLECTABLES...");
 	while (grid[y])
 	{
 		x = 0;
@@ -154,7 +152,7 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 		if (*exit != 1)
 			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE AT LEAST 1 COLL\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE MIN 1 COLL\n");
 		if ((*player == 1) && (*exit == 1) && (*coll >= 1))
 			return (1);
 	}

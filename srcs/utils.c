@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:00:02 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:36:11 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size)
 	}
 }
 
-void imprimir_patron(void)
+void	imprimir_patron(void)
 {
 	ft_printf("\n");
 	ft_printf("  ██████  ▒█████   ██▓     ▒█████   ███▄    █   ▄████ \n");
@@ -72,4 +72,20 @@ void imprimir_patron(void)
 	ft_printf("░  ░  ░  ░ ░ ░ ▒    ░ ░   ░ ░ ░ ▒     ░   ░ ░ ░ ░   ░ \n");
 	ft_printf("      ░      ░ ░      ░  ░    ░ ░           ░       ░ \n");
 	ft_printf("\n");
+}
+
+void	ft_print_info(t_game game)
+{
+	mlx_string_put(game.window.mlx, game.window.win, 5, 10, 0x00000000, \
+	"MOVES");
+	mlx_string_put(game.window.mlx, game.window.win, 5, 20, 0x00000000, \
+	ft_itoa(game.steps));
+	mlx_string_put(game.window.mlx, game.window.win, 5, 30, 0x00000000, \
+	"COLLECTABLES:");
+	mlx_string_put(game.window.mlx, game.window.win, 5, 40, 0x00000000, \
+	ft_itoa(game.coll));
+	mlx_string_put(game.window.mlx, game.window.win, 10, 40, 0x00000000, \
+	"/");
+	mlx_string_put(game.window.mlx, game.window.win, 15, 40, 0x00000000, \
+	ft_itoa(game.map.n_coll));
 }

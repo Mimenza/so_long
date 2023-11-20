@@ -5,46 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 09:47:37 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:53:38 by emimenza         ###   ########.fr       */
+/*   Created: 2023/11/20 12:23:06 by emimenza          #+#    #+#             */
+/*   Updated: 2023/11/20 13:40:57 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	ft_check_items_reach(char **grid, char **og_grid)
+int	ft_check_above(int x, int y, char **grid)
 {
-	int		x;
-	int		y;
-
-	y = 0;
-	while (grid[y])
+	if (grid[y][x - 1] && ((grid[y][x - 1] == '0') \
+	|| (grid[y][x - 1] == 'C') || (grid[y][x - 1] == 'E')))
 	{
-		x = 0;
-		while (grid[y][x])
-		{
-			if (grid[y][x] == 'C' || grid[y][x] == 'E')
-			{
-				if (og_grid[y][x] != 'P')
-					return (0);
-			}
-			x++;
-		}
-		y++;
+		grid[y][x - 1] = 'P';
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
-void	ft_print_grid(char **grid)
+int	ft_check_below(int x, int y, char **grid)
 {
-	int		x;
-	int		y;
-
-	y = 0;
-	ft_printf("\n");
-	while (grid[y])
+	if (grid[y][x + 1] && ((grid[y][x + 1] == '0') \
+	|| (grid[y][x + 1] == 'C') || (grid[y][x + 1] == 'E')))
 	{
-		ft_printf("%s\n", grid[y]);
-		y++;
+		grid[y][x + 1] = 'P';
+		return (1);
 	}
+	return (0);
+}
+
+int	ft_check_right(int x, int y, char **grid)
+{
+	if (grid[y + 1][x] && ((grid[y + 1][x] == '0') \
+	|| (grid[y + 1][x] == 'C') || (grid[y + 1][x] == 'E')))
+	{
+		grid[y + 1][x] = 'P';
+		return (1);
+	}
+	return (0);
+}
+
+int	ft_check_left(int x, int y, char **grid)
+{
+	if (grid[y - 1][x] && ((grid[y - 1][x] == '0') \
+	|| (grid[y - 1][x] == 'C') || (grid[y - 1][x] == 'E')))
+	{
+		grid[y - 1][x] = 'P';
+		return (1);
+	}
+	return (0);
 }

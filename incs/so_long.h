@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:00:11 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:41:44 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include "../libs/Libft/libft.h"
 // ----------------------------------
 // MACROS
-
 
 // Pixel size of each .xpm file (48 x 48)
 # define PX	48
@@ -47,7 +46,7 @@
 # define ON_DESTROY		17
 
 // Assets location
-# define ANIMATION_FRAMES 10
+# define ANIMATION_FRAMES 100
 # define IMG_COUNT	18
 # define FLOOR		"./textures/floor/grass.xpm"
 # define WALL		"./textures/wall/wall.xpm"
@@ -68,6 +67,14 @@
 # define COLL_A_8	"./textures/collectable/coin_8.xpm"
 # define ENEMY		"./textures/enemy/enemy.xpm"
 // ----------------------------------
+
+typedef struct s_coords
+{
+	int		a;
+	int		b;
+	int		r;
+	int		l;
+}			t_coords;
 
 typedef struct s_size
 {
@@ -91,6 +98,7 @@ typedef struct s_map
 	t_size	*size;
 	int		n_coll;
 	int		created;
+	int		boss;
 }			t_map;
 
 //store all the information about the exit
@@ -117,55 +125,65 @@ typedef struct s_game
 	int			steps;
 	int			coll;
 	t_exit		exit;
-	int		created;
+	int			created;
 }			t_game;
 
 //utils.c
-int		ft_check_ext(char *str, char *ext);
+int			ft_check_ext(char *str, char *ext);
 
 //game.c
-t_game	ft_create_game(char *strmap, t_game *game);
+void		ft_load(t_game *game, char *path, int i);
+void		ft_load_imgs(t_game *game);
+void		ft_start_game(t_game game);
+t_game		ft_create_game(char *strmap, t_game *game);
 
 //map.c
-t_map	ft_create_map(char *strmap);
-void	ft_start_game(t_game game);
+t_map		ft_create_map(char *strmap);
 
 //map1.c
-int		ft_create_grid(char * strmap, char ***grid);
-int		ft_map_size(char **grid, t_size **size);
-int		ft_map_coll(char **grid);
-int		ft_check_item(char c, int *player, int *exit, int *coll, int mode);
+int			ft_create_grid(char *strmap, char ***grid);
+int			ft_map_size(char **grid, t_size **size);
+int			ft_map_coll(char **grid);
+int			ft_check_item(char c, int *player, int *exit, int *coll, int mode);
 
 //map2.c
-int 	ft_map_wall(char **grid, int w, int h);
-int		ft_strcustom(char *str, char c);
+int			ft_strcustom(char *str, char c);
+int			ft_map_wall(char **grid, int w, int h);
 t_player	ft_locate_player(t_map map);
 t_exit		ft_locate_exit(t_map map);
 
 //map3.c
-int		ft_reachable(char **grid, t_size *size);
+int			ft_expandable(char **grid, t_player *player);
+int			ft_reachable(char **grid, t_size *size);
 
 //map4.c
-int		ft_check_items_reach(char **grid, char **p_grid);
-void	ft_print_grid(char **grid);
+int			ft_check_above(int x, int y, char **grid);
+int			ft_check_below(int x, int y, char **grid);
+int			ft_check_right(int x, int y, char **grid);
+int			ft_check_left(int x, int y, char **grid);
+
+//map5.c
+int			ft_check_items_reach(char **grid, char **p_grid);
+void		ft_print_grid(char **grid);
 
 //utils.c
-char	**ft_create_doubleptr(t_size size);
-void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
-void	ft_free_doubleptr(char **grid);
-void	imprimir_patron();
+char		**ft_create_doubleptr(t_size size);
+void		ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
+void		ft_free_doubleptr(char **grid);
+void		imprimir_patron(void);
+void		ft_print_info(t_game game);
 
 //window.c
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
-int ft_close ();
+int			ft_close(void);
 
 //hooks.c
-int	ft_input(int key, void *param);
-int	ft_update (void *param);
+int			ft_input(int key, void *param);
+int			ft_update(void *param);
 
 //print_map.c
-void	ft_print_map(t_game *game);
+void		ft_print_map(t_game *game);
 
 //move.c
-int	ft_move_player(t_game *game, int x, int y);
+int			ft_move_player(t_game *game, int x, int y);
 #endif

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:11:54 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:39:24 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_map	ft_create_map(char *strmap)
 		return (map);
 	if (ft_map_size(grid, &size) == 0)
 		return (map);
+	ft_printf("CHECKING THE MAP COLLECTABLES...");
 	n_coll = ft_map_coll(grid);
 	if (n_coll == 0)
 		return (map);

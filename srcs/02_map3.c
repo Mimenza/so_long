@@ -6,61 +6,18 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:11:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 12:23:19 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	ft_check_above(int x, int y, char **grid)
-{
-	if (grid[y][x - 1] && ((grid[y][x - 1] == '0') || (grid[y][x - 1] == 'C') || (grid[y][x - 1] == 'E')))
-	{
-		grid[y][x - 1] = 'P';
-		return (1);
-	}
-	return (0);
-}
-
-int	ft_check_below(int x, int y, char **grid)
-{
-	if (grid[y][x + 1] && ((grid[y][x + 1] == '0') || (grid[y][x + 1] == 'C') || (grid[y][x + 1] == 'E')))
-	{
-		grid[y][x + 1] = 'P';
-		return (1);
-	}
-	return (0);
-}
-
-int	ft_check_right(int x, int y, char **grid)
-{
-	if (grid[y + 1][x] && ((grid[y + 1][x] == '0') || (grid[y + 1][x] == 'C') || (grid[y + 1][x] == 'E')))
-	{
-		grid[y + 1][x] = 'P';
-		return (1);
-	}
-	return (0);
-}
-
-int	ft_check_left(int x, int y, char **grid)
-{
-	if (grid[y - 1][x] && ((grid[y - 1][x] == '0') || (grid[y - 1][x] == 'C') || (grid[y - 1][x] == 'E')))
-	{
-		grid[y - 1][x] = 'P';
-		return (1);
-	}
-	return (0);
-}
-
 //looks for a player with an new moveable area
 int	ft_expandable(char **grid, t_player *player)
 {
-	int		x;
-	int		y;
-	int		a;
-	int		b;
-	int		r;
-	int		l;
+	int			x;
+	int			y;
+	t_coords	coords;
 
 	y = 0;
 	while (grid[y])
@@ -70,11 +27,12 @@ int	ft_expandable(char **grid, t_player *player)
 		{
 			if (grid[y][x] == 'P')
 			{
-				a = ft_check_above(x, y, grid);
-				b = ft_check_below(x, y, grid);
-				r = ft_check_right(x, y, grid);
-				l = ft_check_left(x, y, grid);
-				if (a == 1 || b == 1 || r == 1 || l == 1)
+				coords.a = ft_check_above(x, y, grid);
+				coords.b = ft_check_below(x, y, grid);
+				coords.r = ft_check_right(x, y, grid);
+				coords.l = ft_check_left(x, y, grid);
+				if (coords.a == 1 || coords.b == 1 \
+				|| coords.r == 1 || coords.l == 1)
 					return (1);
 			}
 			x++;
