@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:47:55 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:11:04 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_create_grid(char *strmap, char ***grid)
 {
 	char	*file_content;
 
+	ft_printf("CREATING THE GRID....");
 	file_content = ft_read_file(strmap);
 	if (file_content == NULL)
 	{
@@ -63,6 +64,7 @@ int	ft_create_grid(char *strmap, char ***grid)
 		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR CREATING THE GRID\n");
 		return (0);
 	}
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (1);
 }
 
@@ -74,7 +76,8 @@ int	ft_map_size(char **grid, t_size **size)
 	int		t_x;
 
 	y = 0;
-	t_x = 0 ;
+	t_x = 0;
+	ft_printf("CHECKING THE MAP SIZE...");
 	while (grid[y])
 	{
 		x = 0;
@@ -108,6 +111,7 @@ int	ft_map_coll(char **grid)
 	player = 0;
 	exit = 0;
 	coll = 0;
+	ft_printf("CHECKING THE MAP COLLECTABLES...");
 	while (grid[y])
 	{
 		x = 0;
@@ -121,6 +125,7 @@ int	ft_map_coll(char **grid)
 	}
 	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
 		return (0);
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (coll);
 }
 

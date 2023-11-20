@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:49:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:11:22 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_map_wall(char **grid, int w, int h)
 
 	ok = 0;
 	i = 0;
+	ft_printf("CHECKING THE MAP LIMMITS....");
 	while (grid[i])
 	{
 		if (i == 0 || i == (h - 1))
@@ -50,6 +51,7 @@ int	ft_map_wall(char **grid, int w, int h)
 			return (0);
 		}
 	}
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (1);
 }
 

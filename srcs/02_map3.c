@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 16:52:46 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:11:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	ft_reachable(char **grid, t_size *size)
 	char		**p_grid;
 
 	expandable = 1;
+	ft_printf("CHECKING IF THE MAP IS DO-ABLE...");
 	p_grid = ft_create_doubleptr(*size);
 	ft_copy_doubleptr(grid, p_grid, *size);
 	while (expandable == 1)
@@ -98,6 +99,7 @@ int	ft_reachable(char **grid, t_size *size)
 	if (1 == ft_check_items_reach(p_grid, grid))
 	{
 		ft_free_doubleptr(p_grid);
+		ft_printf("\033[0;32m [OK] \033[0m\n\n");
 		return (1);
 	}
 	ft_printf("\033[1;31m [KO] \033[0m\n--> THE MAP IS NOT SOLVEABLE\n");
