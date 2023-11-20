@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 13:43:38 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:09:13 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	ft_map_coll(char **grid)
 	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
 		return (0);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
+	
 	return (coll);
 }
 
@@ -132,7 +133,7 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 {
 	if (mode == 0)
 	{
-		if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48)
+		if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48 && c != 'B')
 		{
 			ft_printf("\033[1;31m [KO] \033[0m\n--> FOUND A NON VALID CHAR\n");
 			return (0);

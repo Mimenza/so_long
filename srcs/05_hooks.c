@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 12:30:04 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:33:33 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_input(int key, void *param)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos - 1);
 	else if (key == KEY_S || key == KEY_DOWN)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos + 1);
+	ft_randomize(game);
 	ft_print_map(game);
 	return (0);
 }
@@ -52,15 +53,16 @@ int	ft_update(void *param)
 	if (frame == ANIMATION_FRAMES)
 	{
 		y -= 10;
-		ft_printf("CAMBIO LA POSICION\n");
+		//ft_printf("CAMBIO LA POSICION\n");
 	}
 	else if (frame >= ANIMATION_FRAMES * 6)
 	{
 		y += 10;
 		frame = 0;
-		ft_printf("RESTAURO LA POSICION\n");
+		//ft_printf("RESTAURO LA POSICION\n");
 	}
 	mlx_put_image_to_window(game->window.mlx, game->window.win, \
 	game->window.img[3], x * PX, game->player.y_pos * 48 + y);
+	
 	return (0);
 }

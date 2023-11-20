@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 13:10:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 13:54:42 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	ft_put_img(t_game *game, int x, int y)
 	if (grid[y][x] == 'E')
 		mlx_put_image_to_window(game->window.mlx, \
 		game->window.win, game->window.img[7], x * PX, y * PX);
+	if (grid[y][x] == 'B')
+		mlx_put_image_to_window(game->window.mlx, \
+		game->window.win, game->window.img[17], x * PX, y * PX);
 }
 
 void	ft_print_map(t_game *game)

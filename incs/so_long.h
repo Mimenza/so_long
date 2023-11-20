@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 13:41:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:31:02 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,4 +186,8 @@ void		ft_print_map(t_game *game);
 
 //move.c
 int			ft_move_player(t_game *game, int x, int y);
+int			ft_move_enemy(t_game *game, int x, int y, int ox, int oy);
+
+//enemy.c
+void		ft_randomize(t_game *game);
 #endif

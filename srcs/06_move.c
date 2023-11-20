@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 13:42:16 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:36:41 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,34 @@ int	ft_move_player(t_game *game, int x, int y)
 				TODAS LAS MONEDAS!! \033[0m\n");
 		}
 		ft_move_player2(game, x, y);
+		return (1);
+	}
+	return (0);
+}
+
+void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
+{
+	mlx_clear_window(game->window.mlx, game->window.win);
+	game->map.grid[y][x] = 'B';
+	if ((game->coll != game->map.n_coll) && \
+	(game->exit.x_pos == ox) && (game->exit.y_pos == oy))
+		game->map.grid[oy][ox] = 'E';
+	else
+		game->map.grid[oy][ox] = '0';
+
+}
+
+int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
+{
+	if (game->map.grid[y][x] && game->map.grid[y][x] != '1')
+	{
+		
+		if (game->map.grid[y][x] == 'P')
+		{
+			ft_printf("PLAYER ELIMINATED \n");
+			ft_close();
+		}
+		ft_move_enemy2(game, x, y, ox, oy);
 		return (1);
 	}
 	return (0);
