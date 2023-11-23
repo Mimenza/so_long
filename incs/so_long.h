@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 15:31:02 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:36:27 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ void		ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
 void		ft_free_doubleptr(char **grid);
 void		imprimir_patron(void);
 void		ft_print_info(t_game game);
+void		ft_free(t_game game);
 
 //window.c
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);

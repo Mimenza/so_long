@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 15:24:00 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:34:31 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_game	ft_create_game(char *strmap, t_game *game)
 	if (map.created == 0)
 	{
 		game->created = 0;
+		//ft_free(*game);
 		return (*game);
 	}
 	game->map = map;

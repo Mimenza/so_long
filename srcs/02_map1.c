@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 14:09:13 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:35:20 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ char	*ft_read_file(char *strmap)
 	close(fdmap);
 	if (t_line == NULL)
 	{
-		free(t_line);
 		return (NULL);
 	}
 	return (t_line);

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 15:36:41 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/23 13:28:56 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,16 @@ void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
 		game->map.grid[oy][ox] = 'E';
 	else
 		game->map.grid[oy][ox] = '0';
-
 }
 
 int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 {
-	if (game->map.grid[y][x] && game->map.grid[y][x] != '1')
+	if (game->map.grid[y][x] && game->map.grid[y][x] != '1' \
+	&& game->map.grid[y][x] != 'B' && game->map.grid[y][x] != 'C')
 	{
-		
 		if (game->map.grid[y][x] == 'P')
 		{
-			ft_printf("PLAYER ELIMINATED \n");
+			ft_printf("\033[0;32m PLAYER ELIMINATE \033[0m\n");
 			ft_close();
 		}
 		ft_move_enemy2(game, x, y, ox, oy);

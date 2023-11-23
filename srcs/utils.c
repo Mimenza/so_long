@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 12:36:11 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/23 17:33:56 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,14 @@ void	ft_print_info(t_game game)
 	"/");
 	mlx_string_put(game.window.mlx, game.window.win, 15, 40, 0x00000000, \
 	ft_itoa(game.map.n_coll));
+}
+
+void	ft_free(t_game game)
+{
+	if (game.window.size)
+		free(game.window.size);
+	if (game.map.size)
+		free(game.map.size);
+	if (game.map.grid)
+		free(game.map.grid);
 }
