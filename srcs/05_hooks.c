@@ -6,12 +6,82 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 09:13:04 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:39:57 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+void ft_animate_coins(t_game game)
+{
+	char **grid;
+	int y;
+	int x;
+	int y2;
+	static int	dir2;
+	static int	frame2;
+	
+	y = 0;
+	grid = game.map.grid;
+	//mlx_clear_window(game.window.mlx, game.window.win);
+	while (grid[y])
+	{
+		x = 0;
+		while (grid[y][x])
+		{
+			if (grid[y][x] == 'C')
+			{
+				y2 = y;
+				if (frame2 == ANIMATION_FRAMES / 2)
+					dir2 = 1;
+				else if (frame2 == 0)
+					dir2 = 0;
+				if (dir2 == 0)
+				{
+					y2 += 5;
+					frame2 += 1;
+				}
+				else if (dir2 == 1)
+				{
+					y2 -= 5;
+					frame2 -= 1;
+				}
+				//ft_print_map(&game);
+				mlx_put_image_to_window(game.window.win, game.window.win, game.window.img[2], x * PX, y * PX +  y2);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void ft_animate_player(t_game game)
+{
+	int			x;
+	int			y;
+	static int	dir;
+	static int	frame;
+
+	y = game.player.y_pos;
+	mlx_clear_window(game.window.mlx, game.window.win);
+	if (frame == ANIMATION_FRAMES)
+		dir = 1;
+	else if (frame == 0)
+		dir = 0;
+	if (dir == 0)
+	{
+		y += 5;
+		frame += 1;
+	}
+	else if (dir == 1)
+	{
+		y -= 5;
+		frame -= 1;
+	}
+	ft_print_map(&game);
+	mlx_put_image_to_window(game.window.mlx, game.window.win, \
+	game.window.img[3], game.player.x_pos * PX, game.player.y_pos * 48 + y);
+}
 // Any function that you hook with the key event must be like this:
 // Recibing and int for the code of the key pressed
 // and a void pointer in case you need to recibe someting 
@@ -41,32 +111,12 @@ int	ft_input(int key, void *param)
 
 int	ft_update(void *param)
 {
-	static int	frame;
 	t_game		*game;
-	int			x;
-	int			y;
-	static int	dir;
+	
 	
 	game = (t_game *)param;
-	x = game->player.x_pos;
-	y = game->player.y_pos;
-	mlx_clear_window(game->window.mlx, game->window.win);
-	if (frame == ANIMATION_FRAMES)
-		dir = 1;
-	else if (frame == 0)
-		dir = 0;
-	if (dir == 0)
-	{
-		y += 5;
-		frame++;
-	}
-	else if (dir == 1)
-	{
-		y -= 5;
-		frame--;
-	}
-	ft_print_map(game);
-	mlx_put_image_to_window(game->window.mlx, game->window.win, \
-	game->window.img[3], x * PX, game->player.y_pos * 48 + y);
+	ft_animate_player(*game);
+	//ft_animate_coins(*game);
+	
 	return (0);
 }
