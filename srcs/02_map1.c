@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/23 17:35:20 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 08:09:27 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,24 @@ char	*ft_read_file(char *strmap)
 	int		fdmap;
 	char	*t_line;
 	char	*line;
+	char	*tmp;
 
 	path = ft_strjoin("./maps/", strmap);
 	fdmap = open(path, O_RDONLY);
 	free(path);
 	if (fdmap == -1)
 		return (NULL);
-	t_line = "";
+	t_line = ft_strdup("");
 	while (line && fdmap)
 	{
 		line = get_next_line(fdmap);
 		if (line != NULL)
 		{
-			t_line = ft_strjoin(t_line, line);
+			tmp = ft_strdup(t_line);
+			free(t_line);
+			t_line = ft_strjoin(tmp, line);
 			free(line);
+			free(tmp);
 		}
 	}
 	close(fdmap);
