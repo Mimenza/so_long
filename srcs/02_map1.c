@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 08:09:27 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:33:54 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ int	ft_map_coll(char **grid)
 	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
 		return (0);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
-	
 	return (coll);
 }
 

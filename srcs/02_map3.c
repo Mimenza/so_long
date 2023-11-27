@@ -6,12 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 10:31:13 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:04:09 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
-
 
 int	ft_expandable(char **grid, t_player *player)
 {
@@ -63,7 +62,7 @@ int	ft_reachable(char **grid, t_size *size)
 		ft_printf("\033[0;32m [OK] \033[0m\n\n");
 		return (1);
 	}
-	ft_printf("\033[1;31m [KO] \033[0m\n--> THE MAP IS NOT SOLVEABLE\n");
 	ft_free_doubleptr(p_grid);
+	ft_printf("\033[1;31m [KO] \033[0m\n--> THE MAP IS NOT SOLVEABLE\n");
 	return (0);
 }

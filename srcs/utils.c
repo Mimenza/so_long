@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 10:25:52 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 11:05:36 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_doubleptr(char **grid)
 	int	i;
 
 	i = 0;
-	while (grid[i])
+	while (grid[i] != NULL)
 	{
 		free(grid[i]);
 		i++;
@@ -34,16 +34,6 @@ char	**ft_create_doubleptr(t_size size)
 	ptr = (char **)malloc((size.h + 1) * sizeof(char *));
 	if (ptr == NULL)
 		return (ptr);
-	while (i < (size.h))
-	{
-		ptr[i] = (char *)malloc((size.w + 1) * sizeof(char));
-		if (ptr[i] == NULL)
-		{
-			ft_free_doubleptr(ptr);
-			return (ptr);
-		}
-		i++;
-	}
 	return (ptr);
 }
 
@@ -89,14 +79,4 @@ void	ft_print_info(t_game game)
 	"/");
 	mlx_string_put(game.window.mlx, game.window.win, 15, 40, 0x00000000, \
 	ft_itoa(game.map.n_coll));
-}
-
-void	ft_free(t_game game)
-{
-	if (game.window.size)
-		free(game.window.size);
-	if (game.map.size)
-		free(game.map.size);
-	if (game.map.grid)
-		free(game.map.grid);
 }
