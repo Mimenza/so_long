@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 09:39:57 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:42:06 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void ft_animate_player(t_game game)
 	mlx_put_image_to_window(game.window.mlx, game.window.win, \
 	game.window.img[3], game.player.x_pos * PX, game.player.y_pos * 48 + y);
 }
-// Any function that you hook with the key event must be like this:
-// Recibing and int for the code of the key pressed
-// and a void pointer in case you need to recibe someting 
+
 int	ft_input(int key, void *param)
 {
 	t_game	*game;

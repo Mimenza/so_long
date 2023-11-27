@@ -6,19 +6,23 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 12:23:19 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:31:13 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-//looks for a player with an new moveable area
+
 int	ft_expandable(char **grid, t_player *player)
 {
 	int			x;
 	int			y;
 	t_coords	coords;
 
+	coords.a = 0;
+	coords.b = 0;
+	coords.l = 0;
+	coords.r = 0;
 	y = 0;
 	while (grid[y])
 	{
@@ -31,8 +35,7 @@ int	ft_expandable(char **grid, t_player *player)
 				coords.b = ft_check_below(x, y, grid);
 				coords.r = ft_check_right(x, y, grid);
 				coords.l = ft_check_left(x, y, grid);
-				if (coords.a == 1 || coords.b == 1 \
-				|| coords.r == 1 || coords.l == 1)
+				if (coords.a == 1 || coords.b == 1 || coords.r == 1 || coords.l == 1)
 					return (1);
 			}
 			x++;
