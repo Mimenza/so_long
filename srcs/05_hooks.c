@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/23 13:27:24 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/27 09:13:04 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,27 @@ int	ft_update(void *param)
 	t_game		*game;
 	int			x;
 	int			y;
-
+	static int	dir;
+	
 	game = (t_game *)param;
 	x = game->player.x_pos;
 	y = game->player.y_pos;
-	frame++;
+	mlx_clear_window(game->window.mlx, game->window.win);
 	if (frame == ANIMATION_FRAMES)
+		dir = 1;
+	else if (frame == 0)
+		dir = 0;
+	if (dir == 0)
 	{
-		y -= 10;
+		y += 5;
+		frame++;
 	}
-	else if (frame >= ANIMATION_FRAMES * 6)
+	else if (dir == 1)
 	{
-		y += 10;
-		frame = 0;
+		y -= 5;
+		frame--;
 	}
+	ft_print_map(game);
 	mlx_put_image_to_window(game->window.mlx, game->window.win, \
 	game->window.img[3], x * PX, game->player.y_pos * 48 + y);
 	return (0);
