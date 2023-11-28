@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 12:00:24 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:05:06 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
 {
 	mlx_clear_window(game->window.mlx, game->window.win);
 	game->map.grid[y][x] = 'B';
-	if ((game->coll != game->map.n_coll) && (game->exit.x_pos == ox) && (game->exit.y_pos == oy))
+	if ((game->coll != game->map.n_coll) \
+	&& (game->exit.x_pos == ox) && (game->exit.y_pos == oy))
 		game->map.grid[oy][ox] = 'E';
 	else
 		game->map.grid[oy][ox] = '0';
@@ -72,8 +73,8 @@ void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
 
 int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 {
-	//if (game->map.grid[y][x] && game->map.grid[y][x] != '1' && game->map.grid[y][x] != 'B' && game->map.grid[y][x] != 'C')
-	if (game->map.grid[y][x] && (game->map.grid[y][x] == 'P' || game->map.grid[y][x] == '0'))
+	if (game->map.grid[y][x] && (game->map.grid[y][x] == 'P' \
+	|| game->map.grid[y][x] == '0'))
 	{
 		if (game->map.grid[y][x] == 'P')
 		{
@@ -84,9 +85,6 @@ int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 		return (1);
 	}
 	else
-	{
 		ft_select_movement(*game, oy, ox, (ft_rand()));
-		
-	}
 	return (0);
 }

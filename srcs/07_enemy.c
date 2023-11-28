@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 11:53:20 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:07:33 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_found_enemy(t_game *game)
 {
 	int		y;
 	int		x;
-	int 	i;
-	t_enemy *enemy;
+	int		i;
+	t_enemy	*enemy;
 
 	y = 0;
 	game->enemy_nbr = 0;
@@ -41,11 +41,11 @@ void	ft_found_enemy(t_game *game)
 		while (game->map.grid[y][x])
 		{
 			if (game->map.grid[y][x] == 'B')
-				{
-					enemy[i].x_pos = x;
-					enemy[i].y_pos = y;
-					i++; 
-				}
+			{
+				enemy[i].x_pos = x;
+				enemy[i].y_pos = y;
+				i++;
+			}
 			x++;
 		}
 		y++;
@@ -75,9 +75,9 @@ void	ft_select_movement(t_game game, int y, int x, int direction)
 		return ;
 }
 
-int ft_rand(void)
+int	ft_rand(void)
 {
-	static unsigned int seed;
+	static unsigned int	seed;
 
 	if (!seed)
 		seed = getpid();
@@ -102,7 +102,8 @@ void	ft_randomize(t_game *game)
 		y = 0;
 		while (i < game->enemy_nbr)
 		{
-			ft_select_movement(*game, game->enemy[i].y_pos, game->enemy[i].x_pos, ft_rand());
+			ft_select_movement(*game, game->enemy[i].y_pos, \
+			game->enemy[i].x_pos, ft_rand());
 			i++;
 		}
 		speed = 0;
