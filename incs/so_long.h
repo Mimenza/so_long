@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 09:56:37 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:58:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,12 @@ typedef struct s_exit
 	int		y_pos;
 }				t_exit;
 
+typedef struct s_enemy
+{
+	int		x_pos;
+	int		y_pos;
+}				t_enemy;
+
 //store all the information about the player
 typedef struct s_player
 {
@@ -127,6 +133,8 @@ typedef struct s_game
 	int			coll;
 	t_exit		exit;
 	int			created;
+	t_enemy		*enemy;
+	int			enemy_nbr;
 }			t_game;
 
 //utils.c

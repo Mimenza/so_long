@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 10:02:53 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:17:15 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int	ft_move_player(t_game *game, int x, int y)
 				ft_printf("\033[0;32m PRIMERO TIENES QUE RECOGER \
 				TODAS LAS MONEDAS!! \033[0m\n");
 		}
+		if (game->map.grid[y][x] == 'B')
+		{
+			ft_printf("\033[0;32m PLAYER ELIMINATE \033[0m\n");
+			ft_close();
+		}
 		ft_move_player2(game, x, y);
 		return (1);
 	}
@@ -59,8 +64,7 @@ void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
 {
 	mlx_clear_window(game->window.mlx, game->window.win);
 	game->map.grid[y][x] = 'B';
-	if ((game->coll != game->map.n_coll) && \
-	(game->exit.x_pos == ox) && (game->exit.y_pos == oy))
+	if ((game->coll != game->map.n_coll) && (game->exit.x_pos == ox) && (game->exit.y_pos == oy))
 		game->map.grid[oy][ox] = 'E';
 	else
 		game->map.grid[oy][ox] = '0';
@@ -68,8 +72,8 @@ void	ft_move_enemy2(t_game *game, int x, int y, int ox, int oy)
 
 int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 {
-	if (game->map.grid[y][x] && game->map.grid[y][x] != '1' \
-	&& game->map.grid[y][x] != 'B' && game->map.grid[y][x] != 'C')
+	//if (game->map.grid[y][x] && game->map.grid[y][x] != '1' && game->map.grid[y][x] != 'B' && game->map.grid[y][x] != 'C')
+	if (game->map.grid[y][x] && (game->map.grid[y][x] == 'P' || game->map.grid[y][x] == '0'))
 	{
 		if (game->map.grid[y][x] == 'P')
 		{
@@ -81,8 +85,8 @@ int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 	}
 	else
 	{
-		//ft_select_movement(*game, oy, ox, ft_rand() % 3);
-		ft_printf("cant move the enemy\n");
+		ft_select_movement(*game, oy, ox, (ft_rand()));
+		
 	}
 	return (0);
 }

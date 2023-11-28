@@ -6,12 +6,52 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 10:02:48 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:58:38 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+void	ft_found_enemy(t_game *game)
+{
+	int		y;
+	int		x;
+	int 	i;
+	t_enemy *enemy;
+
+	y = 0;
+	game->enemy_nbr = 0;
+	while (game->map.grid[y])
+	{
+		x = 0;
+		while (game->map.grid[y][x])
+		{
+			if (game->map.grid[y][x] == 'B')
+				game->enemy_nbr++;
+			x++;
+		}
+		y++;
+	}
+	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
+	i = 0;
+	y = 0;
+	while (game->map.grid[y])
+	{
+		x = 0;
+		while (game->map.grid[y][x])
+		{
+			if (game->map.grid[y][x] == 'B')
+				{
+					enemy[i].x_pos = x;
+					enemy[i].y_pos = y;
+					i++; 
+				}
+			x++;
+		}
+		y++;
+	}
+	game->enemy = enemy;
+}
 void	ft_select_movement(t_game game, int y, int x, int direction)
 {
 	if (direction == 0)
@@ -30,6 +70,8 @@ void	ft_select_movement(t_game game, int y, int x, int direction)
 	{
 		ft_move_enemy(&game, (x - 1), y, x, y);
 	}
+	else
+		return ;
 }
 
 int ft_rand(void)
@@ -50,20 +92,13 @@ void	ft_randomize(t_game *game)
 	char	**grid;
 	int		x;
 
+	ft_found_enemy(game);
+	i = 0;
 	grid = game->map.grid;
 	y = 0;
-	while (grid[y])
+	while (i < game->enemy_nbr)
 	{
-		x = 0;
-		while (grid[y][x])
-		{
-			if (grid[y][x] == 'B')
-			{
-				//ft_printf("boss found\n");
-				ft_select_movement(*game, y, x, ft_rand() % 3);
-			}
-			x++;
-		}
-		y++;
+		ft_select_movement(*game, game->enemy[i].y_pos, game->enemy[i].x_pos, ft_rand());
+		i++;
 	}
 }
