@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 09:02:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 09:56:37 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/gnl/get_next_line.h"
 # include "../libs/Libft/libft.h"
+# include <math.h>
 // ----------------------------------
 // MACROS
 
@@ -46,7 +47,7 @@
 # define ON_DESTROY		17
 
 // Assets location
-# define ANIMATION_FRAMES 100
+# define ANIMATION_FRAMES 50
 # define IMG_COUNT	18
 # define FLOOR		"./textures/floor/grass.xpm"
 # define WALL		"./textures/wall/wall.xpm"
@@ -191,4 +192,6 @@ int			ft_move_enemy(t_game *game, int x, int y, int ox, int oy);
 
 //enemy.c
 void		ft_randomize(t_game *game);
+int 		ft_rand(void);
+void		ft_select_movement(t_game game, int y, int x, int direction);
 #endif

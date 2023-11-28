@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/23 13:28:56 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:02:53 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ int	ft_move_enemy(t_game *game, int x, int y, int ox, int oy)
 		}
 		ft_move_enemy2(game, x, y, ox, oy);
 		return (1);
+	}
+	else
+	{
+		//ft_select_movement(*game, oy, ox, ft_rand() % 3);
+		ft_printf("cant move the enemy\n");
 	}
 	return (0);
 }
