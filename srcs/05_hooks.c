@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 10:36:37 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:51:00 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_animate_player(t_game game)
 		y -= 5;
 		frame -= 1;
 	}
+	ft_randomize(&game);
 	ft_print_map(&game);
 	mlx_put_image_to_window(game.window.mlx, game.window.win, \
 	game.window.img[3], game.player.x_pos * PX, game.player.y_pos * 48 + y);
@@ -59,7 +60,7 @@ int	ft_input(int key, void *param)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos - 1);
 	else if (key == KEY_S || key == KEY_DOWN)
 		ft_move_player(game, game->player.x_pos, game->player.y_pos + 1);
-	ft_randomize(game);
+	//ft_randomize(game);
 	ft_print_map(game);
 	return (0);
 }

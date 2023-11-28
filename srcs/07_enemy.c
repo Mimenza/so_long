@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 10:58:38 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:53:20 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_found_enemy(t_game *game)
 	}
 	game->enemy = enemy;
 }
+
 void	ft_select_movement(t_game game, int y, int x, int direction)
 {
 	if (direction == 0)
@@ -86,19 +87,24 @@ int ft_rand(void)
 
 void	ft_randomize(t_game *game)
 {
-	int		enemy_n;
-	int		i;
-	int		y;
-	char	**grid;
-	int		x;
+	static int	speed;
+	int			i;
+	int			y;
+	char		**grid;
+	int			x;
 
-	ft_found_enemy(game);
-	i = 0;
-	grid = game->map.grid;
-	y = 0;
-	while (i < game->enemy_nbr)
+	speed++;
+	if (speed == SPEED)
 	{
-		ft_select_movement(*game, game->enemy[i].y_pos, game->enemy[i].x_pos, ft_rand());
-		i++;
+		ft_found_enemy(game);
+		i = 0;
+		grid = game->map.grid;
+		y = 0;
+		while (i < game->enemy_nbr)
+		{
+			ft_select_movement(*game, game->enemy[i].y_pos, game->enemy[i].x_pos, ft_rand());
+			i++;
+		}
+		speed = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 10:58:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:53:44 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 
 // Pixel size of each .xpm file (48 x 48)
 # define PX	48
+
+# define SPEED 10 // the lower the fastest the enemy moves
 
 // Key Codes for MacOS
 # define KEY_ESC	53
