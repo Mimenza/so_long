@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:11:21 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:19:20 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:03:21 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	ft_print_error(int type)
 	else if (type == 9)
 		ft_printf("\033[1;31m [KO] \033[0m\nError\nMUST BE ONLY 1 EXIT\n");
 	else if (type == 10)
-		ft_printf("\033[1;31m [KO] \033[0m\nError\nMUST BE MIN 1 COLL\n");	
+		ft_printf("\033[1;31m [KO] \033[0m\nError\nMUST BE MIN 1 COLL\n");
 }
