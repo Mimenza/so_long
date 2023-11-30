@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:19:09 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:41:02 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//This functions loads the imgs.
 void	ft_load(t_game *game, char *path, int i)
 {
 	int		h;
@@ -25,6 +26,7 @@ void	ft_load(t_game *game, char *path, int i)
 	}
 }
 
+//This function loads the imgs path into the array.
 void	ft_load_imgs(t_game *game)
 {
 	char	files[IMG_COUNT][40];
@@ -53,6 +55,7 @@ void	ft_load_imgs(t_game *game)
 		ft_load(game, files[i], i);
 }
 
+//Main function which starts the game.
 void	ft_start_game(t_game game)
 {
 	void		*mlx;
@@ -74,6 +77,7 @@ void	ft_start_game(t_game game)
 	mlx_loop(mlx);
 }
 
+//Main function which creates the game struct.
 t_game	ft_create_game(char *strmap, t_game *game)
 {
 	t_map	map;

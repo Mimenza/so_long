@@ -6,12 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:47:37 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/20 13:57:07 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:51:21 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//This funtions compares the og grid with the expanded
+//grid in order to find if the map is doable.
 int	ft_check_items_reach(char **grid, char **og_grid)
 {
 	int		x;
@@ -35,6 +37,7 @@ int	ft_check_items_reach(char **grid, char **og_grid)
 	return (1);
 }
 
+//This function prints the grid on the console.
 void	ft_print_grid(char **grid)
 {
 	int		x;

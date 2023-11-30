@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 13:01:25 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:43:08 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Aux function which prints the map into the window.
 void	ft_put_img(t_game *game, int x, int y)
 {
 	char	**grid;
@@ -33,6 +34,7 @@ void	ft_put_img(t_game *game, int x, int y)
 		game->window.win, game->window.img[17], x * PX, y * PX);
 }
 
+//Main function which prints the map into the window.
 void	ft_print_map(t_game *game)
 {
 	int		x;

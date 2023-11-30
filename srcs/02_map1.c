@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 13:38:08 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:35:48 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_read_file(char *strmap)
 	if (fdmap == -1)
 		return (NULL);
 	t_line = ft_strdup("");
-	while (line && fdmap)
+	while (line)
 	{
 		line = get_next_line(fdmap);
 		if (line != NULL)
@@ -40,8 +40,6 @@ char	*ft_read_file(char *strmap)
 		}
 	}
 	close(fdmap);
-	if (t_line == NULL)
-		return (NULL);
 	return (t_line);
 }
 
@@ -116,46 +114,14 @@ int	ft_map_coll(char **grid)
 		x = 0;
 		while (grid[y][x])
 		{
-			if (0 == ft_check_item(grid[y][x], &player, &exit, &coll, 0))
+			if (0 == ft_count_item(grid[y][x], &player, &exit, &coll))
 				return (0);
 			x++;
 		}
 		y++;
 	}
-	if (ft_check_item(0, &player, &exit, &coll, 1) == 0)
+	if (ft_check_item(0, &player, &exit, &coll) == 0)
 		return (0);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (coll);
-}
-
-//Counts the entity number
-int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
-{
-	if (mode == 0)
-	{
-		if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48 && c != 'B')
-		{
-			ft_printf("\033[1;31m [KO] \033[0m\n--> FOUND A NON VALID CHAR\n");
-			return (0);
-		}
-		if (c == 'P')
-			*player += 1;
-		else if (c == 'E')
-			*exit += 1;
-		else if (c == 'C')
-			*coll += 1;
-		return (1);
-	}
-	if (mode == 1)
-	{
-		if (*player != 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 PLAYER\n");
-		if (*exit != 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 EXIT\n");
-		if (*coll < 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE MIN 1 COLL\n");
-		if ((*player == 1) && (*exit == 1) && (*coll >= 1))
-			return (1);
-	}
-	return (0);
 }

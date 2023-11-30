@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:12:32 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:48:24 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Function that counts the enemy nbr on the map.
 void	ft_enemy_nbr(t_game *game)
 {
 	int		y;
@@ -33,6 +34,7 @@ void	ft_enemy_nbr(t_game *game)
 	}
 }
 
+//Function that founds the enemy on the map and creates the enemy struct.
 void	ft_found_enemy(t_game *game)
 {
 	int		y;
@@ -62,6 +64,7 @@ void	ft_found_enemy(t_game *game)
 	game->enemy = enemy;
 }
 
+//Function that gives a direction to the enemy.
 void	ft_select_movement(t_game game, int y, int x, int direction)
 {
 	if (direction == 0)
@@ -84,6 +87,7 @@ void	ft_select_movement(t_game game, int y, int x, int direction)
 		return ;
 }
 
+//Return a 'random' number between 0 and 3.
 int	ft_rand(void)
 {
 	static unsigned int	seed;
@@ -94,6 +98,7 @@ int	ft_rand(void)
 	return ((seed / 65536) % 4);
 }
 
+//This functions controls the enemies movements.
 void	ft_randomize(t_game *game)
 {
 	static int	speed;

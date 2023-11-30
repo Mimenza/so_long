@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 13:07:47 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:41:04 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Main function which creates the map struct.
 t_map	ft_create_map(char *strmap)
 {
 	t_map	map;

@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:18:50 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:51:13 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Funtion which animates the player.
 void	ft_animate_player(t_game game)
 {
 	int			x;
@@ -41,6 +42,7 @@ void	ft_animate_player(t_game game)
 	game.window.img[game.p.skin], game.p.pos.x * PX, game.p.pos.y * 48 + y);
 }
 
+//Input loop aux function.
 void	ft_input2(int key, t_game *game)
 {
 	if (key == KEY_D || key == KEY_RIGHT)
@@ -69,6 +71,7 @@ void	ft_input2(int key, t_game *game)
 	}
 }
 
+//Input loop main function.
 int	ft_input(int key, void *param)
 {
 	t_game	*game;
@@ -85,6 +88,7 @@ int	ft_input(int key, void *param)
 	return (0);
 }
 
+//Update loop function.
 int	ft_update(void *param)
 {
 	t_game		*game;

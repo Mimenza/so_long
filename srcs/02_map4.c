@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:23:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 10:06:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:40:52 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Checks if the above position is expandable, and expand to it.
 int	ft_check_above(int x, int y, char **grid)
 {
 	if (grid[y][x - 1] \
@@ -24,6 +25,7 @@ int	ft_check_above(int x, int y, char **grid)
 	return (0);
 }
 
+//Checks if the below position is expandable, and expand to it.
 int	ft_check_below(int x, int y, char **grid)
 {
 	if (grid[y][x + 1] \
@@ -36,6 +38,7 @@ int	ft_check_below(int x, int y, char **grid)
 	return (0);
 }
 
+//Checks if the right position is expandable, and expand to it.
 int	ft_check_right(int x, int y, char **grid)
 {
 	if (grid[y + 1][x] \
@@ -48,6 +51,7 @@ int	ft_check_right(int x, int y, char **grid)
 	return (0);
 }
 
+//Checks if the left position is expandable, and expand to it.
 int	ft_check_left(int x, int y, char **grid)
 {
 	if (grid[y - 1][x] \

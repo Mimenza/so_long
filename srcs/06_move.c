@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:20:26 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:46:11 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Aux function which moves the player.
 void	ft_move_player2(t_game *game, int x, int y)
 {
 	mlx_clear_window(game->window.mlx, game->window.win);
@@ -28,6 +29,7 @@ void	ft_move_player2(t_game *game, int x, int y)
 	ft_printf("NUMERO DE MOVIMIENTOS DADOS : %i\n", game->steps);
 }
 
+//Main function which moves the player.
 int	ft_move_player(t_game *game, int x, int y)
 {
 	if (game->map.grid[y][x] && game->map.grid[y][x] != '1')
@@ -57,13 +59,7 @@ int	ft_move_player(t_game *game, int x, int y)
 	return (0);
 }
 
-void	ft_move_enemy2(t_game *game, int x, int y, t_position pos)
-{
-	mlx_clear_window(game->window.mlx, game->window.win);
-	game->map.grid[y][x] = 'B';
-	game->map.grid[pos.y][pos.x] = '0';
-}
-
+//Main function which moves the enemy.
 int	ft_move_enemy(t_game *game, int x, int y, t_position pos)
 {
 	if (game->map.grid[y][x] && (game->map.grid[y][x] == 'P' \
@@ -74,7 +70,9 @@ int	ft_move_enemy(t_game *game, int x, int y, t_position pos)
 			ft_printf("\033[0;32m PLAYER ELIMINATE \033[0m\n");
 			ft_close();
 		}
-		ft_move_enemy2(game, x, y, (t_position){pos.x, pos.y});
+		mlx_clear_window(game->window.mlx, game->window.win);
+		game->map.grid[y][x] = 'B';
+		game->map.grid[pos.y][pos.x] = '0';
 		return (1);
 	}
 	else

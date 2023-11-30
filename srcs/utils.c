@@ -6,12 +6,13 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 13:11:32 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:49:35 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//This functions frees a double ptr.
 void	ft_free_doubleptr(char **grid)
 {
 	int	i;
@@ -27,6 +28,7 @@ void	ft_free_doubleptr(char **grid)
 	free(grid);
 }
 
+//This function creates a double ptr.
 char	**ft_create_doubleptr(t_size size)
 {
 	char	**ptr;
@@ -39,6 +41,7 @@ char	**ft_create_doubleptr(t_size size)
 	return (ptr);
 }
 
+//This function copies a double ptr.
 void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size)
 {
 	int	i;
@@ -52,6 +55,7 @@ void	ft_copy_doubleptr(char **grid, char **p_grid, t_size size)
 	p_grid[i] = NULL;
 }
 
+//Prints a paint on the console.
 void	imprimir_patron(void)
 {
 	ft_printf("\n");
@@ -67,6 +71,7 @@ void	imprimir_patron(void)
 	ft_printf("\n");
 }
 
+//Prints info on the window.
 void	ft_print_info(t_game game)
 {
 	mlx_string_put(game.window.mlx, game.window.win, 5, 10, 0x00000000, \
