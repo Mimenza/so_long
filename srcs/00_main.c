@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:40:56 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:13:20 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int	main(int argc, char **argv)
 		ft_create_game(*(argv + 1), &game);
 	}
 	else
-		ft_printf("\033[1;31m [KO] \033[0m \n-->WRONG FILE NAME  \n");
+		ft_print_error(0);
 }

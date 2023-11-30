@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:37:40 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:18:18 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_reachable(char **grid, t_size *size)
 		return (1);
 	}
 	ft_free_doubleptr(p_grid);
-	ft_printf("\033[1;31m [KO] \033[0m\n--> THE MAP IS NOT SOLVEABLE\n");
+	ft_print_error(6);
 	return (0);
 }
 
@@ -70,7 +70,7 @@ int	ft_count_item(char c, int *player, int *exit, int *coll)
 {
 	if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48 && c != 'B')
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> FOUND A NON VALID CHAR\n");
+		ft_print_error(7);
 		return (0);
 	}
 	if (c == 'P')
@@ -86,11 +86,11 @@ int	ft_count_item(char c, int *player, int *exit, int *coll)
 int	ft_check_item(char c, int *player, int *exit, int *coll)
 {
 	if (*player != 1)
-		ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 PLAYER\n");
+		ft_print_error(8);
 	if (*exit != 1)
-		ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 EXIT\n");
+		ft_print_error(9);
 	if (*coll < 1)
-		ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE MIN 1 COLL\n");
+		ft_print_error(10);
 	if ((*player == 1) && (*exit == 1) && (*coll >= 1))
 		return (1);
 	return (0);

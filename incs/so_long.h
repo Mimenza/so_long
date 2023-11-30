@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:17:58 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:13:24 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,20 +115,20 @@ typedef struct s_map
 //store all the information about the exit
 typedef struct s_exit
 {
-	t_position position;
+	t_position	position;
 }				t_exit;
 
 typedef struct s_enemy
 {
-	t_position position;
+	t_position	position;
 }				t_enemy;
 
 //store all the information about the player
 typedef struct s_player
 {
-	t_position pos;
-	int		framerate;
-	int		skin;
+	t_position	pos;
+	int			framerate;
+	int			skin;
 }				t_player;
 
 // store all information about the game
@@ -161,7 +161,7 @@ t_map		ft_create_map(char *strmap);
 int			ft_create_grid(char *strmap, char ***grid);
 int			ft_map_size(char **grid, t_size **size);
 int			ft_map_coll(char **grid);
-int			ft_check_item(char c, int *player, int *exit, int *coll, int mode);
+
 
 //map2.c
 int			ft_strcustom(char *str, char c);
@@ -172,7 +172,8 @@ t_exit		ft_locate_exit(t_map map);
 //map3.c
 int			ft_expandable(char **grid, t_player *player);
 int			ft_reachable(char **grid, t_size *size);
-
+int			ft_count_item(char c, int *player, int *exit, int *coll);
+int			ft_check_item(char c, int *player, int *exit, int *coll);
 //map4.c
 int			ft_check_above(int x, int y, char **grid);
 int			ft_check_below(int x, int y, char **grid);
@@ -210,4 +211,7 @@ int			ft_move_enemy(t_game *game, int x, int y, t_position pos);
 void		ft_randomize(t_game *game);
 int			ft_rand(void);
 void		ft_select_movement(t_game game, int y, int x, int direction);
+
+//error.c
+void		ft_print_error(int type);
 #endif

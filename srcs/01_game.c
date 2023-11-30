@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:41:02 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:14:13 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_start_game(t_game game)
 	mlx = mlx_init();
 	if (!mlx)
 	{
-		ft_printf("Error: mlx_init() failed\n");
+		ft_print_error(1);
 		exit(EXIT_FAILURE);
 	}
 	win = ft_new_window(mlx, game.map.size->w * PX, \

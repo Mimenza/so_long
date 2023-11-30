@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:15:06 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:15:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_map_wall(char **grid, int w, int h)
 		i++;
 		if (ok == 0)
 		{
-			ft_printf("MAP MUST BE WITHIN WALL \n");
+			ft_print_error(5);
 			return (0);
 		}
 	}

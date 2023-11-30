@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:35:48 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:15:12 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int	ft_create_grid(char *strmap, char ***grid)
 	file_content = ft_read_file(strmap);
 	if (file_content == NULL)
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR READING THE FILE\n");
+		ft_print_error(2);
 		return (0);
 	}
 	*grid = ft_split(file_content, '\n');
 	free(file_content);
 	if (*grid == NULL)
 	{
-		ft_printf("\033[1;31m [KO] \033[0m\n--> ERROR CREATING THE GRID\n");
+		ft_print_error(3);
 		return (0);
 	}
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");
@@ -85,7 +85,7 @@ int	ft_map_size(char **grid, t_size **size)
 			t_x = x;
 		if (t_x != 0 && t_x != x)
 		{
-			ft_printf("\033[1;31m [KO] \033[0m\n--> WRONG MAP SIZE!\n");
+			ft_print_error(4);
 			return (0);
 		}
 		y++;

@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/30 13:07:27 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/30 16:19:35 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MLX			=	-framework OpenGL -framework AppKit
 NAME		=	so_longer
 
 #Ficheros
-SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy utils
+SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy 08_error utils
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 MINILIBX	=	libs/minilibx
