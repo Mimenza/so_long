@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:13:24 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:34:44 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,8 @@ typedef struct s_game
 	int			enemy_nbr;
 }			t_game;
 
-//utils.c
+//main.c
+
 int			ft_check_ext(char *str, char *ext);
 
 //game.c
@@ -158,6 +159,7 @@ t_game		ft_create_game(char *strmap, t_game *game);
 t_map		ft_create_map(char *strmap);
 
 //map1.c
+char		*ft_read_file(char *strmap);
 int			ft_create_grid(char *strmap, char ***grid);
 int			ft_map_size(char **grid, t_size **size);
 int			ft_map_coll(char **grid);
@@ -174,6 +176,7 @@ int			ft_expandable(char **grid, t_player *player);
 int			ft_reachable(char **grid, t_size *size);
 int			ft_count_item(char c, int *player, int *exit, int *coll);
 int			ft_check_item(char c, int *player, int *exit, int *coll);
+
 //map4.c
 int			ft_check_above(int x, int y, char **grid);
 int			ft_check_below(int x, int y, char **grid);
@@ -184,34 +187,42 @@ int			ft_check_left(int x, int y, char **grid);
 int			ft_check_items_reach(char **grid, char **p_grid);
 void		ft_print_grid(char **grid);
 
-//utils.c
-char		**ft_create_doubleptr(t_size size);
-void		ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
-void		ft_free_doubleptr(char **grid);
-void		imprimir_patron(void);
-void		ft_print_info(t_game game);
-void		ft_free(t_game game);
-
 //window.c
-t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 int			ft_close(void);
+t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 
 //hooks.c
+void		ft_animate_player(t_game game);
+void		ft_input2(int key, t_game *game);
 int			ft_input(int key, void *param);
 int			ft_update(void *param);
 
 //print_map.c
+void		ft_put_img(t_game *game, int x, int y);
 void		ft_print_map(t_game *game);
+void		ft_print_info(t_game game);
 
 //move.c
+void		ft_move_player2(t_game *game, int x, int y);
 int			ft_move_player(t_game *game, int x, int y);
 int			ft_move_enemy(t_game *game, int x, int y, t_position pos);
 
 //enemy.c
-void		ft_randomize(t_game *game);
-int			ft_rand(void);
+void		ft_enemy_nbr(t_game *game);
+void		ft_found_enemy(t_game *game);
 void		ft_select_movement(t_game game, int y, int x, int direction);
+int			ft_rand(void);
+void		ft_randomize(t_game *game);
 
 //error.c
 void		ft_print_error(int type);
+
+//utils.c
+char		**ft_create_doubleptr(t_size size);
+void		ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
+void		ft_free_doubleptr(char **grid);
+void		imprimir_patron1(void);
+void		imprimir_patron2(void);
+void		ft_free(t_game game);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:43:08 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:25:28 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,21 @@ void	ft_print_map(t_game *game)
 		y++;
 	}
 	ft_print_info(*game);
+}
+
+//Prints info on the window.
+void	ft_print_info(t_game game)
+{
+	mlx_string_put(game.window.mlx, game.window.win, 5, 10, 0x00000000, \
+	"MOVES");
+	mlx_string_put(game.window.mlx, game.window.win, 5, 20, 0x00000000, \
+	ft_itoa(game.steps));
+	mlx_string_put(game.window.mlx, game.window.win, 5, 30, 0x00000000, \
+	"COLLECTABLES:");
+	mlx_string_put(game.window.mlx, game.window.win, 5, 40, 0x00000000, \
+	ft_itoa(game.coll));
+	mlx_string_put(game.window.mlx, game.window.win, 10, 40, 0x00000000, \
+	"/");
+	mlx_string_put(game.window.mlx, game.window.win, 15, 40, 0x00000000, \
+	ft_itoa(game.map.n_coll));
 }
