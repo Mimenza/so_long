@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 13:21:41 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:17:58 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ typedef struct s_enemy
 //store all the information about the player
 typedef struct s_player
 {
-	t_position position;
+	t_position pos;
 	int		framerate;
 	int		skin;
 }				t_player;
@@ -136,7 +136,7 @@ typedef struct s_game
 {
 	t_window	window;
 	t_map		map;
-	t_player	player;
+	t_player	p;
 	int			steps;
 	int			coll;
 	t_exit		exit;
@@ -204,7 +204,7 @@ void		ft_print_map(t_game *game);
 
 //move.c
 int			ft_move_player(t_game *game, int x, int y);
-int			ft_move_enemy(t_game *game, int x, int y, int ox, int oy);
+int			ft_move_enemy(t_game *game, int x, int y, t_position pos);
 
 //enemy.c
 void		ft_randomize(t_game *game);

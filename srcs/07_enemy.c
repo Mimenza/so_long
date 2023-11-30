@@ -6,17 +6,16 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 13:28:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:12:32 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-void	ft_found_enemy(t_game *game)
+void	ft_enemy_nbr(t_game *game)
 {
 	int		y;
 	int		x;
-	int		i;
 	t_enemy	*enemy;
 
 	y = 0;
@@ -32,9 +31,19 @@ void	ft_found_enemy(t_game *game)
 		}
 		y++;
 	}
-	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
-	i = 0;
+}
+
+void	ft_found_enemy(t_game *game)
+{
+	int		y;
+	int		x;
+	int		i;
+	t_enemy	*enemy;
+
 	y = 0;
+	i = 0;
+	ft_enemy_nbr(game);
+	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
 	while (game->map.grid[y])
 	{
 		x = 0;
@@ -57,19 +66,19 @@ void	ft_select_movement(t_game game, int y, int x, int direction)
 {
 	if (direction == 0)
 	{
-		ft_move_enemy(&game, x, (y - 1), x, y);
+		ft_move_enemy(&game, x, (y - 1), (t_position){x, y});
 	}
 	else if (direction == 1)
 	{
-		ft_move_enemy(&game, x, (y + 1), x, y);
+		ft_move_enemy(&game, x, (y + 1), (t_position){x, y});
 	}
 	else if (direction == 2)
 	{
-		ft_move_enemy(&game, (x + 1), y, x, y);
+		ft_move_enemy(&game, (x + 1), y, (t_position){x, y});
 	}
 	else if (direction == 3)
 	{
-		ft_move_enemy(&game, (x - 1), y, x, y);
+		ft_move_enemy(&game, (x - 1), y, (t_position){x, y});
 	}
 	else
 		return ;

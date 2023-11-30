@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 13:16:52 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:38:08 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,11 @@ int	ft_check_item(char c, int *player, int *exit, int *coll, int mode)
 	if (mode == 1)
 	{
 		if (*player != 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 PLAYER\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 PLAYER\n");
 		if (*exit != 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE ONLY 1 EXIT\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE ONLY 1 EXIT\n");
 		if (*coll < 1)
-			ft_printf("\033[1;31m [KO] \033[0m\n--> THERE MUST BE MIN 1 COLL\n");
+			ft_printf("\033[1;31m [KO] \033[0m\n--> MUST BE MIN 1 COLL\n");
 		if ((*player == 1) && (*exit == 1) && (*coll >= 1))
 			return (1);
 	}

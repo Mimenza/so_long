@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 13:25:53 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:18:50 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_animate_player(t_game game)
 	static int	dir;
 	static int	frame;
 
-	y = game.player.position.y;
+	y = game.p.pos.y;
 	mlx_clear_window(game.window.mlx, game.window.win);
 	if (frame == ANIMATION_FRAMES)
 		dir = 1;
@@ -37,30 +37,35 @@ void	ft_animate_player(t_game game)
 	}
 	ft_randomize(&game);
 	ft_print_map(&game);
-	mlx_put_image_to_window(game.window.mlx, game.window.win, game.window.img[game.player.skin], game.player.position.x * PX, game.player.position.y * 48 + y);
+	mlx_put_image_to_window(game.window.mlx, game.window.win, \
+	game.window.img[game.p.skin], game.p.pos.x * PX, game.p.pos.y * 48 + y);
 }
 
 void	ft_input2(int key, t_game *game)
 {
 	if (key == KEY_D || key == KEY_RIGHT)
 	{
-		game->player.skin = 6;
-		ft_move_player(game, game->player.position.x + 1, game->player.position.y);
+		game->p.skin = 6;
+		ft_move_player(game, game->p.pos.x + 1, \
+		game->p.pos.y);
 	}
 	else if (key == KEY_A || key == KEY_LEFT)
 	{
-		game->player.skin = 5;
-		ft_move_player(game, game->player.position.x - 1, game->player.position.y);
+		game->p.skin = 5;
+		ft_move_player(game, game->p.pos.x - 1, \
+		game->p.pos.y);
 	}
 	else if (key == KEY_W || key == KEY_UP)
 	{
-		game->player.skin = 4;
-		ft_move_player(game, game->player.position.x, game->player.position.y - 1);
+		game->p.skin = 4;
+		ft_move_player(game, game->p.pos.x, \
+		game->p.pos.y - 1);
 	}
 	else if (key == KEY_S || key == KEY_DOWN)
 	{
-		game->player.skin = 3;
-		ft_move_player(game, game->player.position.x, game->player.position.y + 1);
+		game->p.skin = 3;
+		ft_move_player(game, game->p.pos.x, \
+		game->p.pos.y + 1);
 	}
 }
 
