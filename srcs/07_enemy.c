@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 12:07:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:28:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_found_enemy(t_game *game)
 		{
 			if (game->map.grid[y][x] == 'B')
 			{
-				enemy[i].x_pos = x;
-				enemy[i].y_pos = y;
+				enemy[i].position.x = x;
+				enemy[i].position.y = y;
 				i++;
 			}
 			x++;
@@ -102,8 +102,8 @@ void	ft_randomize(t_game *game)
 		y = 0;
 		while (i < game->enemy_nbr)
 		{
-			ft_select_movement(*game, game->enemy[i].y_pos, \
-			game->enemy[i].x_pos, ft_rand());
+			ft_select_movement(*game, game->enemy[i].position.y, \
+			game->enemy[i].position.x, ft_rand());
 			i++;
 		}
 		speed = 0;

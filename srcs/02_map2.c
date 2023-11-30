@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:11:22 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:24:12 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ t_player	ft_locate_player(t_map map)
 		{
 			if (grid[y][x] == 'P')
 			{
-				player.x_pos = x;
-				player.y_pos = y;
+				player.position.x = x;
+				player.position.y = y;
 				player.framerate = ANIMATION_FRAMES;
+				player.skin = 3;
 				return (player);
 			}
 			x++;
@@ -101,8 +102,8 @@ t_exit	ft_locate_exit(t_map map)
 		{
 			if (grid[y][x] == 'E')
 			{
-				exit.x_pos = x;
-				exit.y_pos = y;
+				exit.position.x = x;
+				exit.position.y = y;
 				return (exit);
 			}
 			x++;

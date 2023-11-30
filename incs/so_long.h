@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/28 11:53:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:21:41 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@
 # define FLOOR		"./textures/floor/grass.xpm"
 # define WALL		"./textures/wall/wall.xpm"
 # define COLL		"./textures/collectable/coin_3.xpm"
+
 # define PLAYER_U	"./textures/player/player_up.xpm"
 # define PLAYER_D	"./textures/player/player_down.xpm"
 # define PLAYER_L	"./textures/player/player_left.xpm"
 # define PLAYER_R	"./textures/player/player_right.xpm"
+
 # define EXIT_C		"./textures/exit/exit_c.xpm"
 # define EXIT_O		"./textures/exit/exit_o.xpm"
 # define COLL_A_1	"./textures/collectable/coin_1.xpm"
@@ -85,6 +87,12 @@ typedef struct s_size
 	int		h;
 }			t_size;
 
+typedef struct s_position
+{
+	int		x;
+	int		y;
+}			t_position;
+
 // store all information about the window
 typedef struct s_window
 {
@@ -107,22 +115,20 @@ typedef struct s_map
 //store all the information about the exit
 typedef struct s_exit
 {
-	int		x_pos;
-	int		y_pos;
+	t_position position;
 }				t_exit;
 
 typedef struct s_enemy
 {
-	int		x_pos;
-	int		y_pos;
+	t_position position;
 }				t_enemy;
 
 //store all the information about the player
 typedef struct s_player
 {
-	int		x_pos;
-	int		y_pos;
+	t_position position;
 	int		framerate;
+	int		skin;
 }				t_player;
 
 // store all information about the game
@@ -202,6 +208,6 @@ int			ft_move_enemy(t_game *game, int x, int y, int ox, int oy);
 
 //enemy.c
 void		ft_randomize(t_game *game);
-int 		ft_rand(void);
+int			ft_rand(void);
 void		ft_select_movement(t_game game, int y, int x, int direction);
 #endif

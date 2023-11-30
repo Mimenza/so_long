@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/16 17:00:17 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:50:20 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	ft_check_ext(char *str, char *ext)
 int	main(int argc, char **argv)
 {
 	t_game		game;
-	char		**grid;
 
 	system("clear");
 	imprimir_patron();

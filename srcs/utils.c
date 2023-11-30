@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/27 11:05:36 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:11:32 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_free_doubleptr(char **grid)
 	int	i;
 
 	i = 0;
+	if (grid == NULL)
+		return ;
 	while (grid[i] != NULL)
 	{
 		free(grid[i]);
