@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:35:31 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 15:42:25 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:00:40 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //This function closes the window.
 int	ft_close(void)
 {
+	print_game_over();
 	exit(0);
 }
 
