@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:52:01 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:15:44 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_load(t_game *game, char *path, int i)
 	game->window.img[i] = mlx_xpm_file_to_image(game->window.mlx, path, &w, &h);
 	if (game->window.img[i] == NULL)
 	{
-		printf("ERROR %i\n", i);
+		printf("ERROR LOADING IMGS%i\n", i);
 		return ;
 	}
 }

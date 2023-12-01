@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:00:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:17:18 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_move_player2(t_game *game, int x, int y)
 	game->p.pos.y = y;
 	game->p.pos.x = x;
 	game->steps++;
-	ft_printf("NUMERO DE MOVIMIENTOS DADOS : %i\n", game->steps);
+	ft_printf("NUMBER OF MOVES: %i\n", game->steps);
 }
 
 //Main function which moves the player.
@@ -74,7 +74,7 @@ int	ft_move_enemy(t_game *game, int x, int y, t_position pos)
 	{
 		if (game->map.grid[y][x] == 'P')
 		{
-			ft_printf("\033[0;32m PLAYER ELIMINATE \033[0m\n");
+			ft_printf("\033[0;32m PLAYER ELIMINATED \033[0m\n");
 			ft_close();
 		}
 		mlx_clear_window(game->window.mlx, game->window.win);
