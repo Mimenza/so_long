@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:25:24 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:48:29 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_found_enemy(t_game *game)
 			{
 				enemy[i].position.x = x;
 				enemy[i].position.y = y;
-				enemy[i].skin = 0;
+				enemy[i].skin = 3;
 				i++;
 			}
 			x++;

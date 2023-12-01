@@ -6,12 +6,20 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:20:16 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:00:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
+//Prints the #of coins and opens the exit
+void	ft_check_coin(t_game *game)
+{
+	ft_printf("\033[0;32m COIN COLLECTED! %i/%i \033[0m\n", \
+			game->coll, game->map.n_coll);
+	if (game->coll == game->map.n_coll)
+		game->exit.skin = 11;
+}
 //Aux function which moves the player.
 void	ft_move_player2(t_game *game, int x, int y)
 {
@@ -37,8 +45,7 @@ int	ft_move_player(t_game *game, int x, int y)
 		if (game->map.grid[y][x] == 'C')
 		{
 			game->coll += 1;
-			ft_printf("\033[0;32m COIN COLLECTED! %i/%i \033[0m\n", \
-			game->coll, game->map.n_coll);
+			ft_check_coin(game);
 		}
 		if (game->map.grid[y][x] == 'E')
 		{

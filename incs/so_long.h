@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:28:29 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:53:29 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_map
 typedef struct s_exit
 {
 	t_position	position;
+	int			skin;
 }				t_exit;
 
 typedef struct s_enemy
@@ -218,7 +219,7 @@ int			ft_input(int key, void *param);
 int			ft_update(void *param);
 
 //print_map.c
-void		ft_put_img(t_game *game, int x, int y);
+void		ft_put_img(t_game *game, int x, int y, int enemy_nbr);
 void		ft_print_map(t_game *game);
 void		ft_print_info(t_game game);
 

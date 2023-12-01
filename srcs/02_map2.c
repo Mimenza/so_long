@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 20:52:38 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:56:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ t_exit	ft_locate_exit(t_map map)
 			{
 				exit.position.x = x;
 				exit.position.y = y;
+				exit.skin = 10;
 				return (exit);
 			}
 			x++;
