@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:14:13 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:17:23 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_load(t_game *game, char *path, int i)
 	game->window.img[i] = mlx_xpm_file_to_image(game->window.mlx, path, &w, &h);
 	if (game->window.img[i] == NULL)
 	{
-		printf("ERROR\n");
+		printf("ERROR %i\n", i);
 		return ;
 	}
 }
@@ -29,30 +29,36 @@ void	ft_load(t_game *game, char *path, int i)
 //This function loads the imgs path into the array.
 void	ft_load_imgs(t_game *game)
 {
-	char	files[IMG_COUNT][40];
+	char	files[IMG_COUNT][42];
 	int		i;
 
-	ft_strlcpy(files[0], FLOOR, 39);
-	ft_strlcpy(files[1], WALL, 39);
-	ft_strlcpy(files[2], COLL, 39);
-	ft_strlcpy(files[3], PLAYER_D, 39);
-	ft_strlcpy(files[4], PLAYER_U, 39);
-	ft_strlcpy(files[5], PLAYER_L, 39);
-	ft_strlcpy(files[6], PLAYER_R, 39);
-	ft_strlcpy(files[7], EXIT_C, 39);
-	ft_strlcpy(files[8], EXIT_O, 39);
-	ft_strlcpy(files[9], COLL_A_1, 39);
-	ft_strlcpy(files[10], COLL_A_2, 39);
-	ft_strlcpy(files[11], COLL_A_3, 39);
-	ft_strlcpy(files[12], COLL_A_4, 39);
-	ft_strlcpy(files[13], COLL_A_5, 39);
-	ft_strlcpy(files[14], COLL_A_6, 39);
-	ft_strlcpy(files[15], COLL_A_7, 39);
-	ft_strlcpy(files[16], COLL_A_8, 39);
-	ft_strlcpy(files[17], ENEMY, 39);
-	i = -1;
-	while (++i < IMG_COUNT)
+	ft_strlcpy(files[0], FLOOR, 41);
+	ft_strlcpy(files[1], WALL, 41);	
+	ft_strlcpy(files[2], ENEMY_U, 41);
+	ft_strlcpy(files[3], ENEMY_D, 41);
+	ft_strlcpy(files[4], ENEMY_L, 41);
+	ft_strlcpy(files[5], ENEMY_R, 41);	
+	ft_strlcpy(files[6], PLAYER_U, 41);
+	ft_strlcpy(files[7], PLAYER_D, 41);
+	ft_strlcpy(files[8], PLAYER_L, 41);
+	ft_strlcpy(files[9], PLAYER_R, 41);	
+	ft_strlcpy(files[10], EXIT_C, 41);
+	ft_strlcpy(files[11], EXIT_O, 41);	
+	ft_strlcpy(files[12], COIN_1, 41);
+	ft_strlcpy(files[13], COIN_2, 41);
+	ft_strlcpy(files[14], COIN_3, 41);
+	ft_strlcpy(files[15], COIN_4, 41);
+	ft_strlcpy(files[16], COIN_5, 41);
+	ft_strlcpy(files[17], COIN_6, 41);
+	ft_strlcpy(files[18], COIN_7, 41);
+	ft_strlcpy(files[19], COIN_8, 41);
+
+	i = IMG_COUNT - 1;
+	while (i >= 0)
+	{
 		ft_load(game, files[i], i);
+		i--;
+	}
 }
 
 //Main function which starts the game.
@@ -96,6 +102,7 @@ t_game	ft_create_game(char *strmap, t_game *game)
 	game->steps = 0;
 	game->created = 1;
 	game->enemy_nbr = 0;
+	game->coll_skin = 0;
 	ft_start_game(*game);
 	return (*game);
 }

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:15:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 20:52:38 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_player	ft_locate_player(t_map map)
 				player.pos.x = x;
 				player.pos.y = y;
 				player.framerate = ANIMATION_FRAMES;
-				player.skin = 3;
+				player.skin = 7;
 				return (player);
 			}
 			x++;

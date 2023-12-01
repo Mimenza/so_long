@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 17:00:08 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:28:29 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@
 // ----------------------------------
 // MACROS
 
-// Pixel size of each .xpm file (48 x 48)
-# define PX	48
+// Pixel size of each .xpm file (16x16)
+# define PX	16
 
-# define SPEED 10 // the lower the fastest the enemy moves
+# define SPEED 1000 // the lower the fastest the enemy moves
 
 // Key Codes for MacOS
-# define KEY_ESC	53
-# define KEY_W		13
-# define KEY_A		0
-# define KEY_S		1
-# define KEY_D		2
-# define KEY_UP		126
-# define KEY_DOWN	125
-# define KEY_LEFT	123
-# define KEY_RIGHT	124
+// # define KEY_ESC	53
+// # define KEY_W		13
+// # define KEY_A		0
+// # define KEY_S		1
+// # define KEY_D		2
+// # define KEY_UP		126
+// # define KEY_DOWN	125
+// # define KEY_LEFT	123
+// # define KEY_RIGHT	124
 
 // MacOS Events
 # define ON_KEYDOWN		2
@@ -48,29 +48,47 @@
 # define ON_EXPOSE		12
 # define ON_DESTROY		17
 
+// Key Codes for Linux
+# define KEY_ESC	65307
+# define KEY_W		119
+# define KEY_A		97
+# define KEY_S		115
+# define KEY_D		100
+# define KEY_UP		1234
+# define KEY_DOWN	1234
+# define KEY_LEFT	1234
+# define KEY_RIGHT	1234
+
 // Assets location
-# define ANIMATION_FRAMES 50
-# define IMG_COUNT	18
-# define FLOOR		"./textures/floor/grass.xpm"
-# define WALL		"./textures/wall/wall.xpm"
-# define COLL		"./textures/collectable/coin_3.xpm"
+# define ANIMATION_FRAMES 1000
+# define COIN_ROTATION	2000
+# define IMG_COUNT	20
 
-# define PLAYER_U	"./textures/player/player_up.xpm"
-# define PLAYER_D	"./textures/player/player_down.xpm"
-# define PLAYER_L	"./textures/player/player_left.xpm"
-# define PLAYER_R	"./textures/player/player_right.xpm"
+# define FLOOR			"./textures_custom/floor/grass.xpm"
+# define WALL			"./textures_custom/wall/rock.xpm"
 
-# define EXIT_C		"./textures/exit/exit_c.xpm"
-# define EXIT_O		"./textures/exit/exit_o.xpm"
-# define COLL_A_1	"./textures/collectable/coin_1.xpm"
-# define COLL_A_2	"./textures/collectable/coin_2.xpm"
-# define COLL_A_3	"./textures/collectable/coin_3.xpm"
-# define COLL_A_4	"./textures/collectable/coin_4.xpm"
-# define COLL_A_5	"./textures/collectable/coin_5.xpm"
-# define COLL_A_6	"./textures/collectable/coin_6.xpm"
-# define COLL_A_7	"./textures/collectable/coin_7.xpm"
-# define COLL_A_8	"./textures/collectable/coin_8.xpm"
-# define ENEMY		"./textures/enemy/enemy.xpm"
+# define PLAYER_U		"./textures_custom/player/back.xpm"
+# define PLAYER_D		"./textures_custom/player/front.xpm"
+# define PLAYER_L		"./textures_custom/player/left.xpm"
+# define PLAYER_R		"./textures_custom/player/right.xpm"
+
+# define ENEMY_U		"./textures_custom/enemy/back.xpm"
+# define ENEMY_D		"./textures_custom/enemy/down.xpm"
+# define ENEMY_L		"./textures_custom/enemy/left.xpm"
+# define ENEMY_R		"./textures_custom/enemy/right.xpm"
+
+# define EXIT_C			"./textures_custom/exit/c_chest.xpm"
+# define EXIT_O			"./textures_custom/exit/o_chest.xpm"
+
+# define COIN_1			"./textures_custom/collectable/coin_1.xpm"
+# define COIN_2			"./textures_custom/collectable/coin_2.xpm"
+# define COIN_3			"./textures_custom/collectable/coin_3.xpm"
+# define COIN_4			"./textures_custom/collectable/coin_4.xpm"
+# define COIN_5			"./textures_custom/collectable/coin_5.xpm"
+# define COIN_6			"./textures_custom/collectable/coin_6.xpm"
+# define COIN_7			"./textures_custom/collectable/coin_7.xpm"
+# define COIN_8			"./textures_custom/collectable/coin_8.xpm"
+
 // ----------------------------------
 
 typedef struct s_coords
@@ -121,6 +139,7 @@ typedef struct s_exit
 typedef struct s_enemy
 {
 	t_position	position;
+	int			skin;
 }				t_enemy;
 
 //store all the information about the player
@@ -139,6 +158,7 @@ typedef struct s_game
 	t_player	p;
 	int			steps;
 	int			coll;
+	int			coll_skin;
 	t_exit		exit;
 	int			created;
 	t_enemy		*enemy;
@@ -192,7 +212,7 @@ int			ft_close(void);
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 
 //hooks.c
-void		ft_animate_player(t_game game);
+void		ft_animate_coin(t_game *game);
 void		ft_input2(int key, t_game *game);
 int			ft_input(int key, void *param);
 int			ft_update(void *param);

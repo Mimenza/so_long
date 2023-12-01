@@ -1,6 +1,6 @@
 /* XPM */
 static char * front_xpm[] = {
-"16 16 11 1",
+"16 16 10 1",
 " 	c None",
 ".	c #14182E",
 "+	c #3A3F5E",

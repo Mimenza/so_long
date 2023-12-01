@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 17:05:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:26:58 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ void	ft_put_img(t_game *game, int x, int y)
 		mlx_put_image_to_window(game->window.mlx, \
 		game->window.win, game->window.img[1], x * PX, y * PX);
 	if (grid[y][x] == 'C')
-		mlx_put_image_to_window(game->window.mlx, \
-		game->window.win, game->window.img[2], x * PX, y * PX);
+		mlx_put_image_to_window(game->window.mlx, game->window.win, \
+		game->window.img[12 + game->coll_skin], x * PX, y * PX);
 	if (grid[y][x] == 'E')
 		mlx_put_image_to_window(game->window.mlx, \
-		game->window.win, game->window.img[7], x * PX, y * PX);
+		game->window.win, game->window.img[10], x * PX, y * PX);
 	if (grid[y][x] == 'B')
 		mlx_put_image_to_window(game->window.mlx, \
-		game->window.win, game->window.img[17], x * PX, y * PX);
+		game->window.win, game->window.img[3], x * PX, y * PX);
+	if (grid[y][x] == 'P')
+		mlx_put_image_to_window(game->window.mlx, game->window.win, \
+		game->window.img[game->p.skin], game->p.pos.x * PX, game->p.pos.y * PX + y);
 }
 
 //Main function which prints the map into the window.
