@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:53:29 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:46:04 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PX	16
 
 # define SPEED 1000 // the lower the fastest the enemy moves
-
+# define COIN_ROTATION	5000 //The te lower the lower the coin rotates
 // Key Codes for MacOS
 // # define KEY_ESC	53
 // # define KEY_W		13
@@ -60,8 +60,6 @@
 # define KEY_RIGHT	1234
 
 // Assets location
-# define ANIMATION_FRAMES 1000
-# define COIN_ROTATION	2000
 # define IMG_COUNT	20
 
 # define FLOOR			"./textures_custom/floor/grass.xpm"
@@ -147,7 +145,6 @@ typedef struct s_enemy
 typedef struct s_player
 {
 	t_position	pos;
-	int			framerate;
 	int			skin;
 }				t_player;
 
@@ -226,12 +223,12 @@ void		ft_print_info(t_game game);
 //move.c
 void		ft_move_player2(t_game *game, int x, int y);
 int			ft_move_player(t_game *game, int x, int y);
-int			ft_move_enemy(t_game *game, int x, int y, t_position pos);
+int			ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr);
 
 //enemy.c
-void		ft_enemy_nbr(t_game *game);
+int			ft_enemy_nbr(t_game *game);
 void		ft_found_enemy(t_game *game);
-void		ft_select_movement(t_game game, int y, int x, int direction);
+void		ft_select_movement(t_game game, int y, int x, int direction, int enemy_nbr);
 int			ft_rand(void);
 void		ft_randomize(t_game *game);
 

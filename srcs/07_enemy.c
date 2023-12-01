@@ -6,20 +6,21 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:48:29 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:46:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Function that counts the enemy nbr on the map.
-void	ft_enemy_nbr(t_game *game)
+int	ft_enemy_nbr(t_game *game)
 {
 	int		y;
 	int		x;
-	t_enemy	*enemy;
+	int		count;
 
 	y = 0;
+	count = 0;
 	game->enemy_nbr = 0;
 	while (game->map.grid[y])
 	{
@@ -27,62 +28,36 @@ void	ft_enemy_nbr(t_game *game)
 		while (game->map.grid[y][x])
 		{
 			if (game->map.grid[y][x] == 'B')
-				game->enemy_nbr++;
+				count++;
 			x++;
 		}
 		y++;
 	}
-}
-
-//Function that founds the enemy on the map and creates the enemy struct.
-void	ft_found_enemy(t_game *game)
-{
-	int		y;
-	int		x;
-	int		i;
-	t_enemy	*enemy;
-
-	y = 0;
-	i = 0;
-	ft_enemy_nbr(game);
-	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
-	while (game->map.grid[y])
-	{
-		x = 0;
-		while (game->map.grid[y][x])
-		{
-			if (game->map.grid[y][x] == 'B')
-			{
-				enemy[i].position.x = x;
-				enemy[i].position.y = y;
-				enemy[i].skin = 3;
-				i++;
-			}
-			x++;
-		}
-		y++;
-	}
-	game->enemy = enemy;
+	return (count);
 }
 
 //Function that gives a direction to the enemy.
-void	ft_select_movement(t_game game, int y, int x, int direction)
+void	ft_select_movement(t_game game, int y, int x, int direction, int enemy_nbr)
 {
 	if (direction == 0)
 	{
-		ft_move_enemy(&game, x, (y - 1), (t_position){x, y});
+		ft_move_enemy(&game, (t_position){x, y - 1}, (t_position){x, y}, enemy_nbr);
+		game.enemy[enemy_nbr].skin = 2;
 	}
 	else if (direction == 1)
 	{
-		ft_move_enemy(&game, x, (y + 1), (t_position){x, y});
+		ft_move_enemy(&game, (t_position){x, y + 1}, (t_position){x, y}, enemy_nbr);
+		game.enemy[enemy_nbr].skin = 3;
 	}
 	else if (direction == 2)
 	{
-		ft_move_enemy(&game, (x + 1), y, (t_position){x, y});
+		ft_move_enemy(&game, (t_position){x + 1, y}, (t_position){x, y}, enemy_nbr);
+		game.enemy[enemy_nbr].skin = 5;
 	}
 	else if (direction == 3)
 	{
-		ft_move_enemy(&game, (x - 1), y, (t_position){x, y});
+		ft_move_enemy(&game, (t_position){x - 1, y}, (t_position){x, y}, enemy_nbr);
+		game.enemy[enemy_nbr].skin = 4;
 	}
 	else
 		return ;
@@ -118,7 +93,7 @@ void	ft_randomize(t_game *game)
 		while (i < game->enemy_nbr)
 		{
 			ft_select_movement(*game, game->enemy[i].position.y, \
-			game->enemy[i].position.x, ft_rand());
+			game->enemy[i].position.x, ft_rand(), i);
 			i++;
 		}
 		speed = 0;

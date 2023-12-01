@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:15:44 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:34:34 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_start_game(t_game game)
 	game.map.size->h * PX, "SO_LONG");
 	game.window = win;
 	ft_load_imgs(&game);
+	ft_found_enemy(&game);
 	mlx_key_hook(game.window.win, *ft_input, &game);
 	mlx_loop_hook(game.window.mlx, *ft_update, &game);
 	mlx_loop(mlx);
@@ -100,7 +101,7 @@ t_game	ft_create_game(char *strmap, t_game *game)
 	game->coll = 0;
 	game->steps = 0;
 	game->created = 1;
-	game->enemy_nbr = 0;
+	game->enemy_nbr = ft_enemy_nbr(game);
 	game->coll_skin = 0;
 	ft_start_game(*game);
 	return (*game);

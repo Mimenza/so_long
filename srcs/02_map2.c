@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 22:56:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:28:55 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ t_player	ft_locate_player(t_map map)
 			{
 				player.pos.x = x;
 				player.pos.y = y;
-				player.framerate = ANIMATION_FRAMES;
 				player.skin = 7;
 				return (player);
 			}
@@ -112,4 +111,34 @@ t_exit	ft_locate_exit(t_map map)
 		y++;
 	}
 	return (exit);
+}
+
+//Function that founds the enemy on the map and creates the enemy struct.
+void	ft_found_enemy(t_game *game)
+{
+	int		y;
+	int		x;
+	int		i;
+	t_enemy	*enemy;
+
+	y = 0;
+	i = 0;
+	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
+	while (game->map.grid[y])
+	{
+		x = 0;
+		while (game->map.grid[y][x])
+		{
+			if (game->map.grid[y][x] == 'B')
+			{
+				enemy[i].position.x = x;
+				enemy[i].position.y = y;
+				enemy[i].skin = 3;
+				i++;
+			}
+			x++;
+		}
+		y++;
+	}
+	game->enemy = enemy;
 }

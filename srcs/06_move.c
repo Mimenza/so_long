@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:17:18 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/01 23:45:35 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,22 +67,22 @@ int	ft_move_player(t_game *game, int x, int y)
 }
 
 //Main function which moves the enemy.
-int	ft_move_enemy(t_game *game, int x, int y, t_position pos)
+int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr)
 {
-	if (game->map.grid[y][x] && (game->map.grid[y][x] == 'P' \
-	|| game->map.grid[y][x] == '0'))
+	if (game->map.grid[pos.y][pos.x] && (game->map.grid[pos.y][pos.x] == 'P' \
+	|| game->map.grid[pos.y][pos.x] == '0'))
 	{
-		if (game->map.grid[y][x] == 'P')
+		if (game->map.grid[pos.y][pos.x] == 'P')
 		{
 			ft_printf("\033[0;32m PLAYER ELIMINATED \033[0m\n");
 			ft_close();
 		}
 		mlx_clear_window(game->window.mlx, game->window.win);
-		game->map.grid[y][x] = 'B';
-		game->map.grid[pos.y][pos.x] = '0';
+		game->map.grid[pos.y][pos.x] = 'B';
+		game->map.grid[og_pos.y][og_pos.x] = '0';
 		return (1);
 	}
 	else
-		ft_select_movement(*game, pos.y, pos.x, (ft_rand()));
+		ft_select_movement(*game, og_pos.y, og_pos.x, (ft_rand()), enemy_nbr);
 	return (0);
 }
