@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:34:34 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:07:12 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_start_game(t_game game)
 		exit(EXIT_FAILURE);
 	}
 	win = ft_new_window(mlx, game.map.size->w * PX, \
-	game.map.size->h * PX, "SO_LONG");
+	game.map.size->h * PX + 48, "SO_LONG");
 	game.window = win;
 	ft_load_imgs(&game);
 	ft_found_enemy(&game);

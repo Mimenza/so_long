@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:46:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 01:56:01 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,23 @@ void	ft_select_movement(t_game game, int y, int x, int direction, int enemy_nbr)
 {
 	if (direction == 0)
 	{
-		ft_move_enemy(&game, (t_position){x, y - 1}, (t_position){x, y}, enemy_nbr);
 		game.enemy[enemy_nbr].skin = 2;
+		ft_move_enemy(&game, (t_position){x, y - 1}, (t_position){x, y}, enemy_nbr);		
 	}
 	else if (direction == 1)
 	{
-		ft_move_enemy(&game, (t_position){x, y + 1}, (t_position){x, y}, enemy_nbr);
 		game.enemy[enemy_nbr].skin = 3;
+		ft_move_enemy(&game, (t_position){x, y + 1}, (t_position){x, y}, enemy_nbr);		
 	}
 	else if (direction == 2)
 	{
-		ft_move_enemy(&game, (t_position){x + 1, y}, (t_position){x, y}, enemy_nbr);
 		game.enemy[enemy_nbr].skin = 5;
+		ft_move_enemy(&game, (t_position){x + 1, y}, (t_position){x, y}, enemy_nbr);		
 	}
 	else if (direction == 3)
 	{
-		ft_move_enemy(&game, (t_position){x - 1, y}, (t_position){x, y}, enemy_nbr);
 		game.enemy[enemy_nbr].skin = 4;
+		ft_move_enemy(&game, (t_position){x - 1, y}, (t_position){x, y}, enemy_nbr);		
 	}
 	else
 		return ;
