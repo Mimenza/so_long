@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 01:22:10 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 01:53:11 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // Pixel size of each .xpm file (16x16)
 # define PX	16
 
-# define SPEED 1000 // the lower the fastest the enemy moves
+# define SPEED 2000 // the lower the fastest the enemy moves
 # define COIN_ROTATION	5000 //The te lower the lower the coin rotates
 // Key Codes for MacOS
 // # define KEY_ESC	53
@@ -189,6 +189,7 @@ int			ft_strcustom(char *str, char c);
 int			ft_map_wall(char **grid, int w, int h);
 t_player	ft_locate_player(t_map map);
 t_exit		ft_locate_exit(t_map map);
+void		ft_found_enemy(t_game *game);
 
 //map3.c
 int			ft_expandable(char **grid, t_player *player);
@@ -210,25 +211,25 @@ void		ft_print_grid(char **grid);
 int			ft_close(void);
 t_window	ft_new_window(void *mlx, int widht, int height, char *name);
 
+//print_map.c
+void		ft_put_img(t_game *game, int x, int y, int enemy_nbr);
+void		ft_print_map(t_game *game);
+void		ft_print_info(t_game game);
+
 //hooks.c
 void		ft_animate_coin(t_game *game);
 void		ft_input2(int key, t_game *game);
 int			ft_input(int key, void *param);
 int			ft_update(void *param);
 
-//print_map.c
-void		ft_put_img(t_game *game, int x, int y, int enemy_nbr);
-void		ft_print_map(t_game *game);
-void		ft_print_info(t_game game);
-
 //move.c
+void		ft_check_coin(t_game *game);
 void		ft_move_player2(t_game *game, int x, int y);
 int			ft_move_player(t_game *game, int x, int y);
 int			ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr);
 
 //enemy.c
 int			ft_enemy_nbr(t_game *game);
-void		ft_found_enemy(t_game *game);
 void		ft_select_movement(t_game game, int y, int x, int direction, int enemy_nbr);
 int			ft_rand(void);
 void		ft_randomize(t_game *game);
