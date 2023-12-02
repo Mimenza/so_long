@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 01:53:11 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:41:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 // MACROS
 
 // Pixel size of each .xpm file (16x16)
-# define PX	16
+# define PX	48
 
-# define SPEED 2000 // the lower the fastest the enemy moves
+# define SPEED 4000 // the lower the fastest the enemy moves
 # define COIN_ROTATION	5000 //The te lower the lower the coin rotates
 // Key Codes for MacOS
 // # define KEY_ESC	53
@@ -62,31 +62,30 @@
 // Assets location
 # define IMG_COUNT	20
 
-# define FLOOR			"./textures_custom/floor/grass.xpm"
-# define WALL			"./textures_custom/wall/rock.xpm"
+# define FLOOR			"./textures/floor/grass.xpm"
+# define WALL			"./textures/wall/rock.xpm"
 
-# define PLAYER_U		"./textures_custom/player/back.xpm"
-//# define PLAYER_D		"./textures_custom/player/b.xpm"
-# define PLAYER_D		"./textures_custom/player/front.xpm"
-# define PLAYER_L		"./textures_custom/player/left.xpm"
-# define PLAYER_R		"./textures_custom/player/right.xpm"
+# define PLAYER_U		"./textures/player/back.xpm"
+# define PLAYER_D		"./textures/player/front.xpm"
+# define PLAYER_L		"./textures/player/left.xpm"
+# define PLAYER_R		"./textures/player/right.xpm"
 
-# define ENEMY_U		"./textures_custom/enemy/back.xpm"
-# define ENEMY_D		"./textures_custom/enemy/down.xpm"
-# define ENEMY_L		"./textures_custom/enemy/left.xpm"
-# define ENEMY_R		"./textures_custom/enemy/right.xpm"
+# define ENEMY_U		"./textures/enemy/back.xpm"
+# define ENEMY_D		"./textures/enemy/down.xpm"
+# define ENEMY_L		"./textures/enemy/left.xpm"
+# define ENEMY_R		"./textures/enemy/right.xpm"
 
-# define EXIT_C			"./textures_custom/exit/c_chest.xpm"
-# define EXIT_O			"./textures_custom/exit/o_chest.xpm"
+# define EXIT_C			"./textures/exit/c_chest.xpm"
+# define EXIT_O			"./textures/exit/o_chest.xpm"
 
-# define COIN_1			"./textures_custom/collectable/coin_1.xpm"
-# define COIN_2			"./textures_custom/collectable/coin_2.xpm"
-# define COIN_3			"./textures_custom/collectable/coin_3.xpm"
-# define COIN_4			"./textures_custom/collectable/coin_4.xpm"
-# define COIN_5			"./textures_custom/collectable/coin_5.xpm"
-# define COIN_6			"./textures_custom/collectable/coin_6.xpm"
-# define COIN_7			"./textures_custom/collectable/coin_7.xpm"
-# define COIN_8			"./textures_custom/collectable/coin_8.xpm"
+# define COIN_1			"./textures/collectable/coin_1.xpm"
+# define COIN_2			"./textures/collectable/coin_2.xpm"
+# define COIN_3			"./textures/collectable/coin_3.xpm"
+# define COIN_4			"./textures/collectable/coin_4.xpm"
+# define COIN_5			"./textures/collectable/coin_5.xpm"
+# define COIN_6			"./textures/collectable/coin_6.xpm"
+# define COIN_7			"./textures/collectable/coin_7.xpm"
+# define COIN_8			"./textures/collectable/coin_8.xpm"
 
 // ----------------------------------
 
