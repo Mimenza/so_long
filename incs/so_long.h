@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:46:04 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 01:22:10 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 # define WALL			"./textures_custom/wall/rock.xpm"
 
 # define PLAYER_U		"./textures_custom/player/back.xpm"
+//# define PLAYER_D		"./textures_custom/player/b.xpm"
 # define PLAYER_D		"./textures_custom/player/front.xpm"
 # define PLAYER_L		"./textures_custom/player/left.xpm"
 # define PLAYER_R		"./textures_custom/player/right.xpm"

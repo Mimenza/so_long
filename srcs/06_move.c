@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:45:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 01:36:48 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_check_coin(t_game *game)
 	if (game->coll == game->map.n_coll)
 		game->exit.skin = 11;
 }
+
 //Aux function which moves the player.
 void	ft_move_player2(t_game *game, int x, int y)
 {
@@ -69,8 +70,9 @@ int	ft_move_player(t_game *game, int x, int y)
 //Main function which moves the enemy.
 int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr)
 {
-	if (game->map.grid[pos.y][pos.x] && (game->map.grid[pos.y][pos.x] == 'P' \
-	|| game->map.grid[pos.y][pos.x] == '0'))
+	static int tries;
+
+	if (game->map.grid[pos.y][pos.x] && (game->map.grid[pos.y][pos.x] == 'P' || game->map.grid[pos.y][pos.x] == '0'))
 	{
 		if (game->map.grid[pos.y][pos.x] == 'P')
 		{
@@ -80,9 +82,15 @@ int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr
 		mlx_clear_window(game->window.mlx, game->window.win);
 		game->map.grid[pos.y][pos.x] = 'B';
 		game->map.grid[og_pos.y][og_pos.x] = '0';
+		tries = 0;
 		return (1);
 	}
-	else
+	if (tries <= 8)
+	{
+		tries++;
 		ft_select_movement(*game, og_pos.y, og_pos.x, (ft_rand()), enemy_nbr);
+		
+	}
+	tries = 0;		
 	return (0);
 }

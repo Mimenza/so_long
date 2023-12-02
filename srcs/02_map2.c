@@ -6,11 +6,12 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:28:55 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/02 01:29:58 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
+
 //Checks if the str has smth apart from c 
 int	ft_strcustom(char *str, char c)
 {
