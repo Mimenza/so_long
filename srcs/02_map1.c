@@ -6,18 +6,17 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:15:12 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:56:19 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Read the file and return the line with all the content
-char	*ft_read_file(char *strmap)
+char	*ft_read_file(char *strmap, char *t_line)
 {
 	char	*path;
 	int		fdmap;
-	char	*t_line;
 	char	*line;
 	char	*tmp;
 
@@ -26,7 +25,6 @@ char	*ft_read_file(char *strmap)
 	free(path);
 	if (fdmap == -1)
 		return (NULL);
-	t_line = ft_strdup("");
 	while (line)
 	{
 		line = get_next_line(fdmap);
@@ -49,7 +47,8 @@ int	ft_create_grid(char *strmap, char ***grid)
 	char	*file_content;
 
 	ft_printf("CREATING THE GRID....");
-	file_content = ft_read_file(strmap);
+	file_content = ft_strdup("");
+	file_content = ft_read_file(strmap, file_content);
 	if (file_content == NULL)
 	{
 		ft_print_error(2);

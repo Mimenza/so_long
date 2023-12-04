@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 09:41:30 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 12:26:56 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,22 @@ void	ft_load(t_game *game, char *path, int i)
 	}
 }
 
+void	ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game)
+{
+	int	i;
+
+	i = IMG_COUNT - 1;
+	while (i >= 0)
+	{
+		ft_load(game, files[i], i);
+		i--;
+	}
+}
+
 //This function loads the imgs path into the array.
 void	ft_load_imgs(t_game *game)
 {
 	char	files[IMG_COUNT][42];
-	int		i;
 
 	ft_strlcpy(files[0], FLOOR, 41);
 	ft_strlcpy(files[1], WALL, 41);
@@ -52,12 +63,7 @@ void	ft_load_imgs(t_game *game)
 	ft_strlcpy(files[17], COIN_6, 41);
 	ft_strlcpy(files[18], COIN_7, 41);
 	ft_strlcpy(files[19], COIN_8, 41);
-	i = IMG_COUNT - 1;
-	while (i >= 0)
-	{
-		ft_load(game, files[i], i);
-		i--;
-	}
+	ft_cpy_imgs(files, game);
 }
 
 //Main function which starts the game.

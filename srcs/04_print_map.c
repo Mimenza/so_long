@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 08:21:59 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:55:29 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,19 +66,29 @@ void	ft_print_map(t_game *game)
 //Prints info on the window.
 void	ft_print_info(t_game game)
 {
+	char	*steps;
+	char	*coll;
+	char	*n_coll;
+
+	steps = ft_itoa(game.steps);
+	coll = ft_itoa(game.coll);
+	n_coll = ft_itoa(game.map.n_coll);
 	mlx_string_put(game.window.mlx, game.window.win, 5, \
 	game.window.size->h - 10, 0x00FFFFFF, "MOVES:");
 	mlx_string_put(game.window.mlx, game.window.win, 45, \
-	game.window.size->h - 10, 0x00FFFFFF, ft_itoa(game.steps));
+	game.window.size->h - 10, 0x00FFFFFF, steps);
 	mlx_string_put(game.window.mlx, game.window.win, 5, \
 	game.window.size->h - 30, 0x00FFFFFF, "COLLECTABLES:");
 	mlx_string_put(game.window.mlx, game.window.win, 90, \
-	game.window.size->h - 30, 0x00FFFFFF, ft_itoa(game.coll));
+	game.window.size->h - 30, 0x00FFFFFF, coll);
 	mlx_string_put(game.window.mlx, game.window.win, 100, \
 	game.window.size->h - 30, 0x00FFFFFF, "/");
 	mlx_string_put(game.window.mlx, game.window.win, 110, \
-	game.window.size->h - 30, 0x00FFFFFF, ft_itoa(game.map.n_coll));
+	game.window.size->h - 30, 0x00FFFFFF, n_coll);
 	mlx_string_put(game.window.mlx, game.window.win, 130, \
 	game.window.size->h - 30, 0x00FFFFFF, "COLLECT ALL THE COINS \
 	ACROSS THE MAP AND SAVE THEM IN THE CHEST!");
+	free(steps);
+	free(coll);
+	free(n_coll);
 }
