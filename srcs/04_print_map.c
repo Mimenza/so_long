@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 17:24:27 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:21:59 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void	ft_put_img(t_game *game, int x, int y, int enemy_nbr)
 		game->window.win, game->window.img[game->exit.skin], x * PX, y * PX);
 	if (grid[y][x] == 'B')
 		mlx_put_image_to_window(game->window.mlx, \
-		game->window.win, game->window.img[game->enemy[enemy_nbr].skin], x * PX, y * PX);
+		game->window.win, game->window.img[game->enemy[enemy_nbr].skin], \
+		x * PX, y * PX);
 	if (grid[y][x] == 'P')
 		mlx_put_image_to_window(game->window.mlx, game->window.win, \
-		game->window.img[game->p.skin], game->p.pos.x * PX, game->p.pos.y * PX + y);
+		game->window.img[game->p.skin], game->p.pos.x * PX, \
+		game->p.pos.y * PX + y);
 }
 
 //Main function which prints the map into the window.
@@ -67,13 +69,13 @@ void	ft_print_info(t_game game)
 	mlx_string_put(game.window.mlx, game.window.win, 5, \
 	game.window.size->h - 10, 0x00FFFFFF, "MOVES:");
 	mlx_string_put(game.window.mlx, game.window.win, 45, \
-	game.window.size->h - 10, 0x00FFFFFF, ft_itoa(game.steps));	
+	game.window.size->h - 10, 0x00FFFFFF, ft_itoa(game.steps));
 	mlx_string_put(game.window.mlx, game.window.win, 5, \
 	game.window.size->h - 30, 0x00FFFFFF, "COLLECTABLES:");
 	mlx_string_put(game.window.mlx, game.window.win, 90, \
 	game.window.size->h - 30, 0x00FFFFFF, ft_itoa(game.coll));
 	mlx_string_put(game.window.mlx, game.window.win, 100, \
-	game.window.size->h - 30, 0x00FFFFFF,  "/");
+	game.window.size->h - 30, 0x00FFFFFF, "/");
 	mlx_string_put(game.window.mlx, game.window.win, 110, \
 	game.window.size->h - 30, 0x00FFFFFF, ft_itoa(game.map.n_coll));
 	mlx_string_put(game.window.mlx, game.window.win, 130, \

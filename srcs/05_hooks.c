@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/01 23:50:14 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:34:56 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,12 @@ void	ft_animate_coin(t_game *game)
 
 	if (c_frame % (COIN_ROTATION / 8) == 0 && c_frame != 0)
 		game->coll_skin += 1;
-
 	if (c_frame == COIN_ROTATION)
 	{
 		c_frame = 0;
 		game->coll_skin = 0;
 	}
-	
 	c_frame++;
-	
 }
 
 //Input loop aux function.
@@ -85,6 +82,6 @@ int	ft_update(void *param)
 	mlx_clear_window(game->window.mlx, game->window.win);
 	ft_randomize(game);
 	ft_animate_coin(game);
-	ft_print_map(game);	
+	ft_print_map(game);
 	return (0);
 }

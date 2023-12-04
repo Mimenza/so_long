@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 17:07:12 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:36:53 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ void	ft_load_imgs(t_game *game)
 	int		i;
 
 	ft_strlcpy(files[0], FLOOR, 41);
-	ft_strlcpy(files[1], WALL, 41);	
+	ft_strlcpy(files[1], WALL, 41);
 	ft_strlcpy(files[2], ENEMY_U, 41);
 	ft_strlcpy(files[3], ENEMY_D, 41);
 	ft_strlcpy(files[4], ENEMY_L, 41);
-	ft_strlcpy(files[5], ENEMY_R, 41);	
+	ft_strlcpy(files[5], ENEMY_R, 41);
 	ft_strlcpy(files[6], PLAYER_U, 41);
 	ft_strlcpy(files[7], PLAYER_D, 41);
 	ft_strlcpy(files[8], PLAYER_L, 41);
-	ft_strlcpy(files[9], PLAYER_R, 41);	
+	ft_strlcpy(files[9], PLAYER_R, 41);
 	ft_strlcpy(files[10], EXIT_C, 41);
-	ft_strlcpy(files[11], EXIT_O, 41);	
+	ft_strlcpy(files[11], EXIT_O, 41);
 	ft_strlcpy(files[12], COIN_1, 41);
 	ft_strlcpy(files[13], COIN_2, 41);
 	ft_strlcpy(files[14], COIN_3, 41);
@@ -52,7 +52,6 @@ void	ft_load_imgs(t_game *game)
 	ft_strlcpy(files[17], COIN_6, 41);
 	ft_strlcpy(files[18], COIN_7, 41);
 	ft_strlcpy(files[19], COIN_8, 41);
-
 	i = IMG_COUNT - 1;
 	while (i >= 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 01:36:48 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 08:33:07 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ int	ft_move_player(t_game *game, int x, int y)
 }
 
 //Main function which moves the enemy.
-int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr)
+int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int e_nbr)
 {
-	static int tries;
+	static int	tries;
 
-	if (game->map.grid[pos.y][pos.x] && (game->map.grid[pos.y][pos.x] == 'P' || game->map.grid[pos.y][pos.x] == '0'))
+	if (game->map.grid[pos.y][pos.x] && (game->map.grid[pos.y][pos.x] == 'P' || \
+	game->map.grid[pos.y][pos.x] == '0'))
 	{
 		if (game->map.grid[pos.y][pos.x] == 'P')
 		{
@@ -88,9 +89,9 @@ int	ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr
 	if (tries <= 8)
 	{
 		tries++;
-		ft_select_movement(*game, og_pos.y, og_pos.x, (ft_rand()), enemy_nbr);
-		
+		ft_select_movement(*game, (t_position){og_pos.x, og_pos.y}, \
+		ft_rand(), e_nbr);
 	}
-	tries = 0;		
+	tries = 0;
 	return (0);
 }
