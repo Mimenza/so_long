@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 13:59:56 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 08:34:36 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 09:28:58 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,17 @@ void	ft_select_movement(t_game game, t_position pos, int dir, int e_nbr)
 	}
 	else if (dir == 2)
 	{
-		game.enemy[e_nbr].skin = 5;
-		ft_move_enemy(&game, (t_position){pos.x + 1, pos.y}, \
-		(t_position){pos.x, pos.y}, e_nbr);
-	}
-	else if (dir == 3)
-	{
 		game.enemy[e_nbr].skin = 4;
 		ft_move_enemy(&game, (t_position){pos.x - 1, pos.y}, \
 		(t_position){pos.x, pos.y}, e_nbr);
 	}
+	else if (dir == 3)
+	{
+		game.enemy[e_nbr].skin = 5;
+		ft_move_enemy(&game, (t_position){pos.x + 1, pos.y}, \
+		(t_position){pos.x, pos.y}, e_nbr);
+	}
+	ft_print_map(&game);
 }
 
 //Return a 'random' number between 0 and 3.

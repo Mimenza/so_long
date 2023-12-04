@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/02 16:41:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:41:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
 # include "../libs/minilibx/mlx.h"
 # include "../libs/ft_printf/ft_printf.h"
 # include "../libs/gnl/get_next_line.h"
 # include "../libs/Libft/libft.h"
-# include <math.h>
 // ----------------------------------
 // MACROS
 
 // Pixel size of each .xpm file (16x16)
 # define PX	48
 
-# define SPEED 4000 // the lower the fastest the enemy moves
-# define COIN_ROTATION	5000 //The te lower the lower the coin rotates
+# define SPEED 50 // the lower the fastest the enemy moves
+# define COIN_ROTATION	50 //The te lower the fastest the coin rotates
 // Key Codes for MacOS
-// # define KEY_ESC	53
-// # define KEY_W		13
-// # define KEY_A		0
-// # define KEY_S		1
-// # define KEY_D		2
-// # define KEY_UP		126
-// # define KEY_DOWN	125
-// # define KEY_LEFT	123
-// # define KEY_RIGHT	124
+# define KEY_ESC	53
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define KEY_UP		126
+# define KEY_DOWN	125
+# define KEY_LEFT	123
+# define KEY_RIGHT	124
 
 // MacOS Events
 # define ON_KEYDOWN		2
@@ -49,15 +49,15 @@
 # define ON_DESTROY		17
 
 // Key Codes for Linux
-# define KEY_ESC	65307
-# define KEY_W		119
-# define KEY_A		97
-# define KEY_S		115
-# define KEY_D		100
-# define KEY_UP		1234
-# define KEY_DOWN	1234
-# define KEY_LEFT	1234
-# define KEY_RIGHT	1234
+// # define KEY_ESC	65307
+// # define KEY_W		119
+// # define KEY_A		97
+// # define KEY_S		115
+// # define KEY_D		100
+// # define KEY_UP		1234
+// # define KEY_DOWN	1234
+// # define KEY_LEFT	1234
+// # define KEY_RIGHT	1234
 
 // Assets location
 # define IMG_COUNT	20
@@ -182,7 +182,6 @@ int			ft_create_grid(char *strmap, char ***grid);
 int			ft_map_size(char **grid, t_size **size);
 int			ft_map_coll(char **grid);
 
-
 //map2.c
 int			ft_strcustom(char *str, char c);
 int			ft_map_wall(char **grid, int w, int h);
@@ -225,11 +224,13 @@ int			ft_update(void *param);
 void		ft_check_coin(t_game *game);
 void		ft_move_player2(t_game *game, int x, int y);
 int			ft_move_player(t_game *game, int x, int y);
-int			ft_move_enemy(t_game *game, t_position pos, t_position og_pos, int enemy_nbr);
+int			ft_move_enemy(t_game *game, t_position pos, \
+t_position og_pos, int enemy_nbr);
 
 //enemy.c
 int			ft_enemy_nbr(t_game *game);
-void		ft_select_movement(t_game game, int y, int x, int direction, int enemy_nbr);
+void		ft_select_movement(t_game game, t_position pos, \
+int direction, int enemy_nbr);
 int			ft_rand(void);
 void		ft_randomize(t_game *game);
 

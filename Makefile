@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/12/01 19:50:24 by emimenza         ###   ########.fr        #
+#    Updated: 2023/12/04 10:40:21 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ NC = \033[0m # No color (reiniciar)
 DEL			=	rm -f
 CC			=	gcc
 CCFLAGS		=	-Wall -Wextra -Werror
-# MLX			=	-framework OpenGL -framework AppKit 
-MLX			=	-lXext -lX11 -lm -lbsd 
+MLX			=	-framework OpenGL -framework AppKit
+#MLX			=	-lXext -lX11 -lm -lbsd 
 # -g3 -fsanitize=address
 
 #Nombre ejecutable
@@ -31,7 +31,7 @@ NAME		=	so_longer
 SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy 08_error 09_utils
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-MINILIBX	=	libs/minilibx-linux
+MINILIBX	=	libs/minilibx
 GNL			=	libs/gnl
 LIBFT		=	libs/Libft
 PRINTF		=	libs/ft_printf
