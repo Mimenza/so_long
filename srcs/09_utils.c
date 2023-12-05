@@ -6,27 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 09:20:58 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 17:05:19 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:03:24 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
-
-//This functions frees a double ptr.
-void	ft_free_doubleptr(char **grid)
-{
-	int	i;
-
-	i = 0;
-	if (grid == NULL)
-		return ;
-	while (grid[i] != NULL)
-	{
-		free(grid[i]);
-		i++;
-	}
-	free(grid);
-}
 
 //This function creates a double ptr.
 char	**ft_create_doubleptr(t_size size)

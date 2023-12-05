@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 13:55:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/05 12:48:25 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define PX	48
 
 # define SPEED 50 // the lower the fastest the enemy moves
-# define COIN_ROTATION	8 //The te lower the fastest the coin rotates
+# define COIN_ROTATION	80 //The te lower the fastest the coin rotates
 // Key Codes for MacOS
 # define KEY_ESC	53
 # define KEY_W		13
@@ -126,6 +126,7 @@ typedef struct s_map
 	int		n_coll;
 	int		created;
 	int		boss;
+	int		state;
 }			t_map;
 
 //store all the information about the exit
@@ -240,9 +241,12 @@ void		ft_print_error(int type);
 //utils.c
 char		**ft_create_doubleptr(t_size size);
 void		ft_copy_doubleptr(char **grid, char **p_grid, t_size size);
-void		ft_free_doubleptr(char **grid);
 void		print_game_name(void);
 void		print_game_over(void);
-void		ft_free(t_game game);
 
+//free.c
+void		ft_free_enemy(t_game game);
+void		ft_free_map_size(t_game game);
+void		ft_free_win_size(t_game game);
+void		ft_free_doubleptr(char **grid);
 #endif
