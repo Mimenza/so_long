@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/05 10:48:36 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:00:00 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	ft_map_size(char **grid, t_size **size)
 	(*size) = (t_size *)malloc(sizeof(t_size));
 	(*size)->w = x;
 	(*size)->h = y;
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (1);
 }
 
