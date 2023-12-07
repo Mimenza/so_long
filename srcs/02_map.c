@@ -6,14 +6,15 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/06 09:41:55 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:10:50 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 // Function to create and validate the grid
-char	**ft_create_and_validate_grid(char *strmap, t_size **size, int *n_coll)
+static char	**ft_create_and_validate_grid(char *strmap, \
+t_size **size, int *n_coll)
 {
 	char	**grid;
 
@@ -24,6 +25,7 @@ char	**ft_create_and_validate_grid(char *strmap, t_size **size, int *n_coll)
 		ft_free_doubleptr(grid);
 		return (NULL);
 	}
+	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	ft_printf("CHECKING THE MAP COLLECTABLES...");
 	*n_coll = ft_map_coll(grid);
 	if (*n_coll == 0 || !ft_map_wall(grid, (*size)->w, \

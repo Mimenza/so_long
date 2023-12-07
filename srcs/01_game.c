@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/05 13:15:34 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:45:13 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //This functions loads the imgs.
-void	ft_load(t_game *game, char *path, int i)
+static void	ft_load(t_game *game, char *path, int i)
 {
 	int		h;
 	int		w;
@@ -26,7 +26,7 @@ void	ft_load(t_game *game, char *path, int i)
 	}
 }
 
-void	ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game)
+static void	ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game)
 {
 	int	i;
 
@@ -39,7 +39,7 @@ void	ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game)
 }
 
 //This function loads the imgs path into the array.
-void	ft_load_imgs(t_game *game)
+static void	ft_load_imgs(t_game *game)
 {
 	char	files[IMG_COUNT][42];
 
@@ -67,7 +67,7 @@ void	ft_load_imgs(t_game *game)
 }
 
 //Main function which starts the game.
-void	ft_start_game(t_game game)
+static void	ft_start_game(t_game game)
 {
 	void		*mlx;
 	t_window	win;

@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 12:08:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:51:15 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Funtion which animates the coins.
-void	ft_animate_coin(t_game *game)
+static void	ft_animate_coin(t_game *game)
 {
 	static int	c_frame ;
 
@@ -28,7 +28,7 @@ void	ft_animate_coin(t_game *game)
 }
 
 //Input loop aux function.
-void	ft_input2(int key, t_game *game)
+static void	ft_input2(int key, t_game *game)
 {
 	if (key == KEY_D || key == KEY_RIGHT)
 	{

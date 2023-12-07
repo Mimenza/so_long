@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/06 10:00:00 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:10:03 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Read the file and return the line with all the content
-char	*ft_read_file(char *strmap, char *t_line)
+static char	*ft_read_file(char *strmap, char *t_line)
 {
 	char	*path;
 	int		fdmap;
@@ -92,7 +92,6 @@ int	ft_map_size(char **grid, t_size **size)
 	(*size) = (t_size *)malloc(sizeof(t_size));
 	(*size)->w = x;
 	(*size)->h = y;
-	ft_printf("\033[0;32m [OK] \033[0m\n\n");
 	return (1);
 }
 

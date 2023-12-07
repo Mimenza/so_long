@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/05 09:46:18 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:52:00 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Prints the #of coins and opens the exit
-void	ft_check_coin(t_game *game)
+static void	ft_check_coin(t_game *game)
 {
 	ft_printf("\033[0;32m COIN COLLECTED! %i/%i \033[0m\n", \
 			game->coll, game->map.n_coll);
@@ -22,7 +22,7 @@ void	ft_check_coin(t_game *game)
 }
 
 //Aux function which moves the player.
-void	ft_move_player2(t_game *game, int x, int y)
+static void	ft_move_player2(t_game *game, int x, int y)
 {
 	mlx_clear_window(game->window.mlx, game->window.win);
 	game->map.grid[y][x] = 'P';

@@ -6,13 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:18:18 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:06:07 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
+
 //Aux function which checks if the map is doable
-int	ft_expandable(char **grid, t_player *player)
+static int	ft_expandable(char **grid, t_player *player)
 {
 	int			x;
 	int			y;

@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/30 16:59:45 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:33:27 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //This function checks if the str given ends in the ext.
-int	ft_check_ext(char *str, char *ext)
+static int	ft_check_ext(char *str, char *ext)
 {
 	int	size_s;
 	int	size_ext;

@@ -6,14 +6,14 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/04 08:55:29 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:51:02 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
 //Aux function which prints the map into the window.
-void	ft_put_img(t_game *game, int x, int y, int enemy_nbr)
+static void	ft_put_img(t_game *game, int x, int y, int enemy_nbr)
 {
 	char	**grid;
 
@@ -64,7 +64,7 @@ void	ft_print_map(t_game *game)
 }
 
 //Prints info on the window.
-void	ft_print_info(t_game game)
+static void	ft_print_info(t_game game)
 {
 	char	*steps;
 	char	*coll;
