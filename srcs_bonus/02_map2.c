@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:52:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:39 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //Checks if the str has smth apart from c 
 static int	ft_strcustom(char *str, char c)
@@ -75,6 +75,7 @@ t_player	ft_locate_player(t_map map)
 			{
 				player.pos.x = x;
 				player.pos.y = y;
+				player.skin = 7;
 				return (player);
 			}
 			x++;
@@ -103,6 +104,7 @@ t_exit	ft_locate_exit(t_map map)
 			{
 				exit.position.x = x;
 				exit.position.y = y;
+				exit.skin = 10;
 				return (exit);
 			}
 			x++;
@@ -112,3 +114,32 @@ t_exit	ft_locate_exit(t_map map)
 	return (exit);
 }
 
+//Function that founds the enemy on the map and creates the enemy struct.
+void	ft_found_enemy(t_game *game)
+{
+	int		y;
+	int		x;
+	int		i;
+	t_enemy	*enemy;
+
+	y = 0;
+	i = 0;
+	enemy = (t_enemy *)malloc(sizeof(t_enemy) * (game->enemy_nbr));
+	while (game->map.grid[y])
+	{
+		x = 0;
+		while (game->map.grid[y][x])
+		{
+			if (game->map.grid[y][x] == 'B')
+			{
+				enemy[i].position.x = x;
+				enemy[i].position.y = y;
+				enemy[i].skin = 3;
+				i++;
+			}
+			x++;
+		}
+		y++;
+	}
+	game->enemy = enemy;
+}

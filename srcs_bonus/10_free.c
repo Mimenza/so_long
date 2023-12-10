@@ -6,11 +6,19 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:54:46 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:57:03 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:22:07 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
+
+void	ft_free_enemy(t_game game)
+{
+	int	i;
+
+	if (game.enemy_nbr != 0)
+		free(game.enemy);
+}
 
 void	ft_free_map_size(t_game game)
 {

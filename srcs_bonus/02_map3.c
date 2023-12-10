@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:25:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:41 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //Aux function which checks if the map is doable
 static int	ft_expandable(char **grid, t_player *player)
@@ -69,12 +69,11 @@ int	ft_reachable(char **grid, t_size *size)
 //Counts the entity number
 int	ft_count_item(char c, int *player, int *exit, int *coll)
 {
-	if (c != 'P' && c != 'E' && c != 'C' && c != '0' && c != '1')
+	if (c != 'P' && c != 'E' && c != 'C' && c != 49 && c != 48 && c != 'B')
 	{
 		ft_print_error(7);
 		return (0);
 	}
-	
 	if (c == 'P')
 		*player += 1;
 	else if (c == 'E')

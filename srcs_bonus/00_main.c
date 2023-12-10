@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:29:31 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:25 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //This function checks if the str given ends in the ext.
 static int	ft_check_ext(char *str, char *ext)
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 
-	//system("clear");
+	system("clear");
 	print_game_name();
 	ft_printf("CHECKING FILE NAME....");
 	if (argc == 2 && ft_check_ext(*(argv + 1), ".ber"))

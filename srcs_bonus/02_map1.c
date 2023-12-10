@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:29:21 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:36 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //Read the file and return the line with all the content
 static char	*ft_read_file(char *strmap, char *t_line)
@@ -108,7 +108,6 @@ int	ft_map_coll(char **grid)
 	player = 0;
 	exit = 0;
 	coll = 0;
-
 	while (grid[y])
 	{
 		x = 0;
@@ -120,7 +119,6 @@ int	ft_map_coll(char **grid)
 		}
 		y++;
 	}
-	ft_printf("p %i e %i c %i \n", player, exit, coll);
 	if (ft_check_item(0, &player, &exit, &coll) == 0)
 		return (0);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");

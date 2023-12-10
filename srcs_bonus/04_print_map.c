@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 11:11:08 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:00:33 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:52 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //Aux function which prints the map into the window.
 static void	ft_put_img(t_game *game, int x, int y, int enemy_nbr)
@@ -25,13 +25,17 @@ static void	ft_put_img(t_game *game, int x, int y, int enemy_nbr)
 		game->window.win, game->window.img[1], x * PX, y * PX);
 	if (grid[y][x] == 'C')
 		mlx_put_image_to_window(game->window.mlx, game->window.win, \
-		game->window.img[5], x * PX, y * PX);
+		game->window.img[12 + game->coll_skin], x * PX, y * PX);
 	if (grid[y][x] == 'E')
 		mlx_put_image_to_window(game->window.mlx, \
-		game->window.win, game->window.img[4], x * PX, y * PX);
+		game->window.win, game->window.img[game->exit.skin], x * PX, y * PX);
+	if (grid[y][x] == 'B')
+		mlx_put_image_to_window(game->window.mlx, \
+		game->window.win, game->window.img[game->enemy[enemy_nbr].skin], \
+		x * PX, y * PX);
 	if (grid[y][x] == 'P')
 		mlx_put_image_to_window(game->window.mlx, game->window.win, \
-		game->window.img[3], game->p.pos.x * PX, \
+		game->window.img[game->p.skin], game->p.pos.x * PX, \
 		game->p.pos.y * PX + y);
 }
 
@@ -56,5 +60,35 @@ void	ft_print_map(t_game *game)
 		}
 		y++;
 	}
+	ft_print_info(*game);
 }
 
+//Prints info on the window.
+static void	ft_print_info(t_game game)
+{
+	char	*steps;
+	char	*coll;
+	char	*n_coll;
+
+	steps = ft_itoa(game.steps);
+	coll = ft_itoa(game.coll);
+	n_coll = ft_itoa(game.map.n_coll);
+	mlx_string_put(game.window.mlx, game.window.win, 5, \
+	game.window.size->h - 10, 0x00FFFFFF, "MOVES:");
+	mlx_string_put(game.window.mlx, game.window.win, 45, \
+	game.window.size->h - 10, 0x00FFFFFF, steps);
+	mlx_string_put(game.window.mlx, game.window.win, 5, \
+	game.window.size->h - 30, 0x00FFFFFF, "COLLECTABLES:");
+	mlx_string_put(game.window.mlx, game.window.win, 90, \
+	game.window.size->h - 30, 0x00FFFFFF, coll);
+	mlx_string_put(game.window.mlx, game.window.win, 100, \
+	game.window.size->h - 30, 0x00FFFFFF, "/");
+	mlx_string_put(game.window.mlx, game.window.win, 110, \
+	game.window.size->h - 30, 0x00FFFFFF, n_coll);
+	mlx_string_put(game.window.mlx, game.window.win, 130, \
+	game.window.size->h - 30, 0x00FFFFFF, "COLLECT ALL THE COINS \
+	ACROSS THE MAP AND SAVE THEM IN THE CHEST!");
+	free(steps);
+	free(coll);
+	free(n_coll);
+}

@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:23:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:44:30 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:21:45 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 //Checks if the above position is expandable, and expand to it.
 int	ft_check_above(int x, int y, char **grid)

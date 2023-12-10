@@ -6,11 +6,11 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:11:21 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:44:03 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:22:02 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs/so_long_bonus.h"
 
 void	ft_print_error(int type)
 {

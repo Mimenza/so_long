@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/12/05 11:09:24 by emimenza         ###   ########.fr        #
+#    Updated: 2023/12/10 19:40:49 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,18 +20,24 @@ NC = \033[0m # No color (reiniciar)
 DEL			=	rm -f
 CC			=	gcc
 CCFLAGS		=	-Wall -Wextra -Werror
-MLX			=	-framework OpenGL -framework AppKit
-#MLX			=	-lXext -lX11 -lm -lbsd
+#MLX			=	-framework OpenGL -framework AppKit
+MLX			=	-lXext -lX11 -lm -lbsd
 # -g3 -fsanitize=address
 
 #Nombre ejecutable
 NAME		=	so_longer
+NAME_BONUS	=	so_longer_bonus
 
 #Ficheros
-SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy 08_error 09_utils 10_free
+SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-MINILIBX	=	libs/minilibx
+
+SRC_FILES_BONUS	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy 08_error 09_utils 10_free
+SRC_BONUS	=	$(addprefix $(SRC_DIR_BONUS), $(addsuffix .c, $(SRC_FILES_BONUS)))
+OBJ_BONUS	=	$(addprefix $(OBJ_DIR_BONUS), $(addsuffix .o, $(SRC_FILES_BONUS)))
+
+MINILIBX	=	libs/minilibx-linux
 GNL			=	libs/gnl
 LIBFT		=	libs/Libft
 PRINTF		=	libs/ft_printf
@@ -45,25 +51,39 @@ HEADERS		=	  $(MINILIBX)/mlx.h $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LI
 #Directorios
 SRC_DIR = srcs/
 OBJ_DIR = objs/
+
+SRC_DIR_BONUS = srcs_bonus/
+OBJ_DIR_BONUS = objs_bonus/
+
 OBJF = objs
 INC = incs
 
 # REGLAS # 
 all:	minilibx gnl printf libft $(NAME)
+bonus: minilibx gnl printf libft $(NAME_BONUS)
 
 #Compilar 
 $(NAME):$(OBJ)
 		@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
-# Compilar objetos individualmente y crear carpeta objs
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling: $<$(NC)"
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
 	@echo "$(YELLOW)Compiled!$(NC)"
 
+#Compilar bonus
+$(NAME_BONUS):$(OBJ_BONUS)
+		@$(CC) $(OBJ_BONUS) $(LIBS) -o $(NAME_BONUS)
+		@echo "$(GREEN)SO_LONG HAS BEEN COMPILED!$(NC)"
 
+$(OBJ_DIR_BONUS)%.o: $(SRC_DIR_BONUS)%.c
+	@mkdir -p $(OBJ_DIR_BONUS)
+	@echo "$(YELLOW)Compiling: $<$(NC)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
+	@echo "$(YELLOW)Compiled!$(NC)"
+	
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.
 # $< : The name of the first prerequisite.
 
@@ -108,15 +128,24 @@ fclean_libft:
 	@make fclean -C ./$(LIBFT)
 	@echo "$(RED)LIBFT FULL CLEANED!$(NC)"
 
-
 # Eliminar temporales
 clean:
 	@$(RM) -r $(OBJ_DIR)
 	@echo "$(RED)OBJS AND DIRECTORY CLEANED!$(NC)"
 
+# Eliminar temporales
+clean_bonus:
+	@$(RM) -r $(OBJ_DIR_BONUS)
+	@echo "$(RED)OBJS AND DIRECTORY CLEANED!$(NC)"
+
 # Eliminar temporales y ejecutable fclean_mlx
 fclean: clean  fclean_gnl fclean_libft fclean_printf
 	@$(RM) $(NAME)
+	@echo "$(RED)EXECUTABLE CLEANED!$(NC)"
+
+# Eliminar temporales y ejecutable fclean_mlx
+fclean_bonus: clean clean_bonus fclean_gnl fclean_libft fclean_printf
+	@$(RM) $(NAME_BONUS)
 	@echo "$(RED)EXECUTABLE CLEANED!$(NC)"
 
 re: fclean all
