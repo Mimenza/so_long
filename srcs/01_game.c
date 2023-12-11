@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:29:45 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:28:48 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:19:34 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static void	ft_load_imgs(t_game *game)
 	ft_strlcpy(files[3], PLAYER_D, 41);
 	ft_strlcpy(files[4], EXIT_C, 41);
 	ft_strlcpy(files[5], COIN_1, 41);
-
 	ft_cpy_imgs(files, game);
 }
 

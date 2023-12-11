@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:41:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:44:42 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:25:42 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ t_size **size, int *n_coll)
 
 	if (ft_create_grid(strmap, &grid) == 0)
 		return (NULL);
+	ft_printf("CHECKING THE MAP SIZE...");
 	if (ft_map_size(grid, size) == 0)
 	{
+		ft_print_error(4);
 		ft_free_doubleptr(grid);
 		return (NULL);
 	}

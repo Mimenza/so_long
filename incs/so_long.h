@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:30:07 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:11:32 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,35 @@
 # define PX	48
 
 // Key Codes for MacOS
-// # define KEY_ESC	53
-// # define KEY_W		13
-// # define KEY_A		0
-// # define KEY_S		1
-// # define KEY_D		2
-// # define KEY_UP		126
-// # define KEY_DOWN	125
-// # define KEY_LEFT	123
-// # define KEY_RIGHT	124
+# define KEY_ESC	53
+# define KEY_W		13
+# define KEY_A		0
+# define KEY_S		1
+# define KEY_D		2
+# define KEY_UP		126
+# define KEY_DOWN	125
+# define KEY_LEFT	123
+# define KEY_RIGHT	124
 
 // MacOS Events
-// # define ON_KEYDOWN		2
-// # define ON_KEYUP 		3
-// # define ON_MOUSEDOWN	4
-// # define ON_MOUSEUP		5
-// # define ON_MOUSEMOVE	6
-// # define ON_EXPOSE		12
-// # define ON_DESTROY		17
+# define ON_KEYDOWN		2
+# define ON_KEYUP 		3
+# define ON_MOUSEDOWN	4
+# define ON_MOUSEUP		5
+# define ON_MOUSEMOVE	6
+# define ON_EXPOSE		12
+# define ON_DESTROY		17
 
 // Key Codes for Linux
-# define KEY_ESC	65307
-# define KEY_W		119
-# define KEY_A		97
-# define KEY_S		115
-# define KEY_D		100
-# define KEY_UP		1234
-# define KEY_DOWN	1234
-# define KEY_LEFT	1234
-# define KEY_RIGHT	1234
+// # define KEY_ESC	65307
+// # define KEY_W		119
+// # define KEY_A		97
+// # define KEY_S		115
+// # define KEY_D		100
+// # define KEY_UP		1234
+// # define KEY_DOWN	1234
+// # define KEY_LEFT	1234
+// # define KEY_RIGHT	1234
 
 // Assets location
 # define IMG_COUNT	6

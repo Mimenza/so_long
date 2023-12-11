@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:58:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:55:47 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:20:27 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int	ft_input(int key, void *param)
 	ft_print_map(game);
 	return (0);
 }
-

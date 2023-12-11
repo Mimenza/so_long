@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:46:06 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:29:31 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:19:42 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 {
 	t_game		game;
 
-	//system("clear");
+	system("clear");
 	print_game_name();
 	ft_printf("CHECKING FILE NAME....");
 	if (argc == 2 && ft_check_ext(*(argv + 1), ".ber"))

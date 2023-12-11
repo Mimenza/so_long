@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 09:27:12 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:29:21 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:25:21 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	ft_map_size(char **grid, t_size **size)
 
 	y = 0;
 	t_x = 0;
-	ft_printf("CHECKING THE MAP SIZE...");
 	while (grid[y])
 	{
 		x = 0;
@@ -84,12 +83,13 @@ int	ft_map_size(char **grid, t_size **size)
 			t_x = x;
 		if (t_x != 0 && t_x != x)
 		{
-			ft_print_error(4);
 			return (0);
 		}
 		y++;
 	}
 	(*size) = (t_size *)malloc(sizeof(t_size));
+	if ((*size) == NULL)
+		return (0);
 	(*size)->w = x;
 	(*size)->h = y;
 	return (1);
@@ -108,7 +108,6 @@ int	ft_map_coll(char **grid)
 	player = 0;
 	exit = 0;
 	coll = 0;
-
 	while (grid[y])
 	{
 		x = 0;
@@ -120,7 +119,6 @@ int	ft_map_coll(char **grid)
 		}
 		y++;
 	}
-	ft_printf("p %i e %i c %i \n", player, exit, coll);
 	if (ft_check_item(0, &player, &exit, &coll) == 0)
 		return (0);
 	ft_printf("\033[0;32m [OK] \033[0m\n\n");

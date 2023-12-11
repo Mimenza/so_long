@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:52:42 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:52:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:20:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,3 @@ t_exit	ft_locate_exit(t_map map)
 	}
 	return (exit);
 }
-

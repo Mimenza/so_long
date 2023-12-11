@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:20:52 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 18:56:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:19:59 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ int	ft_move_player(t_game *game, int x, int y)
 	}
 	return (0);
 }
-
