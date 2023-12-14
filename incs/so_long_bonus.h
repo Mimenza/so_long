@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/11 08:12:31 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:24:09 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // Pixel size of each .xpm file (16x16)
 # define PX	48
 
-# define SPEED 8000 // the lower the fastest the enemy moves
+# define SPEED 80// the lower the fastest the enemy moves
 # define COIN_ROTATION	80 //The te lower the fastest the coin rotates
 
 // Key Codes for MacOS
@@ -39,26 +39,6 @@
 # define KEY_DOWN	125
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
-
-// MacOS Events
-# define ON_KEYDOWN		2
-# define ON_KEYUP 		3
-# define ON_MOUSEDOWN	4
-# define ON_MOUSEUP		5
-# define ON_MOUSEMOVE	6
-# define ON_EXPOSE		12
-# define ON_DESTROY		17
-
-// Key Codes for Linux
-// # define KEY_ESC	65307
-// # define KEY_W		119
-// # define KEY_A		97
-// # define KEY_S		115
-// # define KEY_D		100
-// # define KEY_UP		1234
-// # define KEY_DOWN	1234
-// # define KEY_LEFT	1234
-// # define KEY_RIGHT	1234
 
 // Assets location
 # define IMG_COUNT	20
@@ -126,8 +106,6 @@ typedef struct s_map
 	t_size	*size;
 	int		n_coll;
 	int		created;
-	int		boss;
-	int		state;
 }			t_map;
 
 //store all the information about the exit
@@ -166,7 +144,6 @@ typedef struct s_game
 }			t_game;
 
 //main.c
-
 static int		ft_check_ext(char *str, char *ext);
 
 //game.c
@@ -252,4 +229,5 @@ void			ft_free_enemy(t_game game);
 void			ft_free_map_size(t_game game);
 void			ft_free_win_size(t_game game);
 void			ft_free_doubleptr(char **grid);
+
 #endif

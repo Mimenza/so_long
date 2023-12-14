@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/11 08:11:32 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/14 10:01:30 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,6 @@
 # define KEY_DOWN	125
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
-
-// MacOS Events
-# define ON_KEYDOWN		2
-# define ON_KEYUP 		3
-# define ON_MOUSEDOWN	4
-# define ON_MOUSEUP		5
-# define ON_MOUSEMOVE	6
-# define ON_EXPOSE		12
-# define ON_DESTROY		17
-
-// Key Codes for Linux
-// # define KEY_ESC	65307
-// # define KEY_W		119
-// # define KEY_A		97
-// # define KEY_S		115
-// # define KEY_D		100
-// # define KEY_UP		1234
-// # define KEY_DOWN	1234
-// # define KEY_LEFT	1234
-// # define KEY_RIGHT	1234
 
 // Assets location
 # define IMG_COUNT	6
@@ -139,7 +119,6 @@ typedef struct s_game
 }			t_game;
 
 //main.c
-
 static int		ft_check_ext(char *str, char *ext);
 
 //game.c
@@ -197,13 +176,6 @@ int				ft_input(int key, void *param);
 static void		ft_check_coin(t_game *game);
 static void		ft_move_player2(t_game *game, int x, int y);
 int				ft_move_player(t_game *game, int x, int y);
-
-//enemy.c
-int				ft_enemy_nbr(t_game *game);
-void			ft_select_movement(t_game game, t_position pos, \
-int direction, int enemy_nbr);
-int				ft_rand(void);
-void			ft_randomize(t_game *game);
 
 //error.c
 void			ft_print_error(int type);

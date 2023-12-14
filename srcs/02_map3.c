@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/10 19:25:39 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/11 08:19:05 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	ft_count_item(char c, int *player, int *exit, int *coll)
 		ft_print_error(7);
 		return (0);
 	}
-	
 	if (c == 'P')
 		*player += 1;
 	else if (c == 'E')

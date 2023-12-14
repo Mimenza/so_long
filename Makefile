@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/12/11 08:10:31 by emimenza         ###   ########.fr        #
+#    Updated: 2023/12/14 10:51:32 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,15 +25,15 @@ MLX			=	-framework OpenGL -framework AppKit
 # -g3 -fsanitize=address
 
 #Nombre ejecutable
-NAME		=	so_longer
-NAME_BONUS	=	so_longer_bonus
+NAME		=	so_long
+NAME_BONUS	=	so_long_bonus
 
 #Ficheros
 SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-SRC_FILES_BONUS	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 07_enemy 08_error 09_utils 10_free
+SRC_FILES_BONUS	= 00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free 
 SRC_BONUS	=	$(addprefix $(SRC_DIR_BONUS), $(addsuffix .c, $(SRC_FILES_BONUS)))
 OBJ_BONUS	=	$(addprefix $(OBJ_DIR_BONUS), $(addsuffix .o, $(SRC_FILES_BONUS)))
 
@@ -45,9 +45,6 @@ PRINTF		=	libs/ft_printf
 #Librerias 
 LIBS		= $(MINILIBX)/libmlx.a $(MLX) $(GNL)/get_next_line.a $(PRINTF)/libftprintf.a $(LIBFT)/libft.a 
 
-# Header Files (dedicated and from libraries):
-HEADERS		=	  $(MINILIBX)/mlx.h $(GNL)/get_next_line.h $(PRINTF)/ft_printf.h $(LIBFT)/libft.h $(INC)/so_long.h
-
 #Directorios
 SRC_DIR = srcs/
 OBJ_DIR = objs/
@@ -55,12 +52,9 @@ OBJ_DIR = objs/
 SRC_DIR_BONUS = srcs_bonus/
 OBJ_DIR_BONUS = objs_bonus/
 
-OBJF = objs
-INC = incs
-
 # REGLAS # 
 all:	minilibx gnl printf libft $(NAME)
-bonus: minilibx gnl printf libft $(NAME_BONUS)
+bonus:	minilibx gnl printf libft $(NAME_BONUS)
 
 #Compilar 
 $(NAME):$(OBJ)
@@ -70,7 +64,7 @@ $(NAME):$(OBJ)
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "$(YELLOW)Compiling: $<$(NC)"
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
+	@$(CC) $(CFLAGS) -o $@ -c $< 
 	@echo "$(YELLOW)Compiled!$(NC)"
 
 #Compilar bonus
@@ -81,7 +75,7 @@ $(NAME_BONUS):$(OBJ_BONUS)
 $(OBJ_DIR_BONUS)%.o: $(SRC_DIR_BONUS)%.c
 	@mkdir -p $(OBJ_DIR_BONUS)
 	@echo "$(YELLOW)Compiling: $<$(NC)"
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADER)
+	@$(CC) $(CFLAGS) -o $@ -c $< 
 	@echo "$(YELLOW)Compiled!$(NC)"
 	
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.
