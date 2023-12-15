@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/14 10:24:09 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/15 08:25:01 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ static int		ft_check_ext(char *str, char *ext);
 //game.c
 static void		ft_load(t_game *game, char *path, int i);
 static void		ft_load_imgs(t_game *game);
+static void		ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game);
 static void		ft_start_game(t_game game);
 t_game			ft_create_game(char *strmap, t_game *game);
 
@@ -171,16 +172,11 @@ t_exit			ft_locate_exit(t_map map);
 void			ft_found_enemy(t_game *game);
 
 //map3.c
+int				ft_check_position(int x, int y, char **grid);
 static int		ft_expandable(char **grid, t_player *player);
 int				ft_reachable(char **grid, t_size *size);
 int				ft_count_item(char c, int *player, int *exit, int *coll);
 int				ft_check_item(char c, int *player, int *exit, int *coll);
-
-//map4.c
-int				ft_check_above(int x, int y, char **grid);
-int				ft_check_below(int x, int y, char **grid);
-int				ft_check_right(int x, int y, char **grid);
-int				ft_check_left(int x, int y, char **grid);
 
 //map5.c
 int				ft_check_items_reach(char **grid, char **p_grid);
@@ -208,14 +204,12 @@ int				ft_move_player(t_game *game, int x, int y);
 int				ft_move_enemy(t_game *game, t_position pos, \
 t_position og_pos, int enemy_nbr);
 
-//enemy.c
+//error.c
 int				ft_enemy_nbr(t_game *game);
 void			ft_select_movement(t_game game, t_position pos, \
 int direction, int enemy_nbr);
 int				ft_rand(void);
 void			ft_randomize(t_game *game);
-
-//error.c
 void			ft_print_error(int type);
 
 //utils.c

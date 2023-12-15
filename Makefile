@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 10:48:36 by emimenza          #+#    #+#              #
-#    Updated: 2023/12/14 10:51:32 by emimenza         ###   ########.fr        #
+#    Updated: 2023/12/15 08:26:26 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,11 +29,11 @@ NAME		=	so_long
 NAME_BONUS	=	so_long_bonus
 
 #Ficheros
-SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free
+SRC_FILES	=	00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free
 SRC			=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-SRC_FILES_BONUS	= 00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map4 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free 
+SRC_FILES_BONUS	= 00_main 01_game 02_map 02_map1 02_map2 02_map3 02_map5 03_window 04_print_map 05_hooks 06_move 08_error 09_utils 10_free 
 SRC_BONUS	=	$(addprefix $(SRC_DIR_BONUS), $(addsuffix .c, $(SRC_FILES_BONUS)))
 OBJ_BONUS	=	$(addprefix $(OBJ_DIR_BONUS), $(addsuffix .o, $(SRC_FILES_BONUS)))
 

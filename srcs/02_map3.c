@@ -6,11 +6,24 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 20:10:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/11 08:19:05 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/15 08:14:51 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
+
+//Checks if the above position is expandable, and expand to it.
+int	ft_check_position(int x, int y, char **grid)
+{
+	if (grid[y][x] \
+	&& ((grid[y][x] == '0') || (grid[y][x] == 'C') \
+	|| (grid[y][x] == 'E') || (grid[y][x] == 'B')))
+	{
+		grid[y][x] = 'P';
+		return (1);
+	}
+	return (0);
+}
 
 //Aux function which checks if the map is doable
 static int	ft_expandable(char **grid, t_player *player)
@@ -27,10 +40,10 @@ static int	ft_expandable(char **grid, t_player *player)
 		{
 			if (grid[y][x] == 'P')
 			{
-				coords.a = ft_check_above(x, y, grid);
-				coords.b = ft_check_below(x, y, grid);
-				coords.r = ft_check_right(x, y, grid);
-				coords.l = ft_check_left(x, y, grid);
+				coords.a = ft_check_position(x - 1, y, grid);
+				coords.b = ft_check_position(x + 1, y, grid);
+				coords.r = ft_check_position(x, y - 1, grid);
+				coords.l = ft_check_position(x, y + 1, grid);
 				if (coords.a == 1 || coords.b == 1 \
 				|| coords.r == 1 || coords.l == 1)
 					return (1);

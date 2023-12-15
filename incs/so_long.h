@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:49:15 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/14 10:01:30 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/15 08:08:23 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ static int		ft_check_ext(char *str, char *ext);
 
 //game.c
 static void		ft_load(t_game *game, char *path, int i);
+static void		ft_cpy_imgs(char files[IMG_COUNT][42], t_game *game);
 static void		ft_load_imgs(t_game *game);
 static void		ft_start_game(t_game game);
 t_game			ft_create_game(char *strmap, t_game *game);
@@ -149,12 +150,7 @@ static int		ft_expandable(char **grid, t_player *player);
 int				ft_reachable(char **grid, t_size *size);
 int				ft_count_item(char c, int *player, int *exit, int *coll);
 int				ft_check_item(char c, int *player, int *exit, int *coll);
-
-//map4.c
-int				ft_check_above(int x, int y, char **grid);
-int				ft_check_below(int x, int y, char **grid);
-int				ft_check_right(int x, int y, char **grid);
-int				ft_check_left(int x, int y, char **grid);
+int				ft_check_position(int x, int y, char **grid);
 
 //map5.c
 int				ft_check_items_reach(char **grid, char **p_grid);
